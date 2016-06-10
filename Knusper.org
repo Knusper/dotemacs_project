@@ -3,7 +3,15 @@
 
 * Configuration
 
-Somewhat inspired by [[http://sach.ac/dotemacs][Sacha Chua's Emacs configuration]]. 
+- Somewhat inspired by [[http://sach.ac/dotemacs][Sacha Chua's Emacs configuration]]. 
+
+- Github repository for this file: https://github.com/Knusper/dotemacs_project
+
+- HTML: http://fortune-teller-amy-88756.netlify.com/Knusper.html
+
+- Org: http://fortune-teller-amy-88756.netlify.com/Knusper.org
+
+- .el: http://fortune-teller-amy-88756.netlify.com/Knusper.el
 
 ** Init file
    
@@ -44,9 +52,6 @@ Somewhat inspired by [[http://sach.ac/dotemacs][Sacha Chua's Emacs configuration
     - Download AucTeX from [[https://www.gnu.org/software/auctex/download-for-unix.html]]
     - Compile using ~./configure --prefix=$HOME/.emacs.d/site-lisp/auctex --with-lispdir=$HOME/.emacs.d/site-lisp/auctex --without-texmf-dir~
     - Version currently installed: 11.89
- 
-*** ☛ TODO Still missing
-    - Links to github / html version of my configuration
       
 ** Personal Information
 
