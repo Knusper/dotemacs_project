@@ -73,6 +73,41 @@
   :init (setq auto-mode-alist
               (cons '("\\.mdml$" . markdown-mode) auto-mode-alist)))
 
+(use-package rainbow-delimiters
+  :ensure t
+  :config
+  (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+  )
+
+(use-package buffer-move
+  :ensure t
+  :config
+  (global-set-key (kbd "<S-s-up>")     'buf-move-up)
+  (global-set-key (kbd "<S-s-down>")   'buf-move-down)
+  (global-set-key (kbd "<S-s-left>")   'buf-move-left)
+  (global-set-key (kbd "<S-s-right>")  'buf-move-right)
+  )
+
+(use-package smex
+  :ensure t
+  :config
+  (smex-initialize)
+  (global-set-key (kbd "M-x") 'smex)
+  )
+
+(use-package powerline
+  :ensure t
+  :config
+  (powerline-default-theme)
+  )
+
+(use-package beacon
+  :ensure t
+  :config
+  (beacon-mode 1)
+  (setq beacon-dont-blink-commands nil) ;; always blink
+  )
+
 (use-package jedi
   :ensure t
   )

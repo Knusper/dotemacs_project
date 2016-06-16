@@ -59,6 +59,7 @@
      (setq user-full-name "Edmund Christian Herenz"
            user-mail-address "cherenz@aip.de")
    #+END_SRC
+   
 ** Packages
 *** Package Archives
 
@@ -189,6 +190,63 @@
                      (cons '("\\.mdml$" . markdown-mode) auto-mode-alist)))
      #+END_SRC
 
+**** rainbow-delimiters
+     
+     https://www.emacswiki.org/emacs/RainbowDelimiters
+
+     #+BEGIN_SRC emacs-lisp :tangle yes
+       (use-package rainbow-delimiters
+         :ensure t
+         :config
+         (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+         )
+     #+END_SRC
+
+**** buffer-move
+     
+     https://github.com/lukhas/buffer-move
+
+     #+BEGIN_SRC emacs-lisp :tangle yes
+       (use-package buffer-move
+         :ensure t
+         :config
+         (global-set-key (kbd "<S-s-up>")     'buf-move-up)
+         (global-set-key (kbd "<S-s-down>")   'buf-move-down)
+         (global-set-key (kbd "<S-s-left>")   'buf-move-left)
+         (global-set-key (kbd "<S-s-right>")  'buf-move-right)
+         )
+     #+END_SRC
+
+**** smex
+
+     #+BEGIN_SRC emacs-lisp :tangle yes
+       (use-package smex
+         :ensure t
+         :config
+         (smex-initialize)
+         (global-set-key (kbd "M-x") 'smex)
+         )
+     #+END_SRC
+
+**** powerline
+
+     #+BEGIN_SRC emacs-lisp :tangle yes
+       (use-package powerline
+         :ensure t
+         :config
+         (powerline-default-theme)
+         )
+     #+END_SRC
+
+**** beacon
+     #+BEGIN_SRC emacs-lisp :tangle yes
+       (use-package beacon
+         :ensure t
+         :config
+         (beacon-mode 1)
+         (setq beacon-dont-blink-commands nil) ;; always blink
+         )
+     #+END_SRC
 **** jedi 
 
      https://tkf.github.io/emacs-jedi/latest/
