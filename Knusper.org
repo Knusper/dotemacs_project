@@ -52,7 +52,20 @@
     - Download AucTeX from [[https://www.gnu.org/software/auctex/download-for-unix.html]]
     - Compile using ~./configure --prefix=$HOME/.emacs.d/site-lisp/auctex --with-lispdir=$HOME/.emacs.d/site-lisp/auctex --without-texmf-dir~
     - Version currently installed: 11.89
-      
+
+*** General
+
+**** Start the emacs server
+     #+BEGIN_SRC emacs-lisp :tangle yes
+     (server-start)
+     #+END_SRC
+
+**** Load Custom File
+     #+BEGIN_SRC emacs-lisp :tangle yes
+       (setq custom-file "~/.gnu-emacs-custom")
+       (load custom-file)
+     #+END_SRC
+^
 ** Personal Information
 
    #+BEGIN_SRC emacs-lisp :tangle yes

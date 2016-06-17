@@ -1,3 +1,8 @@
+(server-start)
+
+(setq custom-file "~/.gnu-emacs-custom")
+(load custom-file)
+
 (setq user-full-name "Edmund Christian Herenz"
       user-mail-address "cherenz@aip.de")
 
