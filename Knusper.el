@@ -28,6 +28,7 @@
     auto-complete
     ido
     writeroom-mode
+    muttrc-mode
     
     ;; language specific
     markdown-mode
@@ -119,6 +120,13 @@
 
 (use-package writeroom-mode
   :ensure t)
+
+(use-package muttrc-mode
+  :ensure t
+  :config
+   (setq auto-mode-alist
+            (append '((".muttrc\\'" . muttrc-mode))
+                    auto-mode-alist)))
 
 (use-package org-bullets
   :ensure t
