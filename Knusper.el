@@ -28,7 +28,10 @@
     auto-complete
     ido
     writeroom-mode
+
+    ;; email
     muttrc-mode
+    offlineimap
     
     ;; language specific
     markdown-mode
