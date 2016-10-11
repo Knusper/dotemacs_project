@@ -26,8 +26,8 @@
      (package-initialize nil)
      (add-to-list 'load-path (expand-file-name "~/emacs-scripts/"))
      ;; org-mode
-     (add-to-list 'load-path (expand-file-name "~/emacs-scripts/org-8.3.4/lisp/"))
-     (add-to-list  'Info-default-directory-list "~/emacs-scripts/org-8.3.4/doc/")
+     (add-to-list 'load-path (expand-file-name "~/emacs-scripts/org-8.3.6/lisp/"))
+     (add-to-list 'load-path "~/emacs-scripts/org-8.3.6/contrib/lisp" t)
      ;; auctex
      (add-to-list 'load-path (expand-file-name "~/.emacs.d/site-lisp/auctex"))
      (load "auctex.el" nil t t)
@@ -47,6 +47,8 @@
 
     - Just run ~make~
     - Version currently installed: 8.3.4
+    - add ~export INFOPATH=${HOME}/emacs-scripts/org-8.3.4/doc/:${INFOPATH}~ to
+      ~${HOME}/.profile~, to read the documentation of the package installed
 
 *** Notes on AucTeX installation
     
@@ -83,7 +85,7 @@
       (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
     #+END_SRC
 
-*** List of packages I use
+*** Packages I use
 
     I use the following MELPA packages.
 
@@ -98,6 +100,7 @@
           xkcd
           fireplace
           tea-time
+	  2048-game
     
           ;; essential
           buffer-move
@@ -127,242 +130,247 @@
         ))
     #+END_SRC
 
-*** use-package - automatically download and install packages
+**** use-package - automatically download and install packages
 
-    We use [[https://github.com/jwiegley/use-package][=use-package=]] to automatically download and install packages,
-    if they are not present on the system.  Of course, when firing up
-    EMACS for the first time on a fresh system, =use-package= needs to be
-    automagically installed first.
+     We use [[https://github.com/jwiegley/use-package][=use-package=]] to automatically download and install packages,
+     if they are not present on the system.  Of course, when firing up
+     EMACS for the first time on a fresh system, =use-package= needs to be
+     automagically installed first.
 
-    #+BEGIN_SRC emacs-lisp :tangle yes
-      (if (not (package-installed-p 'use-package))
-          (progn
-            (package-refresh-contents)
-            (package-install 'use-package)))
+     #+BEGIN_SRC emacs-lisp :tangle yes
+       (if (not (package-installed-p 'use-package))
+           (progn
+             (package-refresh-contents)
+             (package-install 'use-package)))
 
-      (require 'use-package)
-    #+END_SRC
+       (require 'use-package)
+     #+END_SRC
 
-    Now install all packaages that are not on the system using the list in [[List of packages I use]].
+     # Now install all packaages that are not on the system using the
+     # list in [[List of packages I use]].
 
-    #+BEGIN_SRC emacs-lisp :tangle yes
-      (defvar packages-refreshed? nil)
+     # #+BEGIN_SRC emacs-lisp :tangle yes
+     #   (defvar packages-refreshed? nil)
 
-      (dolist (pack my/install-packages)
-        (unless (package-installed-p pack)
-          (unless packages-refreshed?
-            (package-refresh-contents)
-            (setq packages-refreshed? t))
-          (package-install pack)))    
-    #+END_SRC
+     #   (dolist (pack my/install-packages)
+     #     (unless (package-installed-p pack)
+     #       (unless packages-refreshed?
+     #         (package-refresh-contents)
+     #         (setq packages-refreshed? t))
+     #       (package-install pack)))    
+     # #+END_SRC
 
-    (via http://writequit.org/org/settings.html)
+     # (via http://writequit.org/org/settings.html)
 
-*** Configuration for packages from MELPA 
-**** zenburn color theme
+**** Description and links to homepages of packages 
      
-     #+BEGIN_SRC emacs-lisp :tangle yes
-       (use-package zenburn-theme
-         :ensure t
-         :config
-         (load-theme 'zenburn))
-     #+END_SRC
+     In this section we list all the packages that work
+     "out-of-the-box" when installed from the package archives.  The
+     packages requiring some customisation are listed in the [[*Specific settings for some packages using usepackage][next section]].
      
-**** htmlize
+
+      
+**** Specific settings for some packages using usepackage 
+
+***** Fun
+
+****** xkcd
+       https://github.com/vibhavp/emacs-xkcd
+       [[http://xkcd.com/][xkcd]] reader for Emacs. Nerd on!
+
+****** fireplace
      
-     http://www.emacswiki.org/emacs/Htmlize
+       It can get cold in winter. =M-x fireplace=
+       https://github.com/johanvts/emacs-fireplace
 
-     #+BEGIN_SRC emacs-lisp :tangle yes
-       (use-package htmlize
-         :ensure t)     
-     #+END_SRC
+****** tea-time
+
+       With =tea-time= I never forget about the tea.  Using  [[http://movie-sounds.org/action-movie-sound-clips/the-italian-job-1969/have-a-cup-of-tea-ready][this soundbite]]
+       from my favorite movie "The Italian Job".
+
+       #+BEGIN_SRC emacs-lisp :tangle yes
+	 (use-package tea-time
+           :ensure t
+           :config
+           (setq tea-time-sound "~/.sounds/tea.ogg")
+           (setq tea-time-sound-command "ogg123 -q %s")
+           )
+       #+END_SRC
+
+****** 2048
+
+***** Appearance
+
+****** zenburn colour theme
+
+       https://github.com/bbatsov/zenburn-emacs
+
+       Load zenburn colour theme when starting emacs.
+
+       #+BEGIN_SRC emacs-lisp :tangle yes
+	 (use-package zenburn-theme
+           :config
+           (load-theme 'zenburn))
+       #+END_SRC
+
+****** powerline
+
+       https://github.com/milkypostman/powerline
+
+       #+BEGIN_SRC emacs-lisp :tangle yes
+	 (use-package powerline
+           :ensure t
+           :config
+           (powerline-default-theme)
+           )
+       #+END_SRC
+
+****** beacon
+       #+BEGIN_SRC emacs-lisp :tangle yes
+	 (use-package beacon
+           :ensure t
+           :config
+           (beacon-mode 1)
+           (setq beacon-dont-blink-commands nil) ;; always blink
+           )
+       #+END_SRC
+
+
+***** Essential
+
+****** buffer-move
      
-**** xkcd
+       https://github.com/lukhas/buffer-move
 
-     https://github.com/vibhavp/emacs-xkcd
+       #+BEGIN_SRC emacs-lisp :tangle yes
+	 (use-package buffer-move
+           :ensure t
+           :config
+           (global-set-key (kbd "<S-s-up>")     'buf-move-up)
+           (global-set-key (kbd "<S-s-down>")   'buf-move-down)
+           (global-set-key (kbd "<S-s-left>")   'buf-move-left)
+           (global-set-key (kbd "<S-s-right>")  'buf-move-right)
+           )
+       #+END_SRC
+
+****** smex
+
+       #+BEGIN_SRC emacs-lisp :tangle yes
+	 (use-package smex
+           :ensure t
+           :config
+           (smex-initialize)
+           (global-set-key (kbd "M-x") 'smex)
+           )
+       #+END_SRC
+
+****** rainbow-delimiters
      
-     [[http://xkcd.com/][xkcd]] reader for Emacs. Nerd on!
+       https://www.emacswiki.org/emacs/RainbowDelimiters
+
+       #+BEGIN_SRC emacs-lisp :tangle yes
+	 (use-package rainbow-delimiters
+           :ensure t
+           :config
+           (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+           )
+       #+END_SRC
+
+
+****** htmlize
+       http://www.emacswiki.org/emacs/Htmlize
+
+****** iedit
+       Simultaneously edit multiple regions in buffer.
+       http://www.emacswiki.org/emacs/Iedit
      
-     #+BEGIN_SRC emacs-lisp :tangle yes
-       (use-package xkcd
-        :ensure t
-        :defer t)
-     #+END_SRC
-
-**** iedit
-
-     Simultaneously edit multiple regions in buffer.
-     http://www.emacswiki.org/emacs/Iedit
+****** writeroom-mode
      
-     #+BEGIN_SRC emacs-lisp :tangle yes
-       (use-package iedit
-         :ensure t)
-     #+END_SRC
+       Distraction free writing.
+       https://github.com/joostkremers/writeroom-mode
 
-**** markdown-mode
+****** auto-complete
 
-     http://jblevins.org/projects/markdown-mode/
+       http://auto-complete.org/
 
-     #+BEGIN_SRC emacs-lisp :tangle yes
-       (use-package markdown-mode
-         :ensure t
-         :init (setq auto-mode-alist
-                     (cons '("\\.mdml$" . markdown-mode) auto-mode-alist)))
-     #+END_SRC
+       #+BEGIN_SRC emacs-lisp 
+	 (use-package auto-complete
+           :ensure t
+           :config
+           (global-auto-complete-mode t) 
+           (add-hook 'python-mode-hook 'jedi:setup)
+           (setq jedi:setup-keys t)
+	  )
 
-**** rainbow-delimiters
+       #+END_SRC
+
+****** ☛ TODO ebib
      
-     https://www.emacswiki.org/emacs/RainbowDelimiters
-
-     #+BEGIN_SRC emacs-lisp :tangle yes
-       (use-package rainbow-delimiters
-         :ensure t
-         :config
-         (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
-         )
-     #+END_SRC
-
-**** buffer-move
+       Browse / edit BibTeX bibliographies in emacs.
+       http://ebib.sourceforge.net/
      
-     https://github.com/lukhas/buffer-move
+****** markdown-mode
 
-     #+BEGIN_SRC emacs-lisp :tangle yes
-       (use-package buffer-move
-         :ensure t
-         :config
-         (global-set-key (kbd "<S-s-up>")     'buf-move-up)
-         (global-set-key (kbd "<S-s-down>")   'buf-move-down)
-         (global-set-key (kbd "<S-s-left>")   'buf-move-left)
-         (global-set-key (kbd "<S-s-right>")  'buf-move-right)
-         )
-     #+END_SRC
+       http://jblevins.org/projects/markdown-mode/
 
-**** smex
+       #+BEGIN_SRC emacs-lisp :tangle yes
+	 (use-package markdown-mode
+           :ensure t
+           :init (setq auto-mode-alist
+                       (cons '("\\.mdml$" . markdown-mode) auto-mode-alist)))
+       #+END_SRC
 
-     #+BEGIN_SRC emacs-lisp :tangle yes
-       (use-package smex
-         :ensure t
-         :config
-         (smex-initialize)
-         (global-set-key (kbd "M-x") 'smex)
-         )
-     #+END_SRC
+****** jedi 
 
-**** powerline
-
-     #+BEGIN_SRC emacs-lisp :tangle yes
-       (use-package powerline
-         :ensure t
-         :config
-         (powerline-default-theme)
-         )
-     #+END_SRC
-
-**** beacon
-     #+BEGIN_SRC emacs-lisp :tangle yes
-       (use-package beacon
-         :ensure t
-         :config
-         (beacon-mode 1)
-         (setq beacon-dont-blink-commands nil) ;; always blink
-         )
-     #+END_SRC
-**** jedi 
-
-     https://tkf.github.io/emacs-jedi/latest/
+       https://tkf.github.io/emacs-jedi/latest/
      
-     #+BEGIN_SRC emacs-lisp :tangle yes
-       (use-package jedi
-         :ensure t
-         )
-     #+END_SRC
+       #+BEGIN_SRC emacs-lisp :tangle yes
+	 (use-package jedi
+           :ensure t
+           )
+       #+END_SRC
 
-**** auto-complete
 
-     http://auto-complete.org/
+****** org-bullets
 
-     #+BEGIN_SRC emacs-lisp 
-       (use-package auto-complete
-         :ensure t
-         :config
-         (global-auto-complete-mode t) 
-         (add-hook 'python-mode-hook 'jedi:setup)
-         (setq jedi:setup-keys t)
-	)
+       The following gold is from
+       https://thraxys.wordpress.com/2016/01/14/pimp-up-your-org-agenda/
 
-     #+END_SRC
+       #+BEGIN_SRC emacs-lisp :tangle yes
+	 (use-package org-bullets
+           :ensure t
+           :init
+           (setq org-bullets-bullet-list
+		 '("◉" "◎" "⚫" "○" "►" "◇"))
+           :config
+           (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+           )
+	 (setq org-todo-keywords '((sequence "☛ TODO(t)" "|" "✔ DONE(d)")
+	 (sequence "⚑ WAITING(w)" "|")
+	 (sequence "|" "✘ CANCELED(c)")))
+       #+END_SRC
 
-**** writeroom-mode
-     
-     Distraction free writing.
-     https://github.com/joostkremers/writeroom-mode
+***** Email
 
-     #+BEGIN_SRC emacs-lisp :tangle yes
-       (use-package writeroom-mode
-         :ensure t)
-     #+END_SRC
+****** muttrc-mode
 
-**** muttrc-mode
+       Syntax highlighting in [[http://linux.die.net/man/5/muttrc][muttrc file]].
 
-     Syntax highlighting in [[http://linux.die.net/man/5/muttrc][muttrc file]].
+       #+BEGIN_SRC emacs-lisp :tangle yes
+	 (use-package muttrc-mode
+           :ensure t
+           :config
+            (setq auto-mode-alist
+                     (append '((".muttrc\\'" . muttrc-mode))
+                             auto-mode-alist)))
+       #+END_SRC
 
-     #+BEGIN_SRC emacs-lisp :tangle yes
-       (use-package muttrc-mode
-         :ensure t
-         :config
-          (setq auto-mode-alist
-                   (append '((".muttrc\\'" . muttrc-mode))
-                           auto-mode-alist)))
-     #+END_SRC
+****** offlineimap
+       #+BEGIN_SRC emacs-lisp :tangle yes
+         (use-package offlineimap
+           :ensure t)
+       #+END_SRC
 
-**** org-bullets
-
-     The following gold is from
-     https://thraxys.wordpress.com/2016/01/14/pimp-up-your-org-agenda/
-
-     #+BEGIN_SRC emacs-lisp :tangle yes
-       (use-package org-bullets
-         :ensure t
-         :init
-         (setq org-bullets-bullet-list
-               '("◉" "◎" "⚫" "○" "►" "◇"))
-         :config
-         (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
-         )
-       (setq org-todo-keywords '((sequence "☛ TODO(t)" "|" "✔ DONE(d)")
-       (sequence "⚑ WAITING(w)" "|")
-       (sequence "|" "✘ CANCELED(c)")))
-     #+END_SRC
-
-**** tea-time
-
-     With =tea-time= I never forget about the tea.  Using  [[http://movie-sounds.org/action-movie-sound-clips/the-italian-job-1969/have-a-cup-of-tea-ready][this soundbite]]
-     from my favorite movie "The Italian Job".
-
-     #+BEGIN_SRC emacs-lisp :tangle yes
-       (use-package tea-time
-         :ensure t
-         :config
-         (setq tea-time-sound "~/.sounds/tea.ogg")
-         (setq tea-time-sound-command "ogg123 -q %s")
-         )
-     #+END_SRC
-
-**** ebib
-     
-     Browse / edit BibTeX bibliographies in emacs.
-     http://ebib.sourceforge.net/
-
-     #+BEGIN_SRC emacs-lisp :tangle yes
-       (use-package ebib
-         :ensure t
-       )
-     #+END_SRC
-
-**** fireplace
-     
-     It can get cold in winter. =M-x fireplace=
-     https://github.com/johanvts/emacs-fireplace
 
 *** Packages not in ELPA or MELPA
     
@@ -413,6 +421,7 @@
      #+BEGIN_SRC emacs-lisp :tangle yes
         (require 'uniquify)
      #+END_SRC
+
 **** Midnight Mode 
 
      http://www.emacswiki.org/emacs/MidnightMode
@@ -424,6 +433,7 @@
          :config
          (midnight-delay-set 'midnight-delay "4:30am"))
      #+END_SRC
+
 **** Abbrev-mode
      
      http://www.emacswiki.org/emacs/AbbrevMode
@@ -445,7 +455,6 @@
 
      #+BEGIN_SRC emacs-lisp :tangle yes
        (use-package ido
-         :ensure t
          :config
          (ido-mode t)
          (setq ido-enable-flex-matching t)
@@ -668,15 +677,19 @@
    
 *** LateX
     #+BEGIN_SRC emacs-lisp :tangle yes
+      (setq TeX-auto-save t)
+      (setq TeX-parse-self t)
+      (setq-default TeX-master nil)
       (setq LaTeX-math-menu-unicode t)
       (add-hook 'LaTeX-mode-hook 'turn-on-auto-fill)
       (require 'reftex)
       (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
       (setq reftex-plug-into-AUCTeX t)
-      (setq-default TeX-master nil)
       (setq reftex-cite-format 'natbib)
     #+END_SRC
+
 *** Org-Mode
+
     #+BEGIN_SRC emacs-lisp :tangle yes
       (setq auto-mode-alist
             (cons '("\\.org$" . org-mode) auto-mode-alist))
@@ -686,5 +699,32 @@
       (setq org-log-done t)
     #+END_SRC
 
+**** org-drill
+
+     #+BEGIN_SRC emacs-lisp :tangle yes
+     (require 'org-drill)
+     (setq org-drill-add-random-noise-to-intervals-p t)
+     #+END_SRC
+     
+***** Skeletons for learning swedish
+
+****** Verbs
+       #+BEGIN_SRC emacs-lisp :tangle yes
+         (define-skeleton swedish-verb-skeleton
+           "Insert Swedish Verbs in org-drill mode"
+	   ""
+           "** verb                                                            :drill:\n"
+           "   :PROPERTIES:\n"
+           "   :DRILL_CARD_TYPE: hide1cloze\n"
+           "   :END:\n"
+           "   sv: [" (skeleton-read "svenska: ") "]\n"
+           "   de: [" (skeleton-read "deutsch: ") "]\n"
+           "*** konj.\n"
+           "    | infinitiv | presens | preteritum | supinum | imperativ |\n"
+           "    |-----------+---------+------------+---------+-----------|\n"
+           "    |    " _ "       |         |            |         |           |\n")
+       #+END_SRC
+
+****** Nouns
     
     

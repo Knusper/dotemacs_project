@@ -18,6 +18,7 @@
     xkcd
     fireplace
     tea-time
+    2048-game
     
     ;; essential
     buffer-move
@@ -62,30 +63,28 @@
       (setq packages-refreshed? t))
     (package-install pack)))
 
-(use-package zenburn-theme
+(use-package tea-time
   :ensure t
+  :config
+  (setq tea-time-sound "~/.sounds/tea.ogg")
+  (setq tea-time-sound-command "ogg123 -q %s")
+  )
+
+(use-package zenburn-theme
   :config
   (load-theme 'zenburn))
 
-(use-package htmlize
-  :ensure t)
-
-(use-package xkcd
- :ensure t
- :defer t)
-
-(use-package iedit
-  :ensure t)
-
-(use-package markdown-mode
-  :ensure t
-  :init (setq auto-mode-alist
-              (cons '("\\.mdml$" . markdown-mode) auto-mode-alist)))
-
-(use-package rainbow-delimiters
+(use-package powerline
   :ensure t
   :config
-  (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+  (powerline-default-theme)
+  )
+
+(use-package beacon
+  :ensure t
+  :config
+  (beacon-mode 1)
+  (setq beacon-dont-blink-commands nil) ;; always blink
   )
 
 (use-package buffer-move
@@ -104,32 +103,20 @@
   (global-set-key (kbd "M-x") 'smex)
   )
 
-(use-package powerline
+(use-package rainbow-delimiters
   :ensure t
   :config
-  (powerline-default-theme)
+  (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
   )
 
-(use-package beacon
+(use-package markdown-mode
   :ensure t
-  :config
-  (beacon-mode 1)
-  (setq beacon-dont-blink-commands nil) ;; always blink
-  )
+  :init (setq auto-mode-alist
+              (cons '("\\.mdml$" . markdown-mode) auto-mode-alist)))
 
 (use-package jedi
   :ensure t
   )
-
-(use-package writeroom-mode
-  :ensure t)
-
-(use-package muttrc-mode
-  :ensure t
-  :config
-   (setq auto-mode-alist
-            (append '((".muttrc\\'" . muttrc-mode))
-                    auto-mode-alist)))
 
 (use-package org-bullets
   :ensure t
@@ -143,16 +130,15 @@
 (sequence "⚑ WAITING(w)" "|")
 (sequence "|" "✘ CANCELED(c)")))
 
-(use-package tea-time
+(use-package muttrc-mode
   :ensure t
   :config
-  (setq tea-time-sound "~/.sounds/tea.ogg")
-  (setq tea-time-sound-command "ogg123 -q %s")
-  )
+   (setq auto-mode-alist
+            (append '((".muttrc\\'" . muttrc-mode))
+                    auto-mode-alist)))
 
-(use-package ebib
-  :ensure t
-)
+(use-package offlineimap
+  :ensure t)
 
 (use-package post)
 
@@ -171,7 +157,6 @@
   (midnight-delay-set 'midnight-delay "4:30am"))
 
 (use-package ido
-  :ensure t
   :config
   (ido-mode t)
   (setq ido-enable-flex-matching t)
@@ -268,12 +253,14 @@ This command does the inverse of `fill-region'."
   (let ((fill-column 90002000))
     (fill-region start end)))
 
+(setq TeX-auto-save t)
+(setq TeX-parse-self t)
+(setq-default TeX-master nil)
 (setq LaTeX-math-menu-unicode t)
 (add-hook 'LaTeX-mode-hook 'turn-on-auto-fill)
 (require 'reftex)
 (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
 (setq reftex-plug-into-AUCTeX t)
-(setq-default TeX-master nil)
 (setq reftex-cite-format 'natbib)
 
 (setq auto-mode-alist
@@ -282,3 +269,20 @@ This command does the inverse of `fill-region'."
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cb" 'org-iswitchb)
 (setq org-log-done t)
+
+(require 'org-drill)
+(setq org-drill-add-random-noise-to-intervals-p t)
+
+(define-skeleton swedish-verb-skeleton
+  "Insert Swedish Verbs in org-drill mode"
+  ""
+  "** verb                                                            :drill:\n"
+  "   :PROPERTIES:\n"
+  "   :DRILL_CARD_TYPE: hide1cloze\n"
+  "   :END:\n"
+  "   sv: [" (skeleton-read "svenska: ") "]\n"
+  "   de: [" (skeleton-read "deutsch: ") "]\n"
+  "*** konj.\n"
+  "    | infinitiv | presens | preteritum | supinum | imperativ |\n"
+  "    |-----------+---------+------------+---------+-----------|\n"
+  "    |    " _ "       |         |            |         |           |\n")
