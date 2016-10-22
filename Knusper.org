@@ -1,5 +1,6 @@
 #+TITLE: Knusper's Emacs configuration
 #+OPTIONS: toc:4 h:4 creator:t 
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="zenburn-code.css" />
 
 * Configuration
 
@@ -75,7 +76,101 @@
      (setq user-full-name "Edmund Christian Herenz"
            user-mail-address "cherenz@aip.de")
    #+END_SRC
+
+
+** Mode-specific settings
+
+   AucTeX + org-mode are installed manually.  These are the modes that I depend on most for my work.
    
+*** LateX
+    #+BEGIN_SRC emacs-lisp :tangle yes
+      (setq TeX-auto-save t)
+      (setq TeX-parse-self t)
+      (setq-default TeX-master nil)
+      (setq LaTeX-math-menu-unicode t)
+      (add-hook 'LaTeX-mode-hook 'turn-on-auto-fill)
+      (require 'reftex)
+      (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+      (setq reftex-plug-into-AUCTeX t)
+      (setq reftex-cite-format 'natbib)
+    #+END_SRC
+
+*** Org-Mode
+
+    #+BEGIN_SRC emacs-lisp :tangle yes
+      (setq auto-mode-alist
+            (cons '("\\.org$" . org-mode) auto-mode-alist))
+      (global-set-key "\C-cl" 'org-store-link)
+      (global-set-key "\C-ca" 'org-agenda)
+      (global-set-key "\C-cb" 'org-iswitchb)
+      (setq org-log-done t)
+    #+END_SRC
+
+    Also using [[org-bullets][org-bullets package, described in the pacakge section below.]]
+    
+**** org-drill
+
+     http://orgmode.org/worg/org-contrib/org-drill.html
+
+     #+BEGIN_SRC emacs-lisp :tangle yes
+     (require 'org-drill)
+     (setq org-drill-add-random-noise-to-intervals-p t)
+     (setq org-drill-leech-method 'warn)
+     (setq org-drill-learn-fraction 0.3)
+     #+END_SRC
+     
+***** Skeletons for learning swedish
+      
+      I learn swedish with respect to german, my native tongue.
+
+****** Phrase
+       No grammer associated. Fixed forms, etc.
+       #+BEGIN_SRC emacs-lisp :tangle yes
+	 (define-skeleton swedish-phrase-skeleton
+           "Insert swedish phrases in org-drill mode"
+           ""
+           "** sonst.                                                          :drill:\n"
+           "   :PROPERTIES:\n"
+           "   :DRILL_CARD_TYPE: hide1cloze\n"
+           "   :END:\n"
+           "   sv: [" (skeleton-read "svenska: ") "]\n"
+           "   de: [" (skeleton-read "deutsch: ") "]\n")
+       #+END_SRC
+
+****** Verbs
+       Verbs + swedish conjungation.
+       #+BEGIN_SRC emacs-lisp :tangle yes
+         (define-skeleton swedish-verb-skeleton
+           "Insert swedish verbs in org-drill mode"
+	   ""
+           "** verb                                                            :drill:\n"
+           "   :PROPERTIES:\n"
+           "   :DRILL_CARD_TYPE: hide1cloze\n"
+           "   :END:\n"
+           "   sv: [" (skeleton-read "svenska: ") "]\n"
+           "   de: [" (skeleton-read "deutsch: ") "]\n"
+           "*** konj.\n"
+           "    | infinitiv | presens | preteritum | supinum | imperativ |\n"
+           "    |-----------+---------+------------+---------+-----------|\n"
+           "    |    " _ "       |         |            |         |           |\n")
+       #+END_SRC
+
+******* ☛ TODO sv inifinitive can be automatically inserted in table!
+
+****** Nouns
+       Nouns + deklination
+       #+BEGIN_SRC emacs-lisp :tangle yes
+         (define-skeleton swedish-noun-skeleton
+           "Insert swedish nouns in org-drill-mode"
+           ""
+           "** substantiv                                                              :drill:"
+           "   :PROPERTIES:\n"
+           "   :DRILL_CARD_TYPE: hide1cloze\n"
+           "   :END:\n"
+           "   sv: [" (skeleton-read "svenska: ") "]\n"
+           "   de: [" (skeleton-read "deutsch: ") "]\n"
+           "*** dekl.\n")
+       #+END_SRC
 ** Packages
 *** Package Archives
 
@@ -86,49 +181,6 @@
     #+END_SRC
 
 *** Packages I use
-
-    I use the following MELPA packages.
-
-    #+BEGIN_SRC emacs-lisp :tangle yes
-      (defvar my/install-packages
-        '(;; appearance
-          powerline
-          beacon
-          zenburn-theme  
-
-          ;; fun
-          xkcd
-          fireplace
-          tea-time
-	  2048-game
-    
-          ;; essential
-          buffer-move
-          smex
-          rainbow-delimiters
-          htmlize
-          iedit  
-          auto-complete
-          ido
-          writeroom-mode
-
-	  ;; email
-	  muttrc-mode
-	  offlineimap
-    
-          ;; language specific
-          markdown-mode
-          ;; auctex (I prefer to have always a recent stable release manuaully
-          ;; installed)
-    
-          ;; python 
-          jedi
-    
-          ;; org-mode (I prefer to have always a recent stable release manually
-          ;; installed)
-          org-bullets
-        ))
-    #+END_SRC
 
 **** use-package - automatically download and install packages
 
@@ -145,29 +197,6 @@
 
        (require 'use-package)
      #+END_SRC
-
-     # Now install all packaages that are not on the system using the
-     # list in [[List of packages I use]].
-
-     # #+BEGIN_SRC emacs-lisp :tangle yes
-     #   (defvar packages-refreshed? nil)
-
-     #   (dolist (pack my/install-packages)
-     #     (unless (package-installed-p pack)
-     #       (unless packages-refreshed?
-     #         (package-refresh-contents)
-     #         (setq packages-refreshed? t))
-     #       (package-install pack)))    
-     # #+END_SRC
-
-     # (via http://writequit.org/org/settings.html)
-
-**** Description and links to homepages of packages 
-     
-     In this section we list all the packages that work
-     "out-of-the-box" when installed from the package archives.  The
-     packages requiring some customisation are listed in the [[*Specific settings for some packages using usepackage][next section]].
-     
 
       
 **** Specific settings for some packages using usepackage 
@@ -319,6 +348,13 @@
            :init (setq auto-mode-alist
                        (cons '("\\.mdml$" . markdown-mode) auto-mode-alist)))
        #+END_SRC
+
+******* markdown-toc
+
+	#+BEGIN_SRC emacs-lisp :tangle yes
+          (use-package markdown-toc
+            :ensure t)
+	#+END_SRC
 
 ****** jedi 
 
@@ -669,62 +705,5 @@
         (let ((fill-column 90002000))
           (fill-region start end)))
     #+END_SRC
-
-
-** Mode-specific settings
-
-   AucTeX + org-mode are installed manually.
-   
-*** LateX
-    #+BEGIN_SRC emacs-lisp :tangle yes
-      (setq TeX-auto-save t)
-      (setq TeX-parse-self t)
-      (setq-default TeX-master nil)
-      (setq LaTeX-math-menu-unicode t)
-      (add-hook 'LaTeX-mode-hook 'turn-on-auto-fill)
-      (require 'reftex)
-      (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
-      (setq reftex-plug-into-AUCTeX t)
-      (setq reftex-cite-format 'natbib)
-    #+END_SRC
-
-*** Org-Mode
-
-    #+BEGIN_SRC emacs-lisp :tangle yes
-      (setq auto-mode-alist
-            (cons '("\\.org$" . org-mode) auto-mode-alist))
-      (global-set-key "\C-cl" 'org-store-link)
-      (global-set-key "\C-ca" 'org-agenda)
-      (global-set-key "\C-cb" 'org-iswitchb)
-      (setq org-log-done t)
-    #+END_SRC
-
-**** org-drill
-
-     #+BEGIN_SRC emacs-lisp :tangle yes
-     (require 'org-drill)
-     (setq org-drill-add-random-noise-to-intervals-p t)
-     #+END_SRC
-     
-***** Skeletons for learning swedish
-
-****** Verbs
-       #+BEGIN_SRC emacs-lisp :tangle yes
-         (define-skeleton swedish-verb-skeleton
-           "Insert Swedish Verbs in org-drill mode"
-	   ""
-           "** verb                                                            :drill:\n"
-           "   :PROPERTIES:\n"
-           "   :DRILL_CARD_TYPE: hide1cloze\n"
-           "   :END:\n"
-           "   sv: [" (skeleton-read "svenska: ") "]\n"
-           "   de: [" (skeleton-read "deutsch: ") "]\n"
-           "*** konj.\n"
-           "    | infinitiv | presens | preteritum | supinum | imperativ |\n"
-           "    |-----------+---------+------------+---------+-----------|\n"
-           "    |    " _ "       |         |            |         |           |\n")
-       #+END_SRC
-
-****** Nouns
     
     

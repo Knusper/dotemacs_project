@@ -8,60 +8,12 @@
 
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
 
-(defvar my/install-packages
-  '(;; appearance
-    powerline
-    beacon
-    zenburn-theme  
-
-    ;; fun
-    xkcd
-    fireplace
-    tea-time
-    2048-game
-    
-    ;; essential
-    buffer-move
-    smex
-    rainbow-delimiters
-    htmlize
-    iedit  
-    auto-complete
-    ido
-    writeroom-mode
-
-    ;; email
-    muttrc-mode
-    offlineimap
-    
-    ;; language specific
-    markdown-mode
-    ;; auctex (I prefer to have always a recent stable release manuaully
-    ;; installed)
-    
-    ;; python 
-    jedi
-    
-    ;; org-mode (I prefer to have always a recent stable release manually
-    ;; installed)
-    org-bullets
-  ))
-
 (if (not (package-installed-p 'use-package))
     (progn
       (package-refresh-contents)
       (package-install 'use-package)))
 
 (require 'use-package)
-
-(defvar packages-refreshed? nil)
-
-(dolist (pack my/install-packages)
-  (unless (package-installed-p pack)
-    (unless packages-refreshed?
-      (package-refresh-contents)
-      (setq packages-refreshed? t))
-    (package-install pack)))
 
 (use-package tea-time
   :ensure t
@@ -114,6 +66,9 @@
   :init (setq auto-mode-alist
               (cons '("\\.mdml$" . markdown-mode) auto-mode-alist)))
 
+(use-package markdown-toc
+  :ensure t)
+
 (use-package jedi
   :ensure t
   )
@@ -164,6 +119,52 @@
   (setq ido-max-prospects 50)
   (setq ido-max-window-height 0.25)
   )
+
+(setq TeX-auto-save t)
+(setq TeX-parse-self t)
+(setq-default TeX-master nil)
+(setq LaTeX-math-menu-unicode t)
+(add-hook 'LaTeX-mode-hook 'turn-on-auto-fill)
+(require 'reftex)
+(add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+(setq reftex-plug-into-AUCTeX t)
+(setq reftex-cite-format 'natbib)
+
+(setq auto-mode-alist
+      (cons '("\\.org$" . org-mode) auto-mode-alist))
+(global-set-key "\C-cl" 'org-store-link)
+(global-set-key "\C-ca" 'org-agenda)
+(global-set-key "\C-cb" 'org-iswitchb)
+(setq org-log-done t)
+
+(require 'org-drill)
+(setq org-drill-add-random-noise-to-intervals-p t)
+(setq org-drill-leech-method 'warn)
+(setq org-drill-learn-fraction 0.3)
+
+(define-skeleton swedish-phrase-skeleton
+  "Insert swedish phrases in org-drill mode"
+  ""
+  "** sonst.                                                          :drill:\n"
+  "   :PROPERTIES:\n"
+  "   :DRILL_CARD_TYPE: hide1cloze\n"
+  "   :END:\n"
+  "   sv: [" (skeleton-read "svenska: ") "]\n"
+  "   de: [" (skeleton-read "deutsch: ") "]\n")
+
+(define-skeleton swedish-verb-skeleton
+  "Insert Swedish Verbs in org-drill mode"
+  ""
+  "** verb                                                            :drill:\n"
+  "   :PROPERTIES:\n"
+  "   :DRILL_CARD_TYPE: hide1cloze\n"
+  "   :END:\n"
+  "   sv: [" (skeleton-read "svenska: ") "]\n"
+  "   de: [" (skeleton-read "deutsch: ") "]\n"
+  "*** konj.\n"
+  "    | infinitiv | presens | preteritum | supinum | imperativ |\n"
+  "    |-----------+---------+------------+---------+-----------|\n"
+  "    |    " _ "       |         |            |         |           |\n")
 
 (when window-system
   (tooltip-mode -1)
@@ -252,37 +253,3 @@ This command does the inverse of `fill-region'."
   (interactive "r")
   (let ((fill-column 90002000))
     (fill-region start end)))
-
-(setq TeX-auto-save t)
-(setq TeX-parse-self t)
-(setq-default TeX-master nil)
-(setq LaTeX-math-menu-unicode t)
-(add-hook 'LaTeX-mode-hook 'turn-on-auto-fill)
-(require 'reftex)
-(add-hook 'LaTeX-mode-hook 'turn-on-reftex)
-(setq reftex-plug-into-AUCTeX t)
-(setq reftex-cite-format 'natbib)
-
-(setq auto-mode-alist
-      (cons '("\\.org$" . org-mode) auto-mode-alist))
-(global-set-key "\C-cl" 'org-store-link)
-(global-set-key "\C-ca" 'org-agenda)
-(global-set-key "\C-cb" 'org-iswitchb)
-(setq org-log-done t)
-
-(require 'org-drill)
-(setq org-drill-add-random-noise-to-intervals-p t)
-
-(define-skeleton swedish-verb-skeleton
-  "Insert Swedish Verbs in org-drill mode"
-  ""
-  "** verb                                                            :drill:\n"
-  "   :PROPERTIES:\n"
-  "   :DRILL_CARD_TYPE: hide1cloze\n"
-  "   :END:\n"
-  "   sv: [" (skeleton-read "svenska: ") "]\n"
-  "   de: [" (skeleton-read "deutsch: ") "]\n"
-  "*** konj.\n"
-  "    | infinitiv | presens | preteritum | supinum | imperativ |\n"
-  "    |-----------+---------+------------+---------+-----------|\n"
-  "    |    " _ "       |         |            |         |           |\n")
