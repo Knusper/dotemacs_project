@@ -6,6 +6,66 @@
 (setq user-full-name "Edmund Christian Herenz"
       user-mail-address "cherenz@aip.de")
 
+(setq TeX-auto-save t)
+(setq TeX-parse-self t)
+(setq-default TeX-master nil)
+(setq LaTeX-math-menu-unicode t)
+(add-hook 'LaTeX-mode-hook 'turn-on-auto-fill)
+(require 'reftex)
+(add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+(setq reftex-plug-into-AUCTeX t)
+(setq reftex-cite-format 'natbib)
+
+(setq auto-mode-alist
+      (cons '("\\.org$" . org-mode) auto-mode-alist))
+(global-set-key "\C-cl" 'org-store-link)
+(global-set-key "\C-ca" 'org-agenda)
+(global-set-key "\C-cb" 'org-iswitchb)
+(setq org-log-done t)
+
+(require 'org-drill)
+(setq org-drill-add-random-noise-to-intervals-p t)
+(setq org-drill-leech-method 'warn)
+(setq org-drill-learn-fraction 0.3)
+
+(define-skeleton swedish-phrase-skeleton
+  "Insert swedish phrases in org-drill mode"
+  ""
+  "** sonst.                                                          :drill:\n"
+  "   :PROPERTIES:\n"
+  "   :DRILL_CARD_TYPE: hide1cloze\n"
+  "   :END:\n"
+  "   sv: [" (skeleton-read "svenska: ") "]\n"
+  "   de: [" (skeleton-read "deutsch: ") "]\n")
+
+(define-skeleton swedish-verb-skeleton
+  "Insert swedish verbs in org-drill mode"
+  ""
+  "** verb                                                            :drill:\n"
+  "   :PROPERTIES:\n"
+  "   :DRILL_CARD_TYPE: hide1cloze\n"
+  "   :END:\n"
+  "   sv: [" (skeleton-read "svenska: ") "]\n"
+  "   de: [" (skeleton-read "deutsch: ") "]\n"
+  "*** konj.\n"
+  "    | infinitiv | presens | preteritum | supinum | imperativ |\n"
+  "    |-----------+---------+------------+---------+-----------|\n"
+  "    |    " _ "       |         |            |         |           |\n")
+
+(define-skeleton swedish-noun-skeleton
+  "Insert swedish nouns in org-drill-mode"
+  ""
+  "** substantiv                                                          :drill:\n"
+  "   :PROPERTIES:\n"
+  "   :DRILL_CARD_TYPE: hide1cloze\n"
+  "   :END:\n"
+  "   sv: [" (skeleton-read "svenska: ") "]\n"
+  "   de: [" (skeleton-read "deutsch: ") "]\n"
+  "*** dekl.\n"
+  "    | sing. obestämd | sing. bestämd | pl. obestämd | pl. bestämd |\n"
+  "    |----------------+---------------+--------------+-------------|\n"
+  "    |    "_"            |               |              |             |\n")
+
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
 
 (if (not (package-installed-p 'use-package))
@@ -14,6 +74,9 @@
       (package-install 'use-package)))
 
 (require 'use-package)
+
+(use-package xkcd
+  :ensure t)
 
 (use-package tea-time
   :ensure t
@@ -37,6 +100,7 @@
   :config
   (beacon-mode 1)
   (setq beacon-dont-blink-commands nil) ;; always blink
+  (setq beacon-lighter '"Λ")
   )
 
 (use-package buffer-move
@@ -60,6 +124,9 @@
   :config
   (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
   )
+
+(use-package writeroom-mode
+  :ensure t)
 
 (use-package markdown-mode
   :ensure t
@@ -119,52 +186,6 @@
   (setq ido-max-prospects 50)
   (setq ido-max-window-height 0.25)
   )
-
-(setq TeX-auto-save t)
-(setq TeX-parse-self t)
-(setq-default TeX-master nil)
-(setq LaTeX-math-menu-unicode t)
-(add-hook 'LaTeX-mode-hook 'turn-on-auto-fill)
-(require 'reftex)
-(add-hook 'LaTeX-mode-hook 'turn-on-reftex)
-(setq reftex-plug-into-AUCTeX t)
-(setq reftex-cite-format 'natbib)
-
-(setq auto-mode-alist
-      (cons '("\\.org$" . org-mode) auto-mode-alist))
-(global-set-key "\C-cl" 'org-store-link)
-(global-set-key "\C-ca" 'org-agenda)
-(global-set-key "\C-cb" 'org-iswitchb)
-(setq org-log-done t)
-
-(require 'org-drill)
-(setq org-drill-add-random-noise-to-intervals-p t)
-(setq org-drill-leech-method 'warn)
-(setq org-drill-learn-fraction 0.3)
-
-(define-skeleton swedish-phrase-skeleton
-  "Insert swedish phrases in org-drill mode"
-  ""
-  "** sonst.                                                          :drill:\n"
-  "   :PROPERTIES:\n"
-  "   :DRILL_CARD_TYPE: hide1cloze\n"
-  "   :END:\n"
-  "   sv: [" (skeleton-read "svenska: ") "]\n"
-  "   de: [" (skeleton-read "deutsch: ") "]\n")
-
-(define-skeleton swedish-verb-skeleton
-  "Insert Swedish Verbs in org-drill mode"
-  ""
-  "** verb                                                            :drill:\n"
-  "   :PROPERTIES:\n"
-  "   :DRILL_CARD_TYPE: hide1cloze\n"
-  "   :END:\n"
-  "   sv: [" (skeleton-read "svenska: ") "]\n"
-  "   de: [" (skeleton-read "deutsch: ") "]\n"
-  "*** konj.\n"
-  "    | infinitiv | presens | preteritum | supinum | imperativ |\n"
-  "    |-----------+---------+------------+---------+-----------|\n"
-  "    |    " _ "       |         |            |         |           |\n")
 
 (when window-system
   (tooltip-mode -1)

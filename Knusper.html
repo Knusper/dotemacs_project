@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-10-22 Sa 12:50 -->
+<!-- 2016-11-06 So 18:23 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Knusper's Emacs configuration</title>
@@ -300,8 +300,8 @@ to extract all <code>emacs-lisp</code> code into <code>Knusper.el</code>, and fi
 <div class="outline-text-4" id="text-1-1-1">
 <ul class="org-ul">
 <li>Just run <code>make</code></li>
-<li>Version currently installed: 8.3.4</li>
-<li>add <code>export INFOPATH=${HOME}/emacs-scripts/org-8.3.4/doc/:${INFOPATH}</code> to
+<li>Version currently installed: 8.3.6</li>
+<li>add <code>export INFOPATH=${HOME}/emacs-scripts/org-8.3.6/doc/:${INFOPATH}</code> to
 <code>${HOME}/.profile</code>, to read the documentation of the package installed</li>
 </ul>
 </div>
@@ -365,7 +365,8 @@ to extract all <code>emacs-lisp</code> code into <code>Knusper.el</code>, and fi
 <h3 id="orgheadline17"><span class="section-number-3">1.3</span> Mode-specific settings</h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
-AucTeX + org-mode are installed manually.  These are the modes that I depend on most for my work.
+AucTeX + org-mode are installed manually.  These are the modes that
+I depend on most for my work.
 </p>
 </div>
 
@@ -483,13 +484,16 @@ Nouns + deklination
 <pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">define-skeleton</span> <span style="color: #93E0E3;">swedish-noun-skeleton</span>
   <span style="color: #9FC59F;">"Insert swedish nouns in org-drill-mode"</span>
   <span style="color: #CC9393;">""</span>
-  <span style="color: #CC9393;">"** substantiv                                                              :drill:"</span>
+  <span style="color: #CC9393;">"** substantiv                                                          :drill:\n"</span>
   <span style="color: #CC9393;">"   :PROPERTIES:\n"</span>
   <span style="color: #CC9393;">"   :DRILL_CARD_TYPE: hide1cloze\n"</span>
   <span style="color: #CC9393;">"   :END:\n"</span>
   <span style="color: #CC9393;">"   sv: ["</span> <span style="color: #BFEBBF;">(</span>skeleton-read <span style="color: #CC9393;">"svenska: "</span><span style="color: #BFEBBF;">)</span> <span style="color: #CC9393;">"]\n"</span>
   <span style="color: #CC9393;">"   de: ["</span> <span style="color: #BFEBBF;">(</span>skeleton-read <span style="color: #CC9393;">"deutsch: "</span><span style="color: #BFEBBF;">)</span> <span style="color: #CC9393;">"]\n"</span>
-  <span style="color: #CC9393;">"*** dekl.\n"</span><span style="color: #DCDCCC;">)</span>
+  <span style="color: #CC9393;">"*** dekl.\n"</span>
+  <span style="color: #CC9393;">"    | sing. obest&#228;md | sing. best&#228;md | pl. obest&#228;md | pl. best&#228;md |\n"</span>
+  <span style="color: #CC9393;">"    |----------------+---------------+--------------+-------------|\n"</span>
+  <span style="color: #CC9393;">"    |    "</span>_<span style="color: #CC9393;">"            |               |              |             |\n"</span><span style="color: #DCDCCC;">)</span>
 </pre>
 </div>
 </div></li></ol></li></ol>
@@ -549,6 +553,13 @@ automagically installed first.
 <a href="https://github.com/vibhavp/emacs-xkcd">https://github.com/vibhavp/emacs-xkcd</a>
 <a href="http://xkcd.com/">xkcd</a> reader for Emacs. Nerd on!
 </p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF;">xkcd</span>
+  <span style="color: #DCDCCC; font-weight: bold;">:ensure</span> t<span style="color: #DCDCCC;">)</span>
+</pre>
+</div>
 </div></li>
 
 <li><a id="orgheadline21"></a>fireplace<br  /><div class="outline-text-7" id="text-1-4-2-2-1-2">
@@ -576,7 +587,12 @@ from my favorite movie "The Italian Job".
 </div>
 </div></li>
 
-<li><a id="orgheadline23"></a>2048<br  /></li></ol></li>
+<li><a id="orgheadline23"></a>2048<br  /><div class="outline-text-7" id="text-1-4-2-2-1-4">
+<p>
+<a href="https://bitbucket.org/zck/2048.el">https://bitbucket.org/zck/2048.el</a>
+</p>
+</div></li></ol></li>
+
 
 <li><a id="orgheadline28"></a>Appearance<br  /><ol class="org-ol"><li><a id="orgheadline25"></a>zenburn colour theme<br  /><div class="outline-text-7" id="text-1-4-2-2-2-1">
 <p>
@@ -620,6 +636,7 @@ Load zenburn colour theme when starting emacs.
   <span style="color: #DCDCCC; font-weight: bold;">:config</span>
   <span style="color: #BFEBBF;">(</span>beacon-mode 1<span style="color: #BFEBBF;">)</span>
   <span style="color: #BFEBBF;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq</span> beacon-dont-blink-commands nil<span style="color: #BFEBBF;">)</span> <span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">always blink</span>
+  <span style="color: #BFEBBF;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq</span> beacon-lighter '<span style="color: #CC9393;">"&#923;"</span><span style="color: #BFEBBF;">)</span>
   <span style="color: #DCDCCC;">)</span>
 </pre>
 </div>
@@ -693,6 +710,13 @@ Simultaneously edit multiple regions in buffer.
 Distraction free writing.
 <a href="https://github.com/joostkremers/writeroom-mode">https://github.com/joostkremers/writeroom-mode</a>
 </p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF;">writeroom-mode</span>
+  <span style="color: #DCDCCC; font-weight: bold;">:ensure</span> t<span style="color: #DCDCCC;">)</span>
+</pre>
+</div>
 </div></li>
 
 <li><a id="orgheadline35"></a>auto-complete<br  /><div class="outline-text-7" id="text-1-4-2-2-3-7">
@@ -1329,7 +1353,7 @@ Source: <a href="http://ergoemacs.org/emacs/emacs_unfill-paragraph.html">http://
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Edmund Christian Herenz</p>
-<p class="date">Created: 2016-10-22 Sa 12:50</p>
+<p class="date">Created: 2016-11-06 So 18:23</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.1.1 (<a href="http://orgmode.org">Org</a> mode 8.3.6)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>

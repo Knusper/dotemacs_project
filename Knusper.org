@@ -47,8 +47,8 @@
 *** Notes on org-mode installation
 
     - Just run ~make~
-    - Version currently installed: 8.3.4
-    - add ~export INFOPATH=${HOME}/emacs-scripts/org-8.3.4/doc/:${INFOPATH}~ to
+    - Version currently installed: 8.3.6
+    - add ~export INFOPATH=${HOME}/emacs-scripts/org-8.3.6/doc/:${INFOPATH}~ to
       ~${HOME}/.profile~, to read the documentation of the package installed
 
 *** Notes on AucTeX installation
@@ -80,7 +80,8 @@
 
 ** Mode-specific settings
 
-   AucTeX + org-mode are installed manually.  These are the modes that I depend on most for my work.
+   AucTeX + org-mode are installed manually.  These are the modes that
+   I depend on most for my work.
    
 *** LateX
     #+BEGIN_SRC emacs-lisp :tangle yes
@@ -163,13 +164,16 @@
          (define-skeleton swedish-noun-skeleton
            "Insert swedish nouns in org-drill-mode"
            ""
-           "** substantiv                                                              :drill:"
+           "** substantiv                                                          :drill:\n"
            "   :PROPERTIES:\n"
            "   :DRILL_CARD_TYPE: hide1cloze\n"
            "   :END:\n"
            "   sv: [" (skeleton-read "svenska: ") "]\n"
            "   de: [" (skeleton-read "deutsch: ") "]\n"
-           "*** dekl.\n")
+           "*** dekl.\n"
+           "    | sing. obestämd | sing. bestämd | pl. obestämd | pl. bestämd |\n"
+           "    |----------------+---------------+--------------+-------------|\n"
+           "    |    "_"            |               |              |             |\n")
        #+END_SRC
 ** Packages
 *** Package Archives
@@ -207,6 +211,11 @@
        https://github.com/vibhavp/emacs-xkcd
        [[http://xkcd.com/][xkcd]] reader for Emacs. Nerd on!
 
+       #+BEGIN_SRC emacs-lisp :tangle yes
+         (use-package xkcd
+           :ensure t)
+       #+END_SRC
+
 ****** fireplace
      
        It can get cold in winter. =M-x fireplace=
@@ -227,7 +236,10 @@
        #+END_SRC
 
 ****** 2048
+       
+       https://bitbucket.org/zck/2048.el
 
+       
 ***** Appearance
 
 ****** zenburn colour theme
@@ -261,6 +273,7 @@
            :config
            (beacon-mode 1)
            (setq beacon-dont-blink-commands nil) ;; always blink
+	   (setq beacon-lighter '"Λ")
            )
        #+END_SRC
 
@@ -317,6 +330,11 @@
      
        Distraction free writing.
        https://github.com/joostkremers/writeroom-mode
+
+       #+BEGIN_SRC emacs-lisp :tangle yes
+         (use-package writeroom-mode
+           :ensure t)
+       #+END_SRC
 
 ****** auto-complete
 
