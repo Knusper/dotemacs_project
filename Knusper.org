@@ -476,13 +476,13 @@
         (require 'uniquify)
      #+END_SRC
 
-**** Midnight Mode 
+**** Midnight Mode (disabled)
 
      http://www.emacswiki.org/emacs/MidnightMode
 
      Bury unused buffers after some time (4:30 in the morning).
      
-     #+BEGIN_SRC emacs-lisp :tangle yes
+     #+BEGIN_SRC emacs-lisp :tangle no
        (use-package midnight
          :config
          (midnight-delay-set 'midnight-delay "4:30am"))

@@ -174,10 +174,6 @@
 
 (require 'uniquify)
 
-(use-package midnight
-  :config
-  (midnight-delay-set 'midnight-delay "4:30am"))
-
 (use-package ido
   :config
   (ido-mode t)
