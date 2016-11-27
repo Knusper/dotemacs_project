@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-11-17 Do 10:54 -->
+<!-- 2016-11-28 Mo 00:26 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Knusper's Emacs configuration</title>
@@ -268,7 +268,7 @@ install via the package manager.
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">~/.emacs.d/init.el</span>
+<pre class="src src-emacs-lisp"><span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">~/.emacs.d/init.el (or ~/.emacs)</span>
 
 <span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">This sets up the load path so that we can override it</span>
 <span style="color: #DCDCCC;">(</span>package-initialize nil<span style="color: #DCDCCC;">)</span>
@@ -284,7 +284,10 @@ install via the package manager.
 <span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">Load the rest of the packages</span>
 <span style="color: #DCDCCC;">(</span>package-initialize nil<span style="color: #DCDCCC;">)</span>
 <span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq</span> package-enable-at-startup nil<span style="color: #DCDCCC;">)</span>
-<span style="color: #DCDCCC;">(</span>org-babel-load-file <span style="color: #CC9393;">"~/dotemacs_project/Knusper.org"</span><span style="color: #DCDCCC;">)</span>
+
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">rather than using org-babel-load file I tangle this file (C-c C-v C-t)</span>
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">and load it directly</span>
+<span style="color: #DCDCCC;">(</span>load-file <span style="color: #CC9393;">"~/Org/dotemacs_project/Knusper.el"</span><span style="color: #DCDCCC;">)</span>
 </pre>
 </div>
 
@@ -827,7 +830,8 @@ Syntax highlighting in <a href="http://linux.die.net/man/5/muttrc">muttrc file</
 <div class="org-src-container">
 
 <pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF;">offlineimap</span>
-  <span style="color: #DCDCCC; font-weight: bold;">:ensure</span> t<span style="color: #DCDCCC;">)</span>
+  <span style="color: #DCDCCC; font-weight: bold;">:ensure</span> t
+  <span style="color: #DCDCCC;">)</span>
 </pre>
 </div>
 </div></li></ol></li></ol>
@@ -851,9 +855,17 @@ load-path in <a href="#orgheadline6">1.1</a>.
 <a href="http://post-mode.sourceforge.net/">http://post-mode.sourceforge.net/</a>
 </p>
 
+<p>
+Note: <code>Cheers,~ as a default in ~post-signature-pattern</code> is not a
+good idea!
+</p>
+
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF;">post</span><span style="color: #DCDCCC;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF;">post</span>
+  <span style="color: #DCDCCC; font-weight: bold;">:config</span>
+  <span style="color: #BFEBBF;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq</span> post-signature-pattern <span style="color: #CC9393;">"</span><span style="color: #7F9F7F; font-weight: bold;">\\</span><span style="color: #F0DFAF; font-weight: bold;">(</span><span style="color: #CC9393;">--</span><span style="color: #7F9F7F; font-weight: bold;">\\</span><span style="color: #F0DFAF; font-weight: bold;">|</span><span style="color: #CC9393;">&#12;</span><span style="color: #7F9F7F; font-weight: bold;">\\</span><span style="color: #F0DFAF; font-weight: bold;">)</span><span style="color: #CC9393;">"</span><span style="color: #BFEBBF;">)</span>
+  <span style="color: #DCDCCC;">)</span>
 </pre>
 </div>
 </div>
@@ -1353,7 +1365,7 @@ Source: <a href="http://ergoemacs.org/emacs/emacs_unfill-paragraph.html">http://
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Edmund Christian Herenz</p>
-<p class="date">Created: 2016-11-17 Do 10:54</p>
+<p class="date">Created: 2016-11-28 Mo 00:26</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.1.1 (<a href="http://orgmode.org">Org</a> mode 8.3.6)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>

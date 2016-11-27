@@ -160,9 +160,13 @@
                     auto-mode-alist)))
 
 (use-package offlineimap
-  :ensure t)
+  :ensure t
+  )
 
-(use-package post)
+(use-package post
+  :config
+  (setq post-signature-pattern "\\(--\\|\\)")
+  )
 
 (use-package simple-wiki)
 

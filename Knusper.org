@@ -21,7 +21,7 @@
    install via the package manager.
    
    #+BEGIN_SRC emacs-lisp :tangle no
-     ;; ~/.emacs.d/init.el
+     ;; ~/.emacs.d/init.el (or ~/.emacs)
 
      ;; This sets up the load path so that we can override it
      (package-initialize nil)
@@ -37,7 +37,10 @@
      ;; Load the rest of the packages
      (package-initialize nil)
      (setq package-enable-at-startup nil)
-     (org-babel-load-file "~/dotemacs_project/Knusper.org") 
+
+     ;; rather than using org-babel-load file I tangle this file (C-c C-v C-t)
+     ;; and load it directly
+     (load-file "~/Org/dotemacs_project/Knusper.el") 
    #+END_SRC
 
    Here =org-babel-load-file= loads this file, then uses =org-babel-tangle=
@@ -422,7 +425,8 @@
 ****** offlineimap
        #+BEGIN_SRC emacs-lisp :tangle yes
          (use-package offlineimap
-           :ensure t)
+           :ensure t
+	   )
        #+END_SRC
 
 
@@ -435,8 +439,14 @@
 
      http://post-mode.sourceforge.net/
 
+     Note: ~Cheers,~ as a default in ~post-signature-pattern~ is not a
+     good idea!
+
      #+BEGIN_SRC emacs-lisp :tangle yes
-       (use-package post)
+       (use-package post
+         :config
+         (setq post-signature-pattern "\\(--\\|\\)")
+         )
      #+END_SRC
 
 **** simple-wiki
