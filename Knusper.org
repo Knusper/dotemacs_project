@@ -27,8 +27,8 @@
      (package-initialize nil)
      (add-to-list 'load-path (expand-file-name "~/emacs-scripts/"))
      ;; org-mode
-     (add-to-list 'load-path (expand-file-name "~/emacs-scripts/org-8.3.6/lisp/"))
-     (add-to-list 'load-path "~/emacs-scripts/org-8.3.6/contrib/lisp" t)
+     (add-to-list 'load-path (expand-file-name "~/emacs-scripts/org-9.0.3/lisp/"))
+     (add-to-list 'load-path "~/emacs-scripts/org-9.0.3/contrib/lisp" t)
      ;; auctex
      (add-to-list 'load-path (expand-file-name "~/.emacs.d/site-lisp/auctex"))
      (load "auctex.el" nil t t)
@@ -50,8 +50,8 @@
 *** Notes on org-mode installation
 
     - Just run ~make~
-    - Version currently installed: 8.3.6
-    - add ~export INFOPATH=${HOME}/emacs-scripts/org-8.3.6/doc/:${INFOPATH}~ to
+    - Version currently installed: 9.0.3
+    - add ~export INFOPATH=${HOME}/emacs-scripts/org-9.0.3/doc/:${INFOPATH}~ to
       ~${HOME}/.profile~, to read the documentation of the package installed
 
 *** Notes on AucTeX installation
@@ -76,8 +76,7 @@
 ** Personal Information
 
    #+BEGIN_SRC emacs-lisp :tangle yes
-     (setq user-full-name "Edmund Christian Herenz"
-           user-mail-address "cherenz@aip.de")
+     (setq user-full-name "Edmund Christian Herenz")
    #+END_SRC
 
 
@@ -220,9 +219,14 @@
        #+END_SRC
 
 ****** fireplace
-     
+       
        It can get cold in winter. =M-x fireplace=
        https://github.com/johanvts/emacs-fireplace
+
+       #+BEGIN_SRC emacs-lisp :tangle yes
+         (use-package fireplace
+           :ensure t)
+       #+END_SRC
 
 ****** tea-time
 
@@ -405,6 +409,19 @@
 	 (setq org-todo-keywords '((sequence "☛ TODO(t)" "|" "✔ DONE(d)")
 	 (sequence "⚑ WAITING(w)" "|")
 	 (sequence "|" "✘ CANCELED(c)")))
+       #+END_SRC
+
+****** pager
+       https://github.com/emacsorphanage/pager
+       and for the default keybindings
+       https://github.com/nflath/pager-default-keybindings
+       (the latter depends on the former).
+
+       #+BEGIN_SRC emacs-lisp :tangle yes
+         (use-package pager
+           :ensure t)
+         (use-package pager-default-keybindings
+           :ensure t)
        #+END_SRC
 
 ***** Email
