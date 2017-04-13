@@ -16,12 +16,24 @@
 (setq reftex-plug-into-AUCTeX t)
 (setq reftex-cite-format 'natbib)
 
+;; use mupdf as default PDF viewer
+(with-eval-after-load "tex"
+  (add-to-list 'TeX-view-program-list '("mupdf" "/usr/bin/mupdf %o"))
+  (setcdr (assq 'output-pdf TeX-view-program-selection) '("mupdf")))
+
 (setq auto-mode-alist
       (cons '("\\.org$" . org-mode) auto-mode-alist))
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cb" 'org-iswitchb)
 (setq org-log-done t)
+
+(add-hook 'org-mode-hook
+'(lambda ()
+       (setq org-file-apps
+             (append '(
+                       ("\\.png\\'" . default)
+                       ) org-file-apps ))))
 
 (require 'org-drill)
 (setq org-drill-add-random-noise-to-intervals-p t)

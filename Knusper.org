@@ -94,6 +94,11 @@
       (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
       (setq reftex-plug-into-AUCTeX t)
       (setq reftex-cite-format 'natbib)
+
+      ;; use mupdf as default PDF viewer
+      (with-eval-after-load "tex"
+        (add-to-list 'TeX-view-program-list '("mupdf" "/usr/bin/mupdf %o"))
+        (setcdr (assq 'output-pdf TeX-view-program-selection) '("mupdf")))
     #+END_SRC
 
 *** Org-Mode
@@ -105,6 +110,13 @@
       (global-set-key "\C-ca" 'org-agenda)
       (global-set-key "\C-cb" 'org-iswitchb)
       (setq org-log-done t)
+
+      (add-hook 'org-mode-hook
+      '(lambda ()
+             (setq org-file-apps
+                   (append '(
+                             ("\\.png\\'" . default)
+                             ) org-file-apps ))))
     #+END_SRC
 
     Also using [[org-bullets][org-bullets package, described in the pacakge section below.]]

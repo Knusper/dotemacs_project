@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-11-17 Do 10:54 -->
+<!-- 2017-04-13 Thu 19:39 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Knusper's Emacs configuration</title>
@@ -283,7 +283,7 @@ install via the package manager.
 
 <span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">Load the rest of the packages</span>
 <span style="color: #DCDCCC;">(</span>package-initialize nil<span style="color: #DCDCCC;">)</span>
-<span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq</span> package-enable-at-startup nil<span style="color: #DCDCCC;">)</span>
+<span style="color: #DCDCCC;">(</span>setq package-enable-at-startup nil<span style="color: #DCDCCC;">)</span>
 <span style="color: #DCDCCC;">(</span>org-babel-load-file <span style="color: #CC9393;">"~/dotemacs_project/Knusper.org"</span><span style="color: #DCDCCC;">)</span>
 </pre>
 </div>
@@ -337,7 +337,7 @@ to extract all <code>emacs-lisp</code> code into <code>Knusper.el</code>, and fi
 <div class="outline-text-5" id="text-1-1-3-2">
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq</span> custom-file <span style="color: #CC9393;">"~/.gnu-emacs-custom"</span><span style="color: #DCDCCC;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span>setq custom-file <span style="color: #CC9393;">"~/.gnu-emacs-custom"</span><span style="color: #DCDCCC;">)</span>
 <span style="color: #DCDCCC;">(</span>load custom-file<span style="color: #DCDCCC;">)</span>
 </pre>
 </div>
@@ -353,7 +353,7 @@ to extract all <code>emacs-lisp</code> code into <code>Knusper.el</code>, and fi
 <div class="outline-text-3" id="text-1-2">
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq</span> user-full-name <span style="color: #CC9393;">"Edmund Christian Herenz"</span>
+<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span>setq user-full-name <span style="color: #CC9393;">"Edmund Christian Herenz"</span>
       user-mail-address <span style="color: #CC9393;">"cherenz@aip.de"</span><span style="color: #DCDCCC;">)</span>
 </pre>
 </div>
@@ -375,15 +375,20 @@ I depend on most for my work.
 <div class="outline-text-4" id="text-1-3-1">
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq</span> TeX-auto-save t<span style="color: #DCDCCC;">)</span>
-<span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq</span> TeX-parse-self t<span style="color: #DCDCCC;">)</span>
-<span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq-default</span> TeX-master nil<span style="color: #DCDCCC;">)</span>
-<span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq</span> LaTeX-math-menu-unicode t<span style="color: #DCDCCC;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span>setq TeX-auto-save t<span style="color: #DCDCCC;">)</span>
+<span style="color: #DCDCCC;">(</span>setq TeX-parse-self t<span style="color: #DCDCCC;">)</span>
+<span style="color: #DCDCCC;">(</span>setq-default TeX-master nil<span style="color: #DCDCCC;">)</span>
+<span style="color: #DCDCCC;">(</span>setq LaTeX-math-menu-unicode t<span style="color: #DCDCCC;">)</span>
 <span style="color: #DCDCCC;">(</span>add-hook 'LaTeX-mode-hook 'turn-on-auto-fill<span style="color: #DCDCCC;">)</span>
 <span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">require</span> '<span style="color: #BFEBBF;">reftex</span><span style="color: #DCDCCC;">)</span>
 <span style="color: #DCDCCC;">(</span>add-hook 'LaTeX-mode-hook 'turn-on-reftex<span style="color: #DCDCCC;">)</span>
-<span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq</span> reftex-plug-into-AUCTeX t<span style="color: #DCDCCC;">)</span>
-<span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq</span> reftex-cite-format 'natbib<span style="color: #DCDCCC;">)</span>
+<span style="color: #DCDCCC;">(</span>setq reftex-plug-into-AUCTeX t<span style="color: #DCDCCC;">)</span>
+<span style="color: #DCDCCC;">(</span>setq reftex-cite-format 'natbib<span style="color: #DCDCCC;">)</span>
+
+<span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">use mupdf as default PDF viewer</span>
+<span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">with-eval-after-load</span> <span style="color: #CC9393;">"tex"</span>
+  <span style="color: #BFEBBF;">(</span>add-to-list 'TeX-view-program-list '<span style="color: #D0BF8F;">(</span><span style="color: #CC9393;">"mupdf"</span> <span style="color: #CC9393;">"/usr/bin/mupdf %o"</span><span style="color: #D0BF8F;">)</span><span style="color: #BFEBBF;">)</span>
+  <span style="color: #BFEBBF;">(</span>setcdr <span style="color: #D0BF8F;">(</span>assq 'output-pdf TeX-view-program-selection<span style="color: #D0BF8F;">)</span> '<span style="color: #D0BF8F;">(</span><span style="color: #CC9393;">"mupdf"</span><span style="color: #D0BF8F;">)</span><span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
 </pre>
 </div>
 </div>
@@ -394,12 +399,19 @@ I depend on most for my work.
 <div class="outline-text-4" id="text-1-3-2">
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq</span> auto-mode-alist
+<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span>setq auto-mode-alist
       <span style="color: #BFEBBF;">(</span>cons '<span style="color: #D0BF8F;">(</span><span style="color: #CC9393;">"\\.org$"</span> . org-mode<span style="color: #D0BF8F;">)</span> auto-mode-alist<span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
 <span style="color: #DCDCCC;">(</span>global-set-key <span style="color: #CC9393;">"\C-cl"</span> 'org-store-link<span style="color: #DCDCCC;">)</span>
 <span style="color: #DCDCCC;">(</span>global-set-key <span style="color: #CC9393;">"\C-ca"</span> 'org-agenda<span style="color: #DCDCCC;">)</span>
 <span style="color: #DCDCCC;">(</span>global-set-key <span style="color: #CC9393;">"\C-cb"</span> 'org-iswitchb<span style="color: #DCDCCC;">)</span>
-<span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq</span> org-log-done t<span style="color: #DCDCCC;">)</span>
+<span style="color: #DCDCCC;">(</span>setq org-log-done t<span style="color: #DCDCCC;">)</span>
+
+<span style="color: #DCDCCC;">(</span>add-hook 'org-mode-hook
+'<span style="color: #BFEBBF;">(</span><span style="color: #F0DFAF; font-weight: bold;">lambda</span> <span style="color: #D0BF8F;">()</span>
+       <span style="color: #D0BF8F;">(</span>setq org-file-apps
+             <span style="color: #93E0E3;">(</span>append '<span style="color: #9FC59F;">(</span>
+                       <span style="color: #94BFF3;">(</span><span style="color: #CC9393;">"\\.png\\'"</span> . default<span style="color: #94BFF3;">)</span>
+                       <span style="color: #9FC59F;">)</span> org-file-apps <span style="color: #93E0E3;">)</span><span style="color: #D0BF8F;">)</span><span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
 </pre>
 </div>
 
@@ -418,9 +430,9 @@ Also using <a href="#orgheadline9">org-bullets package, described in the pacakge
 <div class="org-src-container">
 
 <pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">require</span> '<span style="color: #BFEBBF;">org-drill</span><span style="color: #DCDCCC;">)</span>
-<span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq</span> org-drill-add-random-noise-to-intervals-p t<span style="color: #DCDCCC;">)</span>
-<span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq</span> org-drill-leech-method 'warn<span style="color: #DCDCCC;">)</span>
-<span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq</span> org-drill-learn-fraction 0.3<span style="color: #DCDCCC;">)</span>
+<span style="color: #DCDCCC;">(</span>setq org-drill-add-random-noise-to-intervals-p t<span style="color: #DCDCCC;">)</span>
+<span style="color: #DCDCCC;">(</span>setq org-drill-leech-method 'warn<span style="color: #DCDCCC;">)</span>
+<span style="color: #DCDCCC;">(</span>setq org-drill-learn-fraction 0.3<span style="color: #DCDCCC;">)</span>
 </pre>
 </div>
 </div>
@@ -580,8 +592,8 @@ from my favorite movie "The Italian Job".
 <pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF;">tea-time</span>
   <span style="color: #DCDCCC; font-weight: bold;">:ensure</span> t
   <span style="color: #DCDCCC; font-weight: bold;">:config</span>
-  <span style="color: #BFEBBF;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq</span> tea-time-sound <span style="color: #CC9393;">"~/.sounds/tea.ogg"</span><span style="color: #BFEBBF;">)</span>
-  <span style="color: #BFEBBF;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq</span> tea-time-sound-command <span style="color: #CC9393;">"ogg123 -q %s"</span><span style="color: #BFEBBF;">)</span>
+  <span style="color: #BFEBBF;">(</span>setq tea-time-sound <span style="color: #CC9393;">"~/.sounds/tea.ogg"</span><span style="color: #BFEBBF;">)</span>
+  <span style="color: #BFEBBF;">(</span>setq tea-time-sound-command <span style="color: #CC9393;">"ogg123 -q %s"</span><span style="color: #BFEBBF;">)</span>
   <span style="color: #DCDCCC;">)</span>
 </pre>
 </div>
@@ -635,8 +647,8 @@ Load zenburn colour theme when starting emacs.
   <span style="color: #DCDCCC; font-weight: bold;">:ensure</span> t
   <span style="color: #DCDCCC; font-weight: bold;">:config</span>
   <span style="color: #BFEBBF;">(</span>beacon-mode 1<span style="color: #BFEBBF;">)</span>
-  <span style="color: #BFEBBF;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq</span> beacon-dont-blink-commands nil<span style="color: #BFEBBF;">)</span> <span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">always blink</span>
-  <span style="color: #BFEBBF;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq</span> beacon-lighter '<span style="color: #CC9393;">"&#923;"</span><span style="color: #BFEBBF;">)</span>
+  <span style="color: #BFEBBF;">(</span>setq beacon-dont-blink-commands nil<span style="color: #BFEBBF;">)</span> <span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">always blink</span>
+  <span style="color: #BFEBBF;">(</span>setq beacon-lighter '<span style="color: #CC9393;">"&#923;"</span><span style="color: #BFEBBF;">)</span>
   <span style="color: #DCDCCC;">)</span>
 </pre>
 </div>
@@ -731,7 +743,7 @@ Distraction free writing.
   <span style="color: #DCDCCC; font-weight: bold;">:config</span>
   <span style="color: #BFEBBF;">(</span>global-auto-complete-mode t<span style="color: #BFEBBF;">)</span> 
   <span style="color: #BFEBBF;">(</span>add-hook 'python-mode-hook 'jedi:setup<span style="color: #BFEBBF;">)</span>
-  <span style="color: #BFEBBF;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq</span> jedi:setup-keys t<span style="color: #BFEBBF;">)</span>
+  <span style="color: #BFEBBF;">(</span>setq jedi:setup-keys t<span style="color: #BFEBBF;">)</span>
  <span style="color: #DCDCCC;">)</span>
 </pre>
 </div>
@@ -753,7 +765,7 @@ Browse / edit BibTeX bibliographies in emacs.
 
 <pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF;">markdown-mode</span>
   <span style="color: #DCDCCC; font-weight: bold;">:ensure</span> t
-  <span style="color: #DCDCCC; font-weight: bold;">:init</span> <span style="color: #BFEBBF;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq</span> auto-mode-alist
+  <span style="color: #DCDCCC; font-weight: bold;">:init</span> <span style="color: #BFEBBF;">(</span>setq auto-mode-alist
               <span style="color: #D0BF8F;">(</span>cons '<span style="color: #93E0E3;">(</span><span style="color: #CC9393;">"\\.mdml$"</span> . markdown-mode<span style="color: #93E0E3;">)</span> auto-mode-alist<span style="color: #D0BF8F;">)</span><span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
 </pre>
 </div>
@@ -794,12 +806,12 @@ The following gold is from
 <pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF;">org-bullets</span>
   <span style="color: #DCDCCC; font-weight: bold;">:ensure</span> t
   <span style="color: #DCDCCC; font-weight: bold;">:init</span>
-  <span style="color: #BFEBBF;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq</span> org-bullets-bullet-list
+  <span style="color: #BFEBBF;">(</span>setq org-bullets-bullet-list
         '<span style="color: #D0BF8F;">(</span><span style="color: #CC9393;">"&#9673;"</span> <span style="color: #CC9393;">"&#9678;"</span> <span style="color: #CC9393;">"&#9899;"</span> <span style="color: #CC9393;">"&#9675;"</span> <span style="color: #CC9393;">"&#9658;"</span> <span style="color: #CC9393;">"&#9671;"</span><span style="color: #D0BF8F;">)</span><span style="color: #BFEBBF;">)</span>
   <span style="color: #DCDCCC; font-weight: bold;">:config</span>
   <span style="color: #BFEBBF;">(</span>add-hook 'org-mode-hook <span style="color: #D0BF8F;">(</span><span style="color: #F0DFAF; font-weight: bold;">lambda</span> <span style="color: #93E0E3;">()</span> <span style="color: #93E0E3;">(</span>org-bullets-mode 1<span style="color: #93E0E3;">)</span><span style="color: #D0BF8F;">)</span><span style="color: #BFEBBF;">)</span>
   <span style="color: #DCDCCC;">)</span>
-<span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq</span> org-todo-keywords '<span style="color: #BFEBBF;">(</span><span style="color: #D0BF8F;">(</span>sequence <span style="color: #CC9393;">"&#9755; TODO(t)"</span> <span style="color: #CC9393;">"|"</span> <span style="color: #CC9393;">"&#10004; DONE(d)"</span><span style="color: #D0BF8F;">)</span>
+<span style="color: #DCDCCC;">(</span>setq org-todo-keywords '<span style="color: #BFEBBF;">(</span><span style="color: #D0BF8F;">(</span>sequence <span style="color: #CC9393;">"&#9755; TODO(t)"</span> <span style="color: #CC9393;">"|"</span> <span style="color: #CC9393;">"&#10004; DONE(d)"</span><span style="color: #D0BF8F;">)</span>
 <span style="color: #D0BF8F;">(</span>sequence <span style="color: #CC9393;">"&#9873; WAITING(w)"</span> <span style="color: #CC9393;">"|"</span><span style="color: #D0BF8F;">)</span>
 <span style="color: #D0BF8F;">(</span>sequence <span style="color: #CC9393;">"|"</span> <span style="color: #CC9393;">"&#10008; CANCELED(c)"</span><span style="color: #D0BF8F;">)</span><span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
 </pre>
@@ -816,7 +828,7 @@ Syntax highlighting in <a href="http://linux.die.net/man/5/muttrc">muttrc file</
 <pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF;">muttrc-mode</span>
   <span style="color: #DCDCCC; font-weight: bold;">:ensure</span> t
   <span style="color: #DCDCCC; font-weight: bold;">:config</span>
-   <span style="color: #BFEBBF;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq</span> auto-mode-alist
+   <span style="color: #BFEBBF;">(</span>setq auto-mode-alist
             <span style="color: #D0BF8F;">(</span>append '<span style="color: #93E0E3;">(</span><span style="color: #9FC59F;">(</span><span style="color: #CC9393;">".muttrc\\'"</span> . muttrc-mode<span style="color: #9FC59F;">)</span><span style="color: #93E0E3;">)</span>
                     auto-mode-alist<span style="color: #D0BF8F;">)</span><span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
 </pre>
@@ -964,7 +976,7 @@ Bury unused buffers after some time (4:30 in the morning).
 
 <pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">if</span> <span style="color: #BFEBBF;">(</span>file-exists-p abbrev-file-name<span style="color: #BFEBBF;">)</span>
     <span style="color: #BFEBBF;">(</span>quietly-read-abbrev-file<span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
-<span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq</span> save-abbrevs t<span style="color: #DCDCCC;">)</span>  
+<span style="color: #DCDCCC;">(</span>setq save-abbrevs t<span style="color: #DCDCCC;">)</span>  
 <span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">in org-mode, we want expansions with trailing or leading slashes -</span>
 <span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">this might need some modification</span>
 <span style="color: #DCDCCC;">(</span>abbrev-table-put org-mode-abbrev-table <span style="color: #DCDCCC; font-weight: bold;">:regexp</span> <span style="color: #CC9393;">"</span><span style="color: #7F9F7F; font-weight: bold;">\\</span><span style="color: #F0DFAF; font-weight: bold;">(</span><span style="color: #CC9393;">\\\\[</span><span style="color: #BFEBBF;">a-z0-9@</span><span style="color: #CC9393;">]+</span><span style="color: #7F9F7F; font-weight: bold;">\\</span><span style="color: #F0DFAF; font-weight: bold;">)</span><span style="color: #CC9393;">"</span><span style="color: #DCDCCC;">)</span>
@@ -986,10 +998,10 @@ Part of Emacs
 <pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF;">ido</span>
   <span style="color: #DCDCCC; font-weight: bold;">:config</span>
   <span style="color: #BFEBBF;">(</span>ido-mode t<span style="color: #BFEBBF;">)</span>
-  <span style="color: #BFEBBF;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq</span> ido-enable-flex-matching t<span style="color: #BFEBBF;">)</span>
-  <span style="color: #BFEBBF;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq</span> ido-everywhere t<span style="color: #BFEBBF;">)</span>
-  <span style="color: #BFEBBF;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq</span> ido-max-prospects 50<span style="color: #BFEBBF;">)</span>
-  <span style="color: #BFEBBF;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq</span> ido-max-window-height 0.25<span style="color: #BFEBBF;">)</span>
+  <span style="color: #BFEBBF;">(</span>setq ido-enable-flex-matching t<span style="color: #BFEBBF;">)</span>
+  <span style="color: #BFEBBF;">(</span>setq ido-everywhere t<span style="color: #BFEBBF;">)</span>
+  <span style="color: #BFEBBF;">(</span>setq ido-max-prospects 50<span style="color: #BFEBBF;">)</span>
+  <span style="color: #BFEBBF;">(</span>setq ido-max-window-height 0.25<span style="color: #BFEBBF;">)</span>
   <span style="color: #DCDCCC;">)</span>
 </pre>
 </div>
@@ -1067,7 +1079,7 @@ Part of Emacs
 <div class="outline-text-5" id="text-1-5-2-4">
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq</span> shift-select-mode nil<span style="color: #DCDCCC;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span>setq shift-select-mode nil<span style="color: #DCDCCC;">)</span>
 </pre>
 </div>
 </div>
@@ -1078,7 +1090,7 @@ Part of Emacs
 <div class="outline-text-5" id="text-1-5-2-5">
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq</span> mouse-yank-at-point t<span style="color: #DCDCCC;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span>setq mouse-yank-at-point t<span style="color: #DCDCCC;">)</span>
 </pre>
 </div>
 </div>
@@ -1089,7 +1101,7 @@ Part of Emacs
 <div class="outline-text-5" id="text-1-5-2-6">
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq</span> transient-mark-mode t<span style="color: #DCDCCC;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span>setq transient-mark-mode t<span style="color: #DCDCCC;">)</span>
 </pre>
 </div>
 </div>
@@ -1133,7 +1145,7 @@ Part of Emacs
 <div class="outline-text-5" id="text-1-5-2-10">
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq</span> truncate-lines t<span style="color: #DCDCCC;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span>setq truncate-lines t<span style="color: #DCDCCC;">)</span>
 </pre>
 </div>
 </div>
@@ -1144,9 +1156,9 @@ Part of Emacs
 <div class="outline-text-5" id="text-1-5-2-11">
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq</span> truncate-lines t<span style="color: #DCDCCC;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span>setq truncate-lines t<span style="color: #DCDCCC;">)</span>
 <span style="color: #DCDCCC;">(</span>add-hook 'minibuffer-setup-hook
-      <span style="color: #BFEBBF;">(</span><span style="color: #F0DFAF; font-weight: bold;">lambda</span> <span style="color: #D0BF8F;">()</span> <span style="color: #D0BF8F;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq</span> truncate-lines nil<span style="color: #D0BF8F;">)</span><span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
+      <span style="color: #BFEBBF;">(</span><span style="color: #F0DFAF; font-weight: bold;">lambda</span> <span style="color: #D0BF8F;">()</span> <span style="color: #D0BF8F;">(</span>setq truncate-lines nil<span style="color: #D0BF8F;">)</span><span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
 </pre>
 </div>
 </div>
@@ -1161,7 +1173,7 @@ Part of Emacs
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq</span> kill-emacs-query-functions
+<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span>setq kill-emacs-query-functions
       <span style="color: #BFEBBF;">(</span>cons <span style="color: #D0BF8F;">(</span><span style="color: #F0DFAF; font-weight: bold;">lambda</span> <span style="color: #93E0E3;">()</span> <span style="color: #93E0E3;">(</span>yes-or-no-p <span style="color: #CC9393;">"Really Quit Emacs? "</span><span style="color: #93E0E3;">)</span><span style="color: #D0BF8F;">)</span>
             kill-emacs-query-functions<span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
 </pre>
@@ -1191,8 +1203,8 @@ User Manual)
 <div class="org-src-container">
 
 <pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span>desktop-save-mode 1<span style="color: #DCDCCC;">)</span>
-<span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq</span> desktop-restore-eager 10<span style="color: #DCDCCC;">)</span>
-<span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq</span> desktop-save t<span style="color: #DCDCCC;">)</span> <span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">save without asking</span>
+<span style="color: #DCDCCC;">(</span>setq desktop-restore-eager 10<span style="color: #DCDCCC;">)</span>
+<span style="color: #DCDCCC;">(</span>setq desktop-save t<span style="color: #DCDCCC;">)</span> <span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">save without asking</span>
 </pre>
 </div>
 </div>
@@ -1244,8 +1256,8 @@ em-joc - not used anymore
 <pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span>electric-pair-mode 1<span style="color: #DCDCCC;">)</span>
 <span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">defvar</span> <span style="color: #DFAF8F;">markdown-electric-pairs</span> '<span style="color: #BFEBBF;">(</span><span style="color: #D0BF8F;">(</span>?* . ?*<span style="color: #D0BF8F;">)</span><span style="color: #BFEBBF;">)</span> <span style="color: #9FC59F;">"Electric pairs for markdown-mode."</span><span style="color: #DCDCCC;">)</span>
 <span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">defun</span> <span style="color: #93E0E3;">markdown-add-electric-pairs</span> <span style="color: #BFEBBF;">()</span>
-  <span style="color: #BFEBBF;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq-local</span> electric-pair-pairs <span style="color: #D0BF8F;">(</span>append electric-pair-pairs markdown-electric-pairs<span style="color: #D0BF8F;">)</span><span style="color: #BFEBBF;">)</span>
-  <span style="color: #BFEBBF;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq-local</span> electric-pair-text-pairs electric-pair-pairs<span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
+  <span style="color: #BFEBBF;">(</span>setq-local electric-pair-pairs <span style="color: #D0BF8F;">(</span>append electric-pair-pairs markdown-electric-pairs<span style="color: #D0BF8F;">)</span><span style="color: #BFEBBF;">)</span>
+  <span style="color: #BFEBBF;">(</span>setq-local electric-pair-text-pairs electric-pair-pairs<span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
 <span style="color: #DCDCCC;">(</span>add-hook 'markdown-mode-hook 'markdown-add-electric-pairs<span style="color: #DCDCCC;">)</span>
 </pre>
 </div>
@@ -1287,7 +1299,7 @@ Inspired from <a href="http://emacswiki.org/emacs/InsertingTodaysDate">http://em
 <div class="org-src-container">
 
 <pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">defun</span> <span style="color: #93E0E3;">timestamp</span> <span style="color: #BFEBBF;">()</span>
-  <span style="color: #BFEBBF;">(</span><span style="color: #F0DFAF; font-weight: bold;">interactive</span><span style="color: #BFEBBF;">)</span>
+  <span style="color: #BFEBBF;">(</span>interactive<span style="color: #BFEBBF;">)</span>
   <span style="color: #BFEBBF;">(</span>insert <span style="color: #D0BF8F;">(</span>format-time-string <span style="color: #CC9393;">"%d.%m.%Y, %H:%M"</span><span style="color: #D0BF8F;">)</span><span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
 </pre>
 </div>
@@ -1305,16 +1317,16 @@ From <a href="http://ergoemacs.org/emacs/elisp_count-region.html">http://ergoema
 
 <pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">defun</span> <span style="color: #93E0E3;">my-count-words-region</span> <span style="color: #BFEBBF;">(</span>posBegin posEnd<span style="color: #BFEBBF;">)</span>
   <span style="color: #9FC59F;">"Print number of words and chars in region."</span>
-  <span style="color: #BFEBBF;">(</span><span style="color: #F0DFAF; font-weight: bold;">interactive</span> <span style="color: #CC9393;">"r"</span><span style="color: #BFEBBF;">)</span>
+  <span style="color: #BFEBBF;">(</span>interactive <span style="color: #CC9393;">"r"</span><span style="color: #BFEBBF;">)</span>
   <span style="color: #BFEBBF;">(</span>message <span style="color: #CC9393;">"Counting &#8230;"</span><span style="color: #BFEBBF;">)</span>
   <span style="color: #BFEBBF;">(</span><span style="color: #F0DFAF; font-weight: bold;">save-excursion</span>
     <span style="color: #D0BF8F;">(</span><span style="color: #F0DFAF; font-weight: bold;">let</span> <span style="color: #93E0E3;">(</span>wordCount charCount<span style="color: #93E0E3;">)</span>
-      <span style="color: #93E0E3;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq</span> wordCount 0<span style="color: #93E0E3;">)</span>
-      <span style="color: #93E0E3;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq</span> charCount <span style="color: #9FC59F;">(</span>- posEnd posBegin<span style="color: #9FC59F;">)</span><span style="color: #93E0E3;">)</span>
+      <span style="color: #93E0E3;">(</span>setq wordCount 0<span style="color: #93E0E3;">)</span>
+      <span style="color: #93E0E3;">(</span>setq charCount <span style="color: #9FC59F;">(</span>- posEnd posBegin<span style="color: #9FC59F;">)</span><span style="color: #93E0E3;">)</span>
       <span style="color: #93E0E3;">(</span>goto-char posBegin<span style="color: #93E0E3;">)</span>
-      <span style="color: #93E0E3;">(</span><span style="color: #F0DFAF; font-weight: bold;">while</span> <span style="color: #9FC59F;">(</span><span style="color: #F0DFAF; font-weight: bold;">and</span> <span style="color: #94BFF3;">(</span>&lt; <span style="color: #E0CF9F;">(</span>point<span style="color: #E0CF9F;">)</span> posEnd<span style="color: #94BFF3;">)</span>
+      <span style="color: #93E0E3;">(</span><span style="color: #F0DFAF; font-weight: bold;">while</span> <span style="color: #9FC59F;">(</span>and <span style="color: #94BFF3;">(</span>&lt; <span style="color: #E0CF9F;">(</span>point<span style="color: #E0CF9F;">)</span> posEnd<span style="color: #94BFF3;">)</span>
                   <span style="color: #94BFF3;">(</span>re-search-forward <span style="color: #CC9393;">"\\w+\\W*"</span> posEnd t<span style="color: #94BFF3;">)</span><span style="color: #9FC59F;">)</span>
-        <span style="color: #9FC59F;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq</span> wordCount <span style="color: #94BFF3;">(</span>1+ wordCount<span style="color: #94BFF3;">)</span><span style="color: #9FC59F;">)</span><span style="color: #93E0E3;">)</span>
+        <span style="color: #9FC59F;">(</span>setq wordCount <span style="color: #94BFF3;">(</span>1+ wordCount<span style="color: #94BFF3;">)</span><span style="color: #9FC59F;">)</span><span style="color: #93E0E3;">)</span>
 
       <span style="color: #93E0E3;">(</span>message <span style="color: #CC9393;">"Words: %d. Chars: %d."</span> wordCount charCount<span style="color: #93E0E3;">)</span>
       <span style="color: #D0BF8F;">)</span><span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
@@ -1335,13 +1347,13 @@ Source: <a href="http://ergoemacs.org/emacs/emacs_unfill-paragraph.html">http://
 <pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">defun</span> <span style="color: #93E0E3;">unfill-paragraph</span> <span style="color: #BFEBBF;">()</span>
   <span style="color: #9FC59F;">"Replace newline chars in current paragraph by single spaces.</span>
 <span style="color: #9FC59F;">This command does the inverse of `</span><span style="color: #BFEBBF;">fill-paragraph</span><span style="color: #9FC59F;">'."</span>
-  <span style="color: #BFEBBF;">(</span><span style="color: #F0DFAF; font-weight: bold;">interactive</span><span style="color: #BFEBBF;">)</span>
+  <span style="color: #BFEBBF;">(</span>interactive<span style="color: #BFEBBF;">)</span>
   <span style="color: #BFEBBF;">(</span><span style="color: #F0DFAF; font-weight: bold;">let</span> <span style="color: #D0BF8F;">(</span><span style="color: #93E0E3;">(</span>fill-column 90002000<span style="color: #93E0E3;">)</span><span style="color: #D0BF8F;">)</span> <span style="color: #5F7F5F;">; </span><span style="color: #7F9F7F;">90002000 is just random. you can use `</span><span style="color: #BFEBBF;">most-positive-fixnum</span><span style="color: #7F9F7F;">'</span>
     <span style="color: #D0BF8F;">(</span>fill-paragraph nil<span style="color: #D0BF8F;">)</span><span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
 <span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">defun</span> <span style="color: #93E0E3;">unfill-region</span> <span style="color: #BFEBBF;">(</span>start end<span style="color: #BFEBBF;">)</span>
   <span style="color: #9FC59F;">"Replace newline chars in region by single spaces.</span>
 <span style="color: #9FC59F;">This command does the inverse of `</span><span style="color: #BFEBBF;">fill-region</span><span style="color: #9FC59F;">'."</span>
-  <span style="color: #BFEBBF;">(</span><span style="color: #F0DFAF; font-weight: bold;">interactive</span> <span style="color: #CC9393;">"r"</span><span style="color: #BFEBBF;">)</span>
+  <span style="color: #BFEBBF;">(</span>interactive <span style="color: #CC9393;">"r"</span><span style="color: #BFEBBF;">)</span>
   <span style="color: #BFEBBF;">(</span><span style="color: #F0DFAF; font-weight: bold;">let</span> <span style="color: #D0BF8F;">(</span><span style="color: #93E0E3;">(</span>fill-column 90002000<span style="color: #93E0E3;">)</span><span style="color: #D0BF8F;">)</span>
     <span style="color: #D0BF8F;">(</span>fill-region start end<span style="color: #D0BF8F;">)</span><span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
 </pre>
@@ -1353,8 +1365,8 @@ Source: <a href="http://ergoemacs.org/emacs/emacs_unfill-paragraph.html">http://
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Edmund Christian Herenz</p>
-<p class="date">Created: 2016-11-17 Do 10:54</p>
-<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.1.1 (<a href="http://orgmode.org">Org</a> mode 8.3.6)</p>
+<p class="date">Created: 2017-04-13 Thu 19:39</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.4.1 (<a href="http://orgmode.org">Org</a> mode 8.3.6)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
