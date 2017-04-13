@@ -3,8 +3,7 @@
 (setq custom-file "~/.gnu-emacs-custom")
 (load custom-file)
 
-(setq user-full-name "Edmund Christian Herenz"
-      user-mail-address "cherenz@aip.de")
+(setq user-full-name "Edmund Christian Herenz")
 
 (setq TeX-auto-save t)
 (setq TeX-parse-self t)
@@ -90,6 +89,9 @@
 (use-package xkcd
   :ensure t)
 
+(use-package fireplace
+  :ensure t)
+
 (use-package tea-time
   :ensure t
   :config
@@ -156,13 +158,18 @@
   :ensure t
   :init
   (setq org-bullets-bullet-list
-        '("◉" "◎" "⚫" "○" "►" "◇"))
+	'("◉" "◎" "⚫" "○" "►" "◇"))
   :config
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
   )
 (setq org-todo-keywords '((sequence "☛ TODO(t)" "|" "✔ DONE(d)")
 (sequence "⚑ WAITING(w)" "|")
 (sequence "|" "✘ CANCELED(c)")))
+
+(use-package pager
+  :ensure t)
+(use-package pager-default-keybindings
+  :ensure t)
 
 (use-package muttrc-mode
   :ensure t
@@ -172,9 +179,13 @@
                     auto-mode-alist)))
 
 (use-package offlineimap
-  :ensure t)
+  :ensure t
+  )
 
-(use-package post)
+(use-package post
+  :config
+  (setq post-signature-pattern "\\(--\\|\\)")
+  )
 
 (use-package simple-wiki)
 
@@ -228,7 +239,7 @@
 
 (setq kill-emacs-query-functions
       (cons (lambda () (yes-or-no-p "Really Quit Emacs? "))
-            kill-emacs-query-functions))
+	    kill-emacs-query-functions))
 
 (put 'upcase-region 'disabled nil)
 
