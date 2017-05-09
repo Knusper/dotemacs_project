@@ -158,7 +158,7 @@
   :ensure t
   :init
   (setq org-bullets-bullet-list
-	'("◉" "◎" "⚫" "○" "►" "◇"))
+        '("◉" "◎" "⚫" "○" "►" "◇"))
   :config
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
   )
@@ -239,7 +239,7 @@
 
 (setq kill-emacs-query-functions
       (cons (lambda () (yes-or-no-p "Really Quit Emacs? "))
-	    kill-emacs-query-functions))
+            kill-emacs-query-functions))
 
 (put 'upcase-region 'disabled nil)
 
@@ -248,6 +248,13 @@
 (setq desktop-save t) ;; save without asking
 
 (defalias 'list-buffers 'ibuffer)
+
+(setq ibuffer-formats
+      '((mark modified read-only " "
+              (name 30 30 :left :elide) " "
+              (size 9 -1 :right) " "
+              (mode 16 16 :left :elide) " " filename-and-process)
+        (mark " " (name 16 -1) " " filename)))
 
 (electric-pair-mode 1)
 (defvar markdown-electric-pairs '((?* . ?*)) "Electric pairs for markdown-mode.")

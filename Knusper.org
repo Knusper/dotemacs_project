@@ -668,6 +668,16 @@
        (defalias 'list-buffers 'ibuffer)
      #+END_SRC
 
+***** adjust ibuffer column widths
+
+      #+BEGIN_SRC emacs-lisp :tangle yes
+        (setq ibuffer-formats
+              '((mark modified read-only " "
+                      (name 30 30 :left :elide) " "
+                      (size 9 -1 :right) " "
+                      (mode 16 16 :left :elide) " " filename-and-process)
+                (mark " " (name 16 -1) " " filename)))
+      #+END_SRC
 **** eshell-stuff
      em-joc - not used anymore
      #+BEGIN_SRC emacs-lisp :tangle no
