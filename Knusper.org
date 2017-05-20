@@ -219,85 +219,17 @@
       
 **** Specific settings for some packages using usepackage 
 
-***** Fun
-
-****** xkcd
-       https://github.com/vibhavp/emacs-xkcd
-       [[http://xkcd.com/][xkcd]] reader for Emacs. Nerd on!
-
-       #+BEGIN_SRC emacs-lisp :tangle yes
-         (use-package xkcd
-           :ensure t)
-       #+END_SRC
-
-****** fireplace
-       
-       It can get cold in winter. =M-x fireplace=
-       https://github.com/johanvts/emacs-fireplace
-
-       #+BEGIN_SRC emacs-lisp :tangle yes
-         (use-package fireplace
-           :ensure t)
-       #+END_SRC
-
-****** tea-time
-
-       With =tea-time= I never forget about the tea.  Using  [[http://movie-sounds.org/action-movie-sound-clips/the-italian-job-1969/have-a-cup-of-tea-ready][this soundbite]]
-       from my favorite movie "The Italian Job".
-
-       #+BEGIN_SRC emacs-lisp :tangle yes
-	 (use-package tea-time
-           :ensure t
-           :config
-           (setq tea-time-sound "~/.sounds/tea.ogg")
-           (setq tea-time-sound-command "ogg123 -q %s")
-           )
-       #+END_SRC
-
-****** 2048
-       
-       https://bitbucket.org/zck/2048.el
-
-       
-***** Appearance
-
-****** zenburn colour theme
-
-       https://github.com/bbatsov/zenburn-emacs
-
-       Load zenburn colour theme when starting emacs.
-
-       #+BEGIN_SRC emacs-lisp :tangle yes
-	 (use-package zenburn-theme
-           :config
-           (load-theme 'zenburn))
-       #+END_SRC
-
-****** powerline
-
-       https://github.com/milkypostman/powerline
-
-       #+BEGIN_SRC emacs-lisp :tangle yes
-	 (use-package powerline
-           :ensure t
-           :config
-           (powerline-default-theme)
-           )
-       #+END_SRC
-
-****** beacon
-       #+BEGIN_SRC emacs-lisp :tangle yes
-	 (use-package beacon
-           :ensure t
-           :config
-           (beacon-mode 1)
-           (setq beacon-dont-blink-commands nil) ;; always blink
-	   (setq beacon-lighter '"Λ")
-           )
-       #+END_SRC
-
 
 ***** Essential
+
+****** diminish
+
+       #+BEGIN_SRC emacs-lisp :tangle yes
+         (use-package diminish
+           :ensure t)
+       #+END_SRC
+
+       #+RESULTS:
 
 ****** buffer-move
      
@@ -341,7 +273,7 @@
 ****** htmlize
        http://www.emacswiki.org/emacs/Htmlize
 
-****** iedit
+****** ☛ TODO iedit
        Simultaneously edit multiple regions in buffer.
        http://www.emacswiki.org/emacs/Iedit
      
@@ -436,6 +368,52 @@
            :ensure t)
        #+END_SRC
 
+****** uptimes
+       
+       #+BEGIN_SRC emacs-lisp :tangle yes
+         (use-package uptimes
+           :ensure t)
+       #+END_SRC
+
+***** Appearance
+
+****** zenburn colour theme
+
+       https://github.com/bbatsov/zenburn-emacs
+
+       Load zenburn colour theme when starting emacs.
+
+       #+BEGIN_SRC emacs-lisp :tangle yes
+	 (use-package zenburn-theme
+           :config
+           (load-theme 'zenburn))
+       #+END_SRC
+
+****** powerline
+
+       https://github.com/milkypostman/powerline
+
+       #+BEGIN_SRC emacs-lisp :tangle yes
+	 (use-package powerline
+           :ensure t
+           :config
+           (powerline-default-theme)
+           )
+       #+END_SRC
+
+****** beacon
+       #+BEGIN_SRC emacs-lisp :tangle yes
+	 (use-package beacon
+           :ensure t
+           :config
+           (beacon-mode 1)
+           (setq beacon-dont-blink-commands nil) ;; always blink
+	   ;; (setq beacon-lighter '"Λ")
+	   :diminish beacon-mode
+           )
+       #+END_SRC
+
+
 ***** Email
 
 ****** muttrc-mode
@@ -457,6 +435,45 @@
            :ensure t
 	   )
        #+END_SRC
+
+***** Fun
+
+****** xkcd
+       https://github.com/vibhavp/emacs-xkcd
+       [[http://xkcd.com/][xkcd]] reader for Emacs. Nerd on!
+
+       #+BEGIN_SRC emacs-lisp :tangle yes
+         (use-package xkcd
+           :ensure t)
+       #+END_SRC
+
+****** fireplace
+       
+       It can get cold in winter. =M-x fireplace=
+       https://github.com/johanvts/emacs-fireplace
+
+       #+BEGIN_SRC emacs-lisp :tangle yes
+         (use-package fireplace
+           :ensure t)
+       #+END_SRC
+
+****** tea-time
+
+       With =tea-time= I never forget about the tea.  Using  [[http://movie-sounds.org/action-movie-sound-clips/the-italian-job-1969/have-a-cup-of-tea-ready][this soundbite]]
+       from my favorite movie "The Italian Job".
+
+       #+BEGIN_SRC emacs-lisp :tangle yes
+	 (use-package tea-time
+           :ensure t
+           :config
+           (setq tea-time-sound "~/.sounds/tea.ogg")
+           (setq tea-time-sound-command "ogg123 -q %s")
+           )
+       #+END_SRC
+
+****** 2048
+       
+       https://bitbucket.org/zck/2048.el
 
 
 *** Packages not in ELPA or MELPA
