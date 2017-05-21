@@ -123,6 +123,37 @@
 
     Also using [[org-bullets][org-bullets package, described in the pacakge section below.]]
     
+***** "Ugly" Hack to disable PDFs in links to open in DocView Mode
+
+      This is from http://emacs.stackexchange.com/a/24580/5254 No idea
+      why it is so complicated, to have linked PDF files popping up in
+      an external viewer (btw., I use [[http://www.mupdf.com/][mupdf]])
+
+      #+BEGIN_SRC emacs-lisp :tangle yes
+        (defun ensc/mailcap-mime-data-filter (filter)
+          ""
+          (mapcar (lambda(major)
+                (append (list (car major))
+                    (remove nil
+                        (mapcar (lambda(minor)
+      			(when (funcall filter (car major) (car minor) (cdr minor))
+                            minor))
+                            (cdr major)))))
+      	mailcap-mime-data))
+
+        (defun ensc/no-pdf-doc-view-filter (major minor spec)
+          (if (and (string= major "application")
+      	 (string= minor "pdf")
+      	 (member '(viewer . doc-view-mode) spec))
+      	nil
+            t))
+
+        (eval-after-load 'mailcap
+          '(progn
+             (setq mailcap-mime-data
+      	 (ensc/mailcap-mime-data-filter 'ensc/no-pdf-doc-view-filter))))
+      #+END_SRC
+
 **** org-drill
 
      http://orgmode.org/worg/org-contrib/org-drill.html
@@ -293,6 +324,7 @@
            (beacon-mode 1)
            (setq beacon-dont-blink-commands nil) ;; always blink
 	   (setq beacon-lighter '"Λ")
+	   (add-to-list 'beacon-dont-blink-major-modes 'Man-mode)
            )
        #+END_SRC
 

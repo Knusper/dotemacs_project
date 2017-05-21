@@ -34,6 +34,30 @@
                        ("\\.png\\'" . default)
                        ) org-file-apps ))))
 
+(defun ensc/mailcap-mime-data-filter (filter)
+  ""
+  (mapcar (lambda(major)
+        (append (list (car major))
+            (remove nil
+                (mapcar (lambda(minor)
+      		(when (funcall filter (car major) (car minor) (cdr minor))
+                    minor))
+                    (cdr major)))))
+mailcap-mime-data))
+
+(defun ensc/no-pdf-doc-view-filter (major minor spec)
+  (if (and (string= major "application")
+ (string= minor "pdf")
+ (member '(viewer . doc-view-mode) spec))
+nil
+    t))
+
+(eval-after-load 'mailcap
+  '(progn
+     (setq mailcap-mime-data
+ (ensc/mailcap-mime-data-filter 'ensc/no-pdf-doc-view-filter))))
+
+
 (require 'org-drill)
 (setq org-drill-add-random-noise-to-intervals-p t)
 (setq org-drill-leech-method 'warn)
@@ -115,6 +139,7 @@
   (beacon-mode 1)
   (setq beacon-dont-blink-commands nil) ;; always blink
   (setq beacon-lighter '"Λ")
+  (add-to-list 'beacon-dont-blink-major-modes 'Man-mode)
   )
 
 (use-package buffer-move
