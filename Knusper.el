@@ -57,7 +57,6 @@ nil
      (setq mailcap-mime-data
  (ensc/mailcap-mime-data-filter 'ensc/no-pdf-doc-view-filter))))
 
-
 (require 'org-drill)
 (setq org-drill-add-random-noise-to-intervals-p t)
 (setq org-drill-leech-method 'warn)
@@ -113,7 +112,6 @@ nil
 (use-package diminish
   :ensure t)
 
-<<<<<<< HEAD
 (use-package tea-time
   :ensure t
   :config
@@ -181,7 +179,7 @@ nil
   :ensure t
   :init
   (setq org-bullets-bullet-list
-        '("◉" "◎" "⚫" "○" "►" "◇"))
+	'("◉" "◎" "⚫" "○" "►" "◇"))
   :config
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
   )
@@ -297,7 +295,7 @@ nil
 
 (setq kill-emacs-query-functions
       (cons (lambda () (yes-or-no-p "Really Quit Emacs? "))
-            kill-emacs-query-functions))
+	    kill-emacs-query-functions))
 
 (put 'upcase-region 'disabled nil)
 
