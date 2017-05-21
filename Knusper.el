@@ -110,12 +110,10 @@ nil
 
 (require 'use-package)
 
-(use-package xkcd
+(use-package diminish
   :ensure t)
 
-(use-package fireplace
-  :ensure t)
-
+<<<<<<< HEAD
 (use-package tea-time
   :ensure t
   :config
@@ -196,6 +194,28 @@ nil
 (use-package pager-default-keybindings
   :ensure t)
 
+(use-package uptimes
+  :ensure t)
+
+(use-package zenburn-theme
+  :config
+  (load-theme 'zenburn))
+
+(use-package powerline
+  :ensure t
+  :config
+  (powerline-default-theme)
+  )
+
+(use-package beacon
+  :ensure t
+  :config
+  (beacon-mode 1)
+  (setq beacon-dont-blink-commands nil) ;; always blink
+  ;; (setq beacon-lighter '"Λ")
+  :diminish beacon-mode
+  )
+
 (use-package muttrc-mode
   :ensure t
   :config
@@ -205,6 +225,19 @@ nil
 
 (use-package offlineimap
   :ensure t
+  )
+
+(use-package xkcd
+  :ensure t)
+
+(use-package fireplace
+  :ensure t)
+
+(use-package tea-time
+  :ensure t
+  :config
+  (setq tea-time-sound "~/.sounds/tea.ogg")
+  (setq tea-time-sound-command "ogg123 -q %s")
   )
 
 (use-package post
