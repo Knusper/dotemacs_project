@@ -40,7 +40,7 @@
         (append (list (car major))
             (remove nil
                 (mapcar (lambda(minor)
-      		(when (funcall filter (car major) (car minor) (cdr minor))
+                (when (funcall filter (car major) (car minor) (cdr minor))
                     minor))
                     (cdr major)))))
 mailcap-mime-data))
@@ -56,7 +56,6 @@ nil
   '(progn
      (setq mailcap-mime-data
  (ensc/mailcap-mime-data-filter 'ensc/no-pdf-doc-view-filter))))
-
 
 (require 'org-drill)
 (setq org-drill-add-random-noise-to-intervals-p t)
@@ -113,7 +112,6 @@ nil
 (use-package diminish
   :ensure t)
 
-<<<<<<< HEAD
 (use-package tea-time
   :ensure t
   :config
@@ -196,6 +194,11 @@ nil
 
 (use-package uptimes
   :ensure t)
+
+(use-package dired-quick-sort
+  :ensure t
+  :init
+  (dired-quick-sort-setup))
 
 (use-package zenburn-theme
   :config

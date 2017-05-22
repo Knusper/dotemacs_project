@@ -460,10 +460,25 @@
 
 ****** uptimes
        
+       https://github.com/davep/uptimes.el
+
        #+BEGIN_SRC emacs-lisp :tangle yes
          (use-package uptimes
            :ensure t)
        #+END_SRC
+
+****** dired-quicksort
+       
+       Quick and easy sorting in dired.
+       
+       #+BEGIN_SRC emacs-lisp :tangle yes
+         (use-package dired-quick-sort
+           :ensure t
+           :init
+           (dired-quick-sort-setup))
+       #+END_SRC
+
+       With this configuration ~S~ is bound to invoke the ~dired-quick-sort~ [[https://github.com/abo-abo/hydra][hydra]].
 
 ***** Appearance
 
