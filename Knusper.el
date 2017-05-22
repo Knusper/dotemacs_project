@@ -179,7 +179,7 @@ nil
   :ensure t
   :init
   (setq org-bullets-bullet-list
-	'("◉" "◎" "⚫" "○" "►" "◇"))
+        '("◉" "◎" "⚫" "○" "►" "◇"))
   :config
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
   )
@@ -300,7 +300,7 @@ nil
 
 (setq kill-emacs-query-functions
       (cons (lambda () (yes-or-no-p "Really Quit Emacs? "))
-	    kill-emacs-query-functions))
+            kill-emacs-query-functions))
 
 (put 'upcase-region 'disabled nil)
 
