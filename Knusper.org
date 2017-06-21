@@ -23,7 +23,13 @@
 
    When ~org-mode~ is installed, we can open this file and run ~C-c
    C-v C~t~ to tangle this file.
+
+   To tangle the file from the command line:
+   #+BEGIN_SRC sh
+   emacs --batch -l org Knusper.org -f org-babel-tangle
+   #+END_SRC
    
+   ~.emacs~ or ~.emacs.d/init.el~
    #+BEGIN_SRC emacs-lisp :tangle no
      ;; ~/.emacs.d/init.el (or ~/.emacs)
 
