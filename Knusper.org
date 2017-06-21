@@ -12,13 +12,17 @@
 
 - Org: http://fortune-teller-amy-88756.netlify.com/Knusper.org
 
-- .el: http://fortune-teller-amy-88756.netlify.com/Knusper.el
-
 ** Init file
    
    We still need an [[http://www.emacswiki.org/emacs/InitFile][Init File]] (=~/.emacs.d/init.el= or =~/.emacs=)
    that loads =org-mode=, sets up the paths for packages that we don't
    install via the package manager.
+
+   Before starting emacs with this init file, we install org-mode and
+   AuCTeX on the system where this ~.emacs~ is delployed.
+
+   When ~org-mode~ is installed, we can open this file and run ~C-c
+   C-v C~t~ to tangle this file.
    
    #+BEGIN_SRC emacs-lisp :tangle no
      ;; ~/.emacs.d/init.el (or ~/.emacs)
@@ -26,9 +30,11 @@
      ;; This sets up the load path so that we can override it
      (package-initialize nil)
      (add-to-list 'load-path (expand-file-name "~/emacs-scripts/"))
+
      ;; org-mode
      (add-to-list 'load-path (expand-file-name "~/emacs-scripts/org-9.0.3/lisp/"))
      (add-to-list 'load-path "~/emacs-scripts/org-9.0.3/contrib/lisp" t)
+
      ;; auctex
      (add-to-list 'load-path (expand-file-name "~/.emacs.d/site-lisp/auctex"))
      (load "auctex.el" nil t t)
@@ -40,18 +46,14 @@
 
      ;; rather than using org-babel-load file I tangle this file (C-c C-v C-t)
      ;; and load it directly
-     (load-file "~/Org/dotemacs_project/Knusper.el") 
+     ;; (load-file "~/Org/dotemacs_project/Knusper.el")  ;; uncomment this line, after this file has been tangled
    #+END_SRC
-
-   Here =org-babel-load-file= loads this file, then uses =org-babel-tangle=
-   to extract all =emacs-lisp= code into =Knusper.el=, and finally uses
-   =load-file= to load it.
   
 *** Notes on org-mode installation
 
     - Just run ~make~
-    - Version currently installed: 9.0.3
-    - add ~export INFOPATH=${HOME}/emacs-scripts/org-9.0.3/doc/:${INFOPATH}~ to
+    - Version currently installed: 9.0.7
+    - add ~export INFOPATH=${HOME}/emacs-scripts/org-9.0.7/doc/:${INFOPATH}~ to
       ~${HOME}/.profile~, to read the documentation of the package installed
 
 *** Notes on AucTeX installation
@@ -223,7 +225,7 @@
 ** Packages
 *** Package Archives
 
-    MELPA is the king of emacs package archives.  Follow [[https://twitter.com/melpa_emacs][MELPA on Twitter]].
+    [[https://melpa.org][MELPA]] is the king of emacs package archives.  Follow [[https://twitter.com/melpa_emacs][MELPA on Twitter]].
     
     #+BEGIN_SRC emacs-lisp :tangle yes
       (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
@@ -248,10 +250,20 @@
      #+END_SRC
 
       
-**** Specific settings for some packages using usepackage 
-
+**** Package List 
 
 ***** Essential
+
+****** magit
+       
+       [[https://magit.vc]]
+
+       #+BEGIN_SRC emacs-lisp :tangle yes
+	 (use-package magit 
+	   :ensure t
+	   :bind ("C-x g" . magit-status)
+	   )
+       #+END_SRC
 
 ****** diminish
 
@@ -260,7 +272,6 @@
            :ensure t)
        #+END_SRC
 
-<<<<<<< HEAD
 ****** tea-time
 
        With =tea-time= I never forget about the tea.  Using  [[http://movie-sounds.org/action-movie-sound-clips/the-italian-job-1969/have-a-cup-of-tea-ready][this soundbite]]
@@ -278,48 +289,6 @@
 ****** 2048
        
        https://bitbucket.org/zck/2048.el
-
-       
-***** Appearance
-
-****** zenburn colour theme
-
-       https://github.com/bbatsov/zenburn-emacs
-
-       Load zenburn colour theme when starting emacs.
-
-       #+BEGIN_SRC emacs-lisp :tangle yes
-	 (use-package zenburn-theme
-           :config
-           (load-theme 'zenburn))
-       #+END_SRC
-
-****** powerline
-
-       https://github.com/milkypostman/powerline
-
-       #+BEGIN_SRC emacs-lisp :tangle yes
-	 (use-package powerline
-           :ensure t
-           :config
-           (powerline-default-theme)
-           )
-       #+END_SRC
-
-****** beacon
-       #+BEGIN_SRC emacs-lisp :tangle yes
-	 (use-package beacon
-           :ensure t
-           :config
-           (beacon-mode 1)
-           (setq beacon-dont-blink-commands nil) ;; always blink
-	   (setq beacon-lighter '"Λ")
-	   (add-to-list 'beacon-dont-blink-major-modes 'Man-mode)
-           )
-       #+END_SRC
-
-
-***** Essential
 
 ****** buffer-move
      
@@ -358,7 +327,6 @@
            (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
            )
        #+END_SRC
-
 
 ****** htmlize
        http://www.emacswiki.org/emacs/Htmlize
@@ -425,7 +393,6 @@
            )
        #+END_SRC
 
-
 ****** org-bullets
 
        The following gold is from
@@ -480,6 +447,8 @@
 
        With this configuration ~S~ is bound to invoke the ~dired-quick-sort~ [[https://github.com/abo-abo/hydra][hydra]].
 
+
+       
 ***** Appearance
 
 ****** zenburn colour theme
@@ -513,8 +482,8 @@
            :config
            (beacon-mode 1)
            (setq beacon-dont-blink-commands nil) ;; always blink
-	   ;; (setq beacon-lighter '"Λ")
-	   :diminish beacon-mode
+	   (setq beacon-lighter '"Λ")
+	   (add-to-list 'beacon-dont-blink-major-modes 'Man-mode)
            )
        #+END_SRC
 
