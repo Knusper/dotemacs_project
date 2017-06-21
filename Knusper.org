@@ -337,10 +337,13 @@
 ****** htmlize
        http://www.emacswiki.org/emacs/Htmlize
 
-****** ☛ TODO iedit
+****** iedit
        Simultaneously edit multiple regions in buffer.
        http://www.emacswiki.org/emacs/Iedit
-     
+       #+BEGIN_SRC emacs-lisp :tangle yes
+	 (use-package iedit
+	   :ensure t)
+       #+END_SRC
 ****** writeroom-mode
      
        Distraction free writing.
