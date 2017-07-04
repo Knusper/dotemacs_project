@@ -337,7 +337,7 @@
 ****** htmlize
        http://www.emacswiki.org/emacs/Htmlize
 
-****** iedit
+****** ☛ TODO iedit
        Simultaneously edit multiple regions in buffer.
        http://www.emacswiki.org/emacs/Iedit
        #+BEGIN_SRC emacs-lisp :tangle yes
@@ -467,9 +467,11 @@
        Load zenburn colour theme when starting emacs.
 
        #+BEGIN_SRC emacs-lisp :tangle yes
-	 (use-package zenburn-theme
-           :config
-           (load-theme 'zenburn))
+	 (if (string= system-name "ktop.suse")
+	     (use-package zenburn-theme
+	       :config
+	       (load-theme 'zenburn))
+	   (load-theme 'leuven))
        #+END_SRC
 
 ****** powerline
@@ -487,13 +489,14 @@
 ****** beacon
        #+BEGIN_SRC emacs-lisp :tangle yes
 	 (use-package beacon
-           :ensure t
-           :config
-           (beacon-mode 1)
-           (setq beacon-dont-blink-commands nil) ;; always blink
-	   (setq beacon-lighter '"Λ")
+	   :ensure t
+	   :config
+	   (beacon-mode 1)
+	   (setq beacon-dont-blink-commands nil) ;; always blink
+	   ;; (setq beacon-lighter '"Λ") - 
 	   (add-to-list 'beacon-dont-blink-major-modes 'Man-mode)
-           )
+	   :diminish beacon-mode
+	   )
        #+END_SRC
 
 
