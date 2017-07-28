@@ -129,38 +129,50 @@
                              ) org-file-apps ))))
     #+END_SRC
 
-    Also using [[org-bullets][org-bullets package, described in the pacakge section below.]]
-    
-***** "Ugly" Hack to disable PDFs in links to open in DocView Mode
+**** Set with to inline images
 
-      This is from http://emacs.stackexchange.com/a/24580/5254 No idea
-      why it is so complicated, to have linked PDF files popping up in
-      an external viewer (btw., I use [[http://www.mupdf.com/][mupdf]])
+    The following setting enables inline images to be scaled when
+    displayed inline (~org-toggle-inline-images~):
+    #+BEGIN_SRC emacs-lisp :tangle yes
+      (setq org-image-actual-width nil)
+    #+END_SRC
 
-      #+BEGIN_SRC emacs-lisp :tangle yes
-        (defun ensc/mailcap-mime-data-filter (filter)
-          ""
-          (mapcar (lambda(major)
-                (append (list (car major))
-                    (remove nil
-                        (mapcar (lambda(minor)
-      			(when (funcall filter (car major) (car minor) (cdr minor))
-                            minor))
-                            (cdr major)))))
-      	mailcap-mime-data))
+    Now, put this before an image link to scale it
+    ~#+ATTR_ORG: :width 500px~
 
-        (defun ensc/no-pdf-doc-view-filter (major minor spec)
-          (if (and (string= major "application")
-      	 (string= minor "pdf")
-      	 (member '(viewer . doc-view-mode) spec))
-      	nil
-            t))
+**** "Ugly" Hack to disable PDFs in links to open in DocView Mode
 
-        (eval-after-load 'mailcap
-          '(progn
-             (setq mailcap-mime-data
-      	 (ensc/mailcap-mime-data-filter 'ensc/no-pdf-doc-view-filter))))
-      #+END_SRC
+     This is from http://emacs.stackexchange.com/a/24580/5254 No idea
+     why it is so complicated, to have linked PDF files popping up in
+     an external viewer (btw., I use [[http://www.mupdf.com/][mupdf]])
+
+     #+BEGIN_SRC emacs-lisp :tangle yes
+       (defun ensc/mailcap-mime-data-filter (filter)
+         ""
+         (mapcar (lambda(major)
+               (append (list (car major))
+                   (remove nil
+                       (mapcar (lambda(minor)
+      		       (when (funcall filter (car major) (car minor) (cdr minor))
+                           minor))
+                           (cdr major)))))
+       mailcap-mime-data))
+
+       (defun ensc/no-pdf-doc-view-filter (major minor spec)
+         (if (and (string= major "application")
+      	(string= minor "pdf")
+      	(member '(viewer . doc-view-mode) spec))
+       nil
+           t))
+
+       (eval-after-load 'mailcap
+         '(progn
+            (setq mailcap-mime-data
+      	(ensc/mailcap-mime-data-filter 'ensc/no-pdf-doc-view-filter))))
+     #+END_SRC
+
+**** Org-bullets
+     Also using [[org-bullets][org-bullets package, described in the pacakge section below.]]
 
 **** org-drill
 
