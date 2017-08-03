@@ -694,15 +694,15 @@
 
     - no tooltips
     - no toolbar
-    - menu yes
-    - scroll-bars yes
+    - no menu
+    - no scrollbar
   
     #+BEGIN_SRC emacs-lisp :tangle yes
       (when window-system
         (tooltip-mode -1)
         (tool-bar-mode -1)
-        (menu-bar-mode 1)
-        (scroll-bar-mode 1))
+        (menu-bar-mode -1)
+        (scroll-bar-mode -1))
     #+END_SRC
 
 *** Various settings
