@@ -38,8 +38,12 @@
      (add-to-list 'load-path (expand-file-name "~/emacs-scripts/"))
 
      ;; org-mode
-     (add-to-list 'load-path (expand-file-name "~/emacs-scripts/org-9.0.3/lisp/"))
-     (add-to-list 'load-path "~/emacs-scripts/org-9.0.3/contrib/lisp" t)
+     (add-to-list 'load-path (expand-file-name "~/emacs-scripts/org-9.0.7/lisp/"))
+     (add-to-list 'load-path "~/emacs-scripts/org-9.0.7/contrib/lisp" t)
+     (eval-after-load "info"
+       '(progn
+	  (info-initialize)
+	  (add-to-list 'Info-directory-list "~/emacs-scripts/org-9.0.7/doc/")))
 
      ;; auctex
      (add-to-list 'load-path (expand-file-name "~/.emacs.d/site-lisp/auctex"))
@@ -59,8 +63,6 @@
 
     - Just run ~make~
     - Version currently installed: 9.0.7
-    - add ~export INFOPATH=${HOME}/emacs-scripts/org-9.0.7/doc/:${INFOPATH}~ to
-      ~${HOME}/.profile~, to read the documentation of the package installed
 
 *** Notes on AucTeX installation
     
@@ -271,6 +273,20 @@
 **** Package List 
 
 ***** Essential
+
+****** yascroll-mode
+
+       yascroll.el is Yet Another Scroll Bar Mode for GNU Emacs.
+       https://github.com/m2ym/yascroll-el
+       
+       #+BEGIN_SRC emacs-lisp :tangle yes
+	 (use-package yascroll
+	   :ensure t
+	   :config
+	   (global-yascroll-bar-mode 1)
+	   (setq yascroll:delay-to-hide 0.8)
+	   )
+       #+END_SRC
 
 ****** magit
        
