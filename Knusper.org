@@ -497,9 +497,13 @@
        #+BEGIN_SRC emacs-lisp :tangle yes
 	 (if (string= system-name "ktop.suse")
 	     (use-package zenburn-theme
+	       :ensure t
 	       :config
 	       (load-theme 'zenburn))
-	   (load-theme 'leuven))
+	   (use-package plan9-theme
+	     :ensure t
+	     :config
+	     (load-theme 'plan9)))
        #+END_SRC
 
 ****** powerline
