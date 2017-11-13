@@ -508,7 +508,7 @@
        Load zenburn colour theme when starting emacs.
 
        #+BEGIN_SRC emacs-lisp :tangle yes
-	 (if (string= system-name "ktop.suse")
+	 (if (string=(system-name) "knuspertopg")
 	     (use-package zenburn-theme
 	       :ensure t
 	       :config
