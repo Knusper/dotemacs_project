@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-11-13 Mo 00:46 -->
+<!-- 2017-11-17 Fr 19:44 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Knusper's Emacs configuration</title>
@@ -234,93 +234,93 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org77e82eb">1. Configuration</a>
+<li><a href="#orgab8e1ec">1. Configuration</a>
 <ul>
-<li><a href="#orgc2b057d">1.1. Init file</a>
+<li><a href="#org0647b5b">1.1. Init file</a>
 <ul>
-<li><a href="#org0775ec1">1.1.1. Notes on org-mode installation</a></li>
-<li><a href="#org494f02e">1.1.2. Notes on AucTeX installation</a></li>
-<li><a href="#orgca7f559">1.1.3. General</a>
+<li><a href="#org8cf7755">1.1.1. Notes on org-mode installation</a></li>
+<li><a href="#org12cf0f0">1.1.2. Notes on AucTeX installation</a></li>
+<li><a href="#org8b4af4d">1.1.3. General</a>
 <ul>
-<li><a href="#orgbb3ac99">1.1.3.1. Start the emacs server</a></li>
-<li><a href="#org4ed0f01">1.1.3.2. Load Custom File</a></li>
+<li><a href="#org13e05ef">1.1.3.1. Start the emacs server</a></li>
+<li><a href="#orgf21455c">1.1.3.2. Load Custom File</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgb038cbf">1.2. Personal Information</a></li>
-<li><a href="#org5a0f114">1.3. Mode-specific settings</a>
+<li><a href="#org97494cc">1.2. Personal Information</a></li>
+<li><a href="#org10c08de">1.3. Mode-specific settings</a>
 <ul>
-<li><a href="#org6505883">1.3.1. LateX</a></li>
-<li><a href="#org0aa0e17">1.3.2. Org-Mode</a>
+<li><a href="#orgf010b9a">1.3.1. LateX</a></li>
+<li><a href="#orgc0844f1">1.3.2. Org-Mode</a>
 <ul>
-<li><a href="#orgef1c4b1">1.3.2.1. Set with to inline images</a></li>
-<li><a href="#orge062ac9">1.3.2.2. "Ugly" Hack to disable PDFs in links to open in DocView Mode</a></li>
-<li><a href="#org2f3a529">1.3.2.3. Org-bullets</a></li>
-<li><a href="#org1c6d76b">1.3.2.4. org-drill</a></li>
+<li><a href="#org26412a3">1.3.2.1. Set with to inline images</a></li>
+<li><a href="#org68721d8">1.3.2.2. "Ugly" Hack to disable PDFs in links to open in DocView Mode</a></li>
+<li><a href="#orgeeb8570">1.3.2.3. Org-bullets</a></li>
+<li><a href="#org2f6dfb9">1.3.2.4. org-drill</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org0662907">1.4. Packages</a>
+<li><a href="#orga2d2c26">1.4. Packages</a>
 <ul>
-<li><a href="#org2f80dc8">1.4.1. Package Archives</a></li>
-<li><a href="#org2a34757">1.4.2. Packages I use</a>
+<li><a href="#orgfbb9480">1.4.1. Package Archives</a></li>
+<li><a href="#org1f389c9">1.4.2. Packages I use</a>
 <ul>
-<li><a href="#orgc0ab623">1.4.2.1. use-package - automatically download and install packages</a></li>
-<li><a href="#org23eefa0">1.4.2.2. Package List</a></li>
+<li><a href="#org72c9d90">1.4.2.1. use-package - automatically download and install packages</a></li>
+<li><a href="#org746b312">1.4.2.2. Package List</a></li>
 </ul>
 </li>
-<li><a href="#org864c766">1.4.3. Packages not in ELPA or MELPA</a>
+<li><a href="#org95c3504">1.4.3. Packages not in ELPA or MELPA</a>
 <ul>
-<li><a href="#orge002a9c">1.4.3.1. post-mode for mutt</a></li>
-<li><a href="#org67c954b">1.4.3.2. simple-wiki</a></li>
-<li><a href="#orgef0bb68">1.4.3.3. wikidot mode</a></li>
+<li><a href="#org99e792d">1.4.3.1. post-mode for mutt</a></li>
+<li><a href="#orga8b893c">1.4.3.2. simple-wiki</a></li>
+<li><a href="#orge8e1730">1.4.3.3. wikidot mode</a></li>
 </ul>
 </li>
-<li><a href="#org194a638">1.4.4. Part of emacs</a>
+<li><a href="#org64dec61">1.4.4. Part of emacs</a>
 <ul>
-<li><a href="#org52557a4">1.4.4.1. printing</a></li>
-<li><a href="#orgcb5f2a9">1.4.4.2. uniquify</a></li>
-<li><a href="#org60f2327">1.4.4.3. Midnight Mode (disabled)</a></li>
-<li><a href="#org7bd8d67">1.4.4.4. Abbrev-mode</a></li>
-<li><a href="#org12ded96">1.4.4.5. ido-mode</a></li>
+<li><a href="#org514ced0">1.4.4.1. printing</a></li>
+<li><a href="#org796e3ef">1.4.4.2. uniquify</a></li>
+<li><a href="#org787b5c2">1.4.4.3. Midnight Mode (disabled)</a></li>
+<li><a href="#orgbeed63a">1.4.4.4. Abbrev-mode</a></li>
+<li><a href="#orgf83ff91">1.4.4.5. ido-mode</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org293e2a6">1.5. User Interface</a>
+<li><a href="#org96c280c">1.5. User Interface</a>
 <ul>
-<li><a href="#org09472c7">1.5.1. Window Configuration</a></li>
-<li><a href="#orgcd05322">1.5.2. Various settings</a>
+<li><a href="#orgd3bd9a8">1.5.1. Window Configuration</a></li>
+<li><a href="#orga6b27db">1.5.2. Various settings</a>
 <ul>
-<li><a href="#orge6e712a">1.5.2.1. move around between windows using C-S-Arrow keys (wind-move)</a></li>
-<li><a href="#org1296e48">1.5.2.2. disable &lt;menu&gt;-key</a></li>
-<li><a href="#orgfef5c8d">1.5.2.3. disable blinking cursor</a></li>
-<li><a href="#org277c3c3">1.5.2.4. disable Shift+Arrow to select text</a></li>
-<li><a href="#org6eee2e7">1.5.2.5. middle-click pastes at point, not at mouse position</a></li>
-<li><a href="#orgf28318e">1.5.2.6. transient-mark-mode</a></li>
-<li><a href="#org3535f2f">1.5.2.7. highlight matching parenthesis based on point</a></li>
-<li><a href="#org4d1b457">1.5.2.8. recent files mode</a></li>
-<li><a href="#org32d94f7">1.5.2.9. Bind hippie-expand to M-&lt;SPC&gt; - Peace!</a></li>
-<li><a href="#org6ee1b5f">1.5.2.10. never truncate the lines in my buffer [DISABLED]</a></li>
-<li><a href="#org02e163b">1.5.2.11. always truncate lines, but never the mini-buffer</a></li>
-<li><a href="#org3383d0b">1.5.2.12. Emacs close confirmation</a></li>
-<li><a href="#org0a7a1fe">1.5.2.13. enable disabled command - upcase region</a></li>
-<li><a href="#orgec2d3dc">1.5.2.14. desktop-save-mode</a></li>
-<li><a href="#orge370772">1.5.2.15. user ibuffer insted of list-buffers</a></li>
-<li><a href="#org7bed602">1.5.2.16. eshell-stuff</a></li>
+<li><a href="#org6171adf">1.5.2.1. move around between windows using C-S-Arrow keys (wind-move)</a></li>
+<li><a href="#orgba4000a">1.5.2.2. disable &lt;menu&gt;-key</a></li>
+<li><a href="#orgbc75635">1.5.2.3. disable blinking cursor</a></li>
+<li><a href="#org6816ae1">1.5.2.4. disable Shift+Arrow to select text</a></li>
+<li><a href="#orgb5dc879">1.5.2.5. middle-click pastes at point, not at mouse position</a></li>
+<li><a href="#org07bb71b">1.5.2.6. transient-mark-mode</a></li>
+<li><a href="#orgd9025a3">1.5.2.7. highlight matching parenthesis based on point</a></li>
+<li><a href="#orgc2ef090">1.5.2.8. recent files mode</a></li>
+<li><a href="#org724bcfa">1.5.2.9. Bind hippie-expand to M-&lt;SPC&gt; - Peace!</a></li>
+<li><a href="#org47b1d55">1.5.2.10. never truncate the lines in my buffer [DISABLED]</a></li>
+<li><a href="#org7ff0180">1.5.2.11. always truncate lines, but never the mini-buffer</a></li>
+<li><a href="#org2ef0789">1.5.2.12. Emacs close confirmation</a></li>
+<li><a href="#org60df120">1.5.2.13. enable disabled command - upcase region</a></li>
+<li><a href="#orgeeac34a">1.5.2.14. desktop-save-mode</a></li>
+<li><a href="#org61f9313">1.5.2.15. user ibuffer insted of list-buffers</a></li>
+<li><a href="#org14f2007">1.5.2.16. eshell-stuff</a></li>
 </ul>
 </li>
-<li><a href="#org2a11f8d">1.5.3. Electric Pairs</a></li>
-<li><a href="#org5a03885">1.5.4. Move around between windows (wind-move)</a></li>
+<li><a href="#orge1c0948">1.5.3. Electric Pairs</a></li>
+<li><a href="#orgb7ded8a">1.5.4. Move around between windows (wind-move)</a></li>
 </ul>
 </li>
-<li><a href="#orgd5543a5">1.6. Convenience functions not shipped in emacs</a>
+<li><a href="#org3d98c3f">1.6. Convenience functions not shipped in emacs</a>
 <ul>
-<li><a href="#org12f8ae6">1.6.1. Timestamps</a></li>
-<li><a href="#org7757f9b">1.6.2. Count Words &amp; Characters</a></li>
-<li><a href="#org17fe688">1.6.3. Unfill Region / Unfill Paragraph</a></li>
+<li><a href="#orga0c952f">1.6.1. Timestamps</a></li>
+<li><a href="#org2c28df5">1.6.2. Count Words &amp; Characters</a></li>
+<li><a href="#orgf6868aa">1.6.3. Unfill Region / Unfill Paragraph</a></li>
 </ul>
 </li>
 </ul>
@@ -329,8 +329,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org77e82eb" class="outline-2">
-<h2 id="org77e82eb"><span class="section-number-2">1</span> Configuration</h2>
+<div id="outline-container-orgab8e1ec" class="outline-2">
+<h2 id="orgab8e1ec"><span class="section-number-2">1</span> Configuration</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li>Somewhat inspired by <a href="http://sach.ac/dotemacs">Sacha Chua's Emacs configuration</a>.</li>
@@ -343,8 +343,8 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 
-<div id="outline-container-orgc2b057d" class="outline-3">
-<h3 id="orgc2b057d"><span class="section-number-3">1.1</span> Init file</h3>
+<div id="outline-container-org0647b5b" class="outline-3">
+<h3 id="org0647b5b"><span class="section-number-3">1.1</span> Init file</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 We still need an <a href="http://www.emacswiki.org/emacs/InitFile">Init File</a> (<code>~/.emacs.d/init.el</code> or <code>~/.emacs</code>)
@@ -404,8 +404,8 @@ To tangle the file from the command line:
 </div>
 </div>
 
-<div id="outline-container-org0775ec1" class="outline-4">
-<h4 id="org0775ec1"><span class="section-number-4">1.1.1</span> Notes on org-mode installation</h4>
+<div id="outline-container-org8cf7755" class="outline-4">
+<h4 id="org8cf7755"><span class="section-number-4">1.1.1</span> Notes on org-mode installation</h4>
 <div class="outline-text-4" id="text-1-1-1">
 <ul class="org-ul">
 <li>Just run <code>make</code></li>
@@ -414,8 +414,8 @@ To tangle the file from the command line:
 </div>
 </div>
 
-<div id="outline-container-org494f02e" class="outline-4">
-<h4 id="org494f02e"><span class="section-number-4">1.1.2</span> Notes on AucTeX installation</h4>
+<div id="outline-container-org12cf0f0" class="outline-4">
+<h4 id="org12cf0f0"><span class="section-number-4">1.1.2</span> Notes on AucTeX installation</h4>
 <div class="outline-text-4" id="text-1-1-2">
 <ul class="org-ul">
 <li>Download AucTeX from <a href="https://www.gnu.org/software/auctex/download-for-unix.html">https://www.gnu.org/software/auctex/download-for-unix.html</a></li>
@@ -425,11 +425,11 @@ To tangle the file from the command line:
 </div>
 </div>
 
-<div id="outline-container-orgca7f559" class="outline-4">
-<h4 id="orgca7f559"><span class="section-number-4">1.1.3</span> General</h4>
+<div id="outline-container-org8b4af4d" class="outline-4">
+<h4 id="org8b4af4d"><span class="section-number-4">1.1.3</span> General</h4>
 <div class="outline-text-4" id="text-1-1-3">
-</div><div id="outline-container-orgbb3ac99" class="outline-5">
-<h5 id="orgbb3ac99"><span class="section-number-5">1.1.3.1</span> Start the emacs server</h5>
+</div><div id="outline-container-org13e05ef" class="outline-5">
+<h5 id="org13e05ef"><span class="section-number-5">1.1.3.1</span> Start the emacs server</h5>
 <div class="outline-text-5" id="text-1-1-3-1">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span>server-start<span style="color: #DCDCCC;">)</span>
@@ -438,8 +438,8 @@ To tangle the file from the command line:
 </div>
 </div>
 
-<div id="outline-container-org4ed0f01" class="outline-5">
-<h5 id="org4ed0f01"><span class="section-number-5">1.1.3.2</span> Load Custom File</h5>
+<div id="outline-container-orgf21455c" class="outline-5">
+<h5 id="orgf21455c"><span class="section-number-5">1.1.3.2</span> Load Custom File</h5>
 <div class="outline-text-5" id="text-1-1-3-2">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq</span> custom-file <span style="color: #CC9393;">"~/.gnu-emacs-custom"</span><span style="color: #DCDCCC;">)</span>
@@ -453,8 +453,8 @@ To tangle the file from the command line:
 </div>
 </div>
 </div>
-<div id="outline-container-orgb038cbf" class="outline-3">
-<h3 id="orgb038cbf"><span class="section-number-3">1.2</span> Personal Information</h3>
+<div id="outline-container-org97494cc" class="outline-3">
+<h3 id="org97494cc"><span class="section-number-3">1.2</span> Personal Information</h3>
 <div class="outline-text-3" id="text-1-2">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq</span> user-full-name <span style="color: #CC9393;">"Edmund Christian Herenz"</span><span style="color: #DCDCCC;">)</span>
@@ -464,8 +464,8 @@ To tangle the file from the command line:
 </div>
 
 
-<div id="outline-container-org5a0f114" class="outline-3">
-<h3 id="org5a0f114"><span class="section-number-3">1.3</span> Mode-specific settings</h3>
+<div id="outline-container-org10c08de" class="outline-3">
+<h3 id="org10c08de"><span class="section-number-3">1.3</span> Mode-specific settings</h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
 AucTeX + org-mode are installed manually.  These are the modes that
@@ -473,8 +473,8 @@ I depend on most for my work.
 </p>
 </div>
 
-<div id="outline-container-org6505883" class="outline-4">
-<h4 id="org6505883"><span class="section-number-4">1.3.1</span> LateX</h4>
+<div id="outline-container-orgf010b9a" class="outline-4">
+<h4 id="orgf010b9a"><span class="section-number-4">1.3.1</span> LateX</h4>
 <div class="outline-text-4" id="text-1-3-1">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq</span> TeX-auto-save t<span style="color: #DCDCCC;">)</span>
@@ -482,7 +482,7 @@ I depend on most for my work.
 <span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq-default</span> TeX-master nil<span style="color: #DCDCCC;">)</span>
 <span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq</span> LaTeX-math-menu-unicode t<span style="color: #DCDCCC;">)</span>
 <span style="color: #DCDCCC;">(</span>add-hook 'LaTeX-mode-hook 'turn-on-auto-fill<span style="color: #DCDCCC;">)</span>
-<span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">require</span> '<span style="color: #BFEBBF; font-weight: bold;">reftex</span><span style="color: #DCDCCC;">)</span>
+<span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">require</span> '<span style="color: #BFEBBF;">reftex</span><span style="color: #DCDCCC;">)</span>
 <span style="color: #DCDCCC;">(</span>add-hook 'LaTeX-mode-hook 'turn-on-reftex<span style="color: #DCDCCC;">)</span>
 <span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq</span> reftex-plug-into-AUCTeX t<span style="color: #DCDCCC;">)</span>
 <span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq</span> reftex-cite-format 'natbib<span style="color: #DCDCCC;">)</span>
@@ -496,11 +496,11 @@ I depend on most for my work.
 </div>
 </div>
 
-<div id="outline-container-org0aa0e17" class="outline-4">
-<h4 id="org0aa0e17"><span class="section-number-4">1.3.2</span> Org-Mode</h4>
+<div id="outline-container-orgc0844f1" class="outline-4">
+<h4 id="orgc0844f1"><span class="section-number-4">1.3.2</span> Org-Mode</h4>
 <div class="outline-text-4" id="text-1-3-2">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">require</span> '<span style="color: #BFEBBF; font-weight: bold;">org</span><span style="color: #DCDCCC;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">require</span> '<span style="color: #BFEBBF;">org</span><span style="color: #DCDCCC;">)</span>
 <span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq</span> auto-mode-alist
       <span style="color: #BFEBBF;">(</span>cons '<span style="color: #D0BF8F;">(</span><span style="color: #CC9393;">"\\.org$"</span> . org-mode<span style="color: #D0BF8F;">)</span> auto-mode-alist<span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
 <span style="color: #DCDCCC;">(</span>global-set-key <span style="color: #CC9393;">"\C-cl"</span> 'org-store-link<span style="color: #DCDCCC;">)</span>
@@ -528,8 +528,8 @@ I depend on most for my work.
 </div>
 </div>
 
-<div id="outline-container-orgef1c4b1" class="outline-5">
-<h5 id="orgef1c4b1"><span class="section-number-5">1.3.2.1</span> Set with to inline images</h5>
+<div id="outline-container-org26412a3" class="outline-5">
+<h5 id="org26412a3"><span class="section-number-5">1.3.2.1</span> Set with to inline images</h5>
 <div class="outline-text-5" id="text-1-3-2-1">
 <p>
 The following setting enables inline images to be scaled when
@@ -547,8 +547,8 @@ Now, put this before an image link to scale it
 </div>
 </div>
 
-<div id="outline-container-orge062ac9" class="outline-5">
-<h5 id="orge062ac9"><span class="section-number-5">1.3.2.2</span> "Ugly" Hack to disable PDFs in links to open in DocView Mode</h5>
+<div id="outline-container-org68721d8" class="outline-5">
+<h5 id="org68721d8"><span class="section-number-5">1.3.2.2</span> "Ugly" Hack to disable PDFs in links to open in DocView Mode</h5>
 <div class="outline-text-5" id="text-1-3-2-2">
 <p>
 This is from <a href="http://emacs.stackexchange.com/a/24580/5254">http://emacs.stackexchange.com/a/24580/5254</a> No idea
@@ -557,7 +557,7 @@ an external viewer (btw., I use <a href="http://www.mupdf.com/">mupdf</a>)
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">defun</span> <span style="color: #93E0E3; font-weight: bold;">ensc/mailcap-mime-data-filter</span> <span style="color: #BFEBBF;">(</span>filter<span style="color: #BFEBBF;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">defun</span> <span style="color: #93E0E3;">ensc/mailcap-mime-data-filter</span> <span style="color: #BFEBBF;">(</span>filter<span style="color: #BFEBBF;">)</span>
   <span style="color: #9FC59F;">""</span>
   <span style="color: #BFEBBF;">(</span>mapcar <span style="color: #D0BF8F;">(</span><span style="color: #F0DFAF; font-weight: bold;">lambda</span><span style="color: #93E0E3;">(</span>major<span style="color: #93E0E3;">)</span>
         <span style="color: #93E0E3;">(</span>append <span style="color: #9FC59F;">(</span>list <span style="color: #94BFF3;">(</span>car major<span style="color: #94BFF3;">)</span><span style="color: #9FC59F;">)</span>
@@ -568,7 +568,7 @@ an external viewer (btw., I use <a href="http://www.mupdf.com/">mupdf</a>)
                     <span style="color: #E0CF9F;">(</span>cdr major<span style="color: #E0CF9F;">)</span><span style="color: #94BFF3;">)</span><span style="color: #9FC59F;">)</span><span style="color: #93E0E3;">)</span><span style="color: #D0BF8F;">)</span>
 mailcap-mime-data<span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
 
-<span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">defun</span> <span style="color: #93E0E3; font-weight: bold;">ensc/no-pdf-doc-view-filter</span> <span style="color: #BFEBBF;">(</span>major minor spec<span style="color: #BFEBBF;">)</span>
+<span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">defun</span> <span style="color: #93E0E3;">ensc/no-pdf-doc-view-filter</span> <span style="color: #BFEBBF;">(</span>major minor spec<span style="color: #BFEBBF;">)</span>
   <span style="color: #BFEBBF;">(</span><span style="color: #F0DFAF; font-weight: bold;">if</span> <span style="color: #D0BF8F;">(</span><span style="color: #F0DFAF; font-weight: bold;">and</span> <span style="color: #93E0E3;">(</span>string= major <span style="color: #CC9393;">"application"</span><span style="color: #93E0E3;">)</span>
  <span style="color: #93E0E3;">(</span>string= minor <span style="color: #CC9393;">"pdf"</span><span style="color: #93E0E3;">)</span>
  <span style="color: #93E0E3;">(</span>member '<span style="color: #9FC59F;">(</span>viewer . doc-view-mode<span style="color: #9FC59F;">)</span> spec<span style="color: #93E0E3;">)</span><span style="color: #D0BF8F;">)</span>
@@ -584,24 +584,24 @@ nil
 </div>
 </div>
 
-<div id="outline-container-org2f3a529" class="outline-5">
-<h5 id="org2f3a529"><span class="section-number-5">1.3.2.3</span> Org-bullets</h5>
+<div id="outline-container-orgeeb8570" class="outline-5">
+<h5 id="orgeeb8570"><span class="section-number-5">1.3.2.3</span> Org-bullets</h5>
 <div class="outline-text-5" id="text-1-3-2-3">
 <p>
-Also using <a href="#org7286e94">org-bullets package, described in the pacakge section below.</a>
+Also using <a href="#orga1373fd">org-bullets package, described in the pacakge section below.</a>
 </p>
 </div>
 </div>
 
-<div id="outline-container-org1c6d76b" class="outline-5">
-<h5 id="org1c6d76b"><span class="section-number-5">1.3.2.4</span> org-drill</h5>
+<div id="outline-container-org2f6dfb9" class="outline-5">
+<h5 id="org2f6dfb9"><span class="section-number-5">1.3.2.4</span> org-drill</h5>
 <div class="outline-text-5" id="text-1-3-2-4">
 <p>
 <a href="http://orgmode.org/worg/org-contrib/org-drill.html">http://orgmode.org/worg/org-contrib/org-drill.html</a>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">require</span> '<span style="color: #BFEBBF; font-weight: bold;">org-drill</span><span style="color: #DCDCCC;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">require</span> '<span style="color: #BFEBBF;">org-drill</span><span style="color: #DCDCCC;">)</span>
 <span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq</span> org-drill-add-random-noise-to-intervals-p t<span style="color: #DCDCCC;">)</span>
 <span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq</span> org-drill-leech-method 'warn<span style="color: #DCDCCC;">)</span>
 <span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq</span> org-drill-learn-fraction 0.3<span style="color: #DCDCCC;">)</span>
@@ -609,18 +609,18 @@ Also using <a href="#org7286e94">org-bullets package, described in the pacakge s
 </div>
 </div>
 
-<ol class="org-ol"><li><a id="org681ec25"></a>Skeletons for learning swedish<br /><div class="outline-text-6" id="text-1-3-2-4-1">
+<ol class="org-ol"><li><a id="org225865c"></a>Skeletons for learning swedish<br /><div class="outline-text-6" id="text-1-3-2-4-1">
 <p>
 I learn swedish with respect to german, my native tongue.
 </p>
 </div>
 
-<ol class="org-ol"><li><a id="org407abd3"></a>Phrase<br /><div class="outline-text-7" id="text-1-3-2-4-1-1">
+<ol class="org-ol"><li><a id="org8d8370e"></a>Phrase<br /><div class="outline-text-7" id="text-1-3-2-4-1-1">
 <p>
 No grammer associated. Fixed forms, etc.
 </p>
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">define-skeleton</span> <span style="color: #93E0E3; font-weight: bold;">swedish-phrase-skeleton</span>
+<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">define-skeleton</span> <span style="color: #93E0E3;">swedish-phrase-skeleton</span>
   <span style="color: #9FC59F;">"Insert swedish phrases in org-drill mode"</span>
   <span style="color: #CC9393;">""</span>
   <span style="color: #CC9393;">"** sonst.                                                          :drill:\n"</span>
@@ -633,12 +633,12 @@ No grammer associated. Fixed forms, etc.
 </div>
 </div></li>
 
-<li><a id="org5caadbd"></a>Verbs<br /><div class="outline-text-7" id="text-1-3-2-4-1-2">
+<li><a id="org2ea7c80"></a>Verbs<br /><div class="outline-text-7" id="text-1-3-2-4-1-2">
 <p>
 Verbs + swedish conjungation.
 </p>
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">define-skeleton</span> <span style="color: #93E0E3; font-weight: bold;">swedish-verb-skeleton</span>
+<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">define-skeleton</span> <span style="color: #93E0E3;">swedish-verb-skeleton</span>
   <span style="color: #9FC59F;">"Insert swedish verbs in org-drill mode"</span>
   <span style="color: #CC9393;">""</span>
   <span style="color: #CC9393;">"** verb                                                            :drill:\n"</span>
@@ -655,14 +655,14 @@ Verbs + swedish conjungation.
 </div>
 </div>
 
-<ol class="org-ol"><li><a id="org79eceea"></a><span class="todo __TODO">☛ TODO</span> sv inifinitive can be automatically inserted in table!<br /></li></ol></li>
+<ol class="org-ol"><li><a id="orgd0ab590"></a><span class="todo __TODO">☛ TODO</span> sv inifinitive can be automatically inserted in table!<br /></li></ol></li>
 
-<li><a id="orgfaa49d5"></a>Nouns<br /><div class="outline-text-7" id="text-1-3-2-4-1-3">
+<li><a id="org93a63ce"></a>Nouns<br /><div class="outline-text-7" id="text-1-3-2-4-1-3">
 <p>
 Nouns + deklination
 </p>
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">define-skeleton</span> <span style="color: #93E0E3; font-weight: bold;">swedish-noun-skeleton</span>
+<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">define-skeleton</span> <span style="color: #93E0E3;">swedish-noun-skeleton</span>
   <span style="color: #9FC59F;">"Insert swedish nouns in org-drill-mode"</span>
   <span style="color: #CC9393;">""</span>
   <span style="color: #CC9393;">"** substantiv                                                          :drill:\n"</span>
@@ -681,11 +681,11 @@ Nouns + deklination
 </div>
 </div>
 </div>
-<div id="outline-container-org0662907" class="outline-3">
-<h3 id="org0662907"><span class="section-number-3">1.4</span> Packages</h3>
+<div id="outline-container-orga2d2c26" class="outline-3">
+<h3 id="orga2d2c26"><span class="section-number-3">1.4</span> Packages</h3>
 <div class="outline-text-3" id="text-1-4">
-</div><div id="outline-container-org2f80dc8" class="outline-4">
-<h4 id="org2f80dc8"><span class="section-number-4">1.4.1</span> Package Archives</h4>
+</div><div id="outline-container-orgfbb9480" class="outline-4">
+<h4 id="orgfbb9480"><span class="section-number-4">1.4.1</span> Package Archives</h4>
 <div class="outline-text-4" id="text-1-4-1">
 <p>
 <a href="https://melpa.org">MELPA</a> is the king of emacs package archives.  Follow <a href="https://twitter.com/melpa_emacs">MELPA on Twitter</a>.
@@ -698,11 +698,11 @@ Nouns + deklination
 </div>
 </div>
 
-<div id="outline-container-org2a34757" class="outline-4">
-<h4 id="org2a34757"><span class="section-number-4">1.4.2</span> Packages I use</h4>
+<div id="outline-container-org1f389c9" class="outline-4">
+<h4 id="org1f389c9"><span class="section-number-4">1.4.2</span> Packages I use</h4>
 <div class="outline-text-4" id="text-1-4-2">
-</div><div id="outline-container-orgc0ab623" class="outline-5">
-<h5 id="orgc0ab623"><span class="section-number-5">1.4.2.1</span> use-package - automatically download and install packages</h5>
+</div><div id="outline-container-org72c9d90" class="outline-5">
+<h5 id="org72c9d90"><span class="section-number-5">1.4.2.1</span> use-package - automatically download and install packages</h5>
 <div class="outline-text-5" id="text-1-4-2-1">
 <p>
 We use <a href="https://github.com/jwiegley/use-package"><code>use-package</code></a> to automatically download and install packages,
@@ -717,24 +717,24 @@ automagically installed first.
       <span style="color: #D0BF8F;">(</span>package-refresh-contents<span style="color: #D0BF8F;">)</span>
       <span style="color: #D0BF8F;">(</span>package-install 'use-package<span style="color: #D0BF8F;">)</span><span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
 
-<span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">require</span> '<span style="color: #BFEBBF; font-weight: bold;">use-package</span><span style="color: #DCDCCC;">)</span>
+<span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">require</span> '<span style="color: #BFEBBF;">use-package</span><span style="color: #DCDCCC;">)</span>
 </pre>
 </div>
 </div>
 </div>
 
 
-<div id="outline-container-org23eefa0" class="outline-5">
-<h5 id="org23eefa0"><span class="section-number-5">1.4.2.2</span> Package List</h5>
+<div id="outline-container-org746b312" class="outline-5">
+<h5 id="org746b312"><span class="section-number-5">1.4.2.2</span> Package List</h5>
 <div class="outline-text-5" id="text-1-4-2-2">
-</div><ol class="org-ol"><li><a id="orga7153f3"></a>Essential<br /><ol class="org-ol"><li><a id="orgd3bf794"></a>yascroll-mode<br /><div class="outline-text-7" id="text-1-4-2-2-1-1">
+</div><ol class="org-ol"><li><a id="org318e8d2"></a>Essential<br /><ol class="org-ol"><li><a id="org492e86d"></a>yascroll-mode<br /><div class="outline-text-7" id="text-1-4-2-2-1-1">
 <p>
 yascroll.el is Yet Another Scroll Bar Mode for GNU Emacs.
 <a href="https://github.com/m2ym/yascroll-el">https://github.com/m2ym/yascroll-el</a>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF; font-weight: bold;">yascroll</span>
+<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF;">yascroll</span>
   <span style="color: #DCDCCC; font-weight: bold;">:ensure</span> t
   <span style="color: #DCDCCC; font-weight: bold;">:config</span>
   <span style="color: #BFEBBF;">(</span>global-yascroll-bar-mode 1<span style="color: #BFEBBF;">)</span>
@@ -744,13 +744,13 @@ yascroll.el is Yet Another Scroll Bar Mode for GNU Emacs.
 </div>
 </div></li>
 
-<li><a id="orgb1c0325"></a>magit<br /><div class="outline-text-7" id="text-1-4-2-2-1-2">
+<li><a id="org8104016"></a>magit<br /><div class="outline-text-7" id="text-1-4-2-2-1-2">
 <p>
 <a href="https://magit.vc">https://magit.vc</a>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF; font-weight: bold;">magit</span> 
+<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF;">magit</span> 
   <span style="color: #DCDCCC; font-weight: bold;">:ensure</span> t
   <span style="color: #DCDCCC; font-weight: bold;">:bind</span> <span style="color: #BFEBBF;">(</span><span style="color: #CC9393;">"C-x g"</span> . magit-status<span style="color: #BFEBBF;">)</span>
   <span style="color: #DCDCCC;">)</span>
@@ -758,22 +758,22 @@ yascroll.el is Yet Another Scroll Bar Mode for GNU Emacs.
 </div>
 </div></li>
 
-<li><a id="org8ea7612"></a>diminish<br /><div class="outline-text-7" id="text-1-4-2-2-1-3">
+<li><a id="orgd035f6e"></a>diminish<br /><div class="outline-text-7" id="text-1-4-2-2-1-3">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF; font-weight: bold;">diminish</span>
+<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF;">diminish</span>
   <span style="color: #DCDCCC; font-weight: bold;">:ensure</span> t<span style="color: #DCDCCC;">)</span>
 </pre>
 </div>
 </div></li>
 
-<li><a id="orgec0f0c6"></a>tea-time<br /><div class="outline-text-7" id="text-1-4-2-2-1-4">
+<li><a id="orgba2a362"></a>tea-time<br /><div class="outline-text-7" id="text-1-4-2-2-1-4">
 <p>
 With <code>tea-time</code> I never forget about the tea.  Using  <a href="http://movie-sounds.org/action-movie-sound-clips/the-italian-job-1969/have-a-cup-of-tea-ready">this soundbite</a>
 from my favorite movie "The Italian Job".
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF; font-weight: bold;">tea-time</span>
+<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF;">tea-time</span>
   <span style="color: #DCDCCC; font-weight: bold;">:ensure</span> t
   <span style="color: #DCDCCC; font-weight: bold;">:config</span>
   <span style="color: #BFEBBF;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq</span> tea-time-sound <span style="color: #CC9393;">"~/.sounds/tea.ogg"</span><span style="color: #BFEBBF;">)</span>
@@ -783,19 +783,19 @@ from my favorite movie "The Italian Job".
 </div>
 </div></li>
 
-<li><a id="org83223bb"></a>2048<br /><div class="outline-text-7" id="text-1-4-2-2-1-5">
+<li><a id="org5ed0abb"></a>2048<br /><div class="outline-text-7" id="text-1-4-2-2-1-5">
 <p>
 <a href="https://bitbucket.org/zck/2048.el">https://bitbucket.org/zck/2048.el</a>
 </p>
 </div></li>
 
-<li><a id="orgc118528"></a>buffer-move<br /><div class="outline-text-7" id="text-1-4-2-2-1-6">
+<li><a id="org94dffaf"></a>buffer-move<br /><div class="outline-text-7" id="text-1-4-2-2-1-6">
 <p>
 <a href="https://github.com/lukhas/buffer-move">https://github.com/lukhas/buffer-move</a>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF; font-weight: bold;">buffer-move</span>
+<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF;">buffer-move</span>
   <span style="color: #DCDCCC; font-weight: bold;">:ensure</span> t
   <span style="color: #DCDCCC; font-weight: bold;">:config</span>
   <span style="color: #BFEBBF;">(</span>global-set-key <span style="color: #D0BF8F;">(</span>kbd <span style="color: #CC9393;">"&lt;S-s-up&gt;"</span><span style="color: #D0BF8F;">)</span>     'buf-move-up<span style="color: #BFEBBF;">)</span>
@@ -807,9 +807,9 @@ from my favorite movie "The Italian Job".
 </div>
 </div></li>
 
-<li><a id="org3f20c5a"></a>smex<br /><div class="outline-text-7" id="text-1-4-2-2-1-7">
+<li><a id="orge6ec9c2"></a>smex<br /><div class="outline-text-7" id="text-1-4-2-2-1-7">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF; font-weight: bold;">smex</span>
+<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF;">smex</span>
   <span style="color: #DCDCCC; font-weight: bold;">:ensure</span> t
   <span style="color: #DCDCCC; font-weight: bold;">:config</span>
   <span style="color: #BFEBBF;">(</span>smex-initialize<span style="color: #BFEBBF;">)</span>
@@ -819,13 +819,13 @@ from my favorite movie "The Italian Job".
 </div>
 </div></li>
 
-<li><a id="org2c852b2"></a>rainbow-delimiters<br /><div class="outline-text-7" id="text-1-4-2-2-1-8">
+<li><a id="org581d570"></a>rainbow-delimiters<br /><div class="outline-text-7" id="text-1-4-2-2-1-8">
 <p>
 <a href="https://www.emacswiki.org/emacs/RainbowDelimiters">https://www.emacswiki.org/emacs/RainbowDelimiters</a>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF; font-weight: bold;">rainbow-delimiters</span>
+<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF;">rainbow-delimiters</span>
   <span style="color: #DCDCCC; font-weight: bold;">:ensure</span> t
   <span style="color: #DCDCCC; font-weight: bold;">:config</span>
   <span style="color: #BFEBBF;">(</span>add-hook 'prog-mode-hook #'rainbow-delimiters-mode<span style="color: #BFEBBF;">)</span>
@@ -834,43 +834,43 @@ from my favorite movie "The Italian Job".
 </div>
 </div></li>
 
-<li><a id="org95951df"></a>htmlize<br /><div class="outline-text-7" id="text-1-4-2-2-1-9">
+<li><a id="org86cedcf"></a>htmlize<br /><div class="outline-text-7" id="text-1-4-2-2-1-9">
 <p>
 <a href="http://www.emacswiki.org/emacs/Htmlize">http://www.emacswiki.org/emacs/Htmlize</a>
 </p>
 </div></li>
 
-<li><a id="org9ded45f"></a><span class="todo __TODO">☛ TODO</span> iedit<br /><div class="outline-text-7" id="text-1-4-2-2-1-10">
+<li><a id="orge5479b3"></a><span class="todo __TODO">☛ TODO</span> iedit<br /><div class="outline-text-7" id="text-1-4-2-2-1-10">
 <p>
 Simultaneously edit multiple regions in buffer.
 <a href="http://www.emacswiki.org/emacs/Iedit">http://www.emacswiki.org/emacs/Iedit</a>
 </p>
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF; font-weight: bold;">iedit</span>
+<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF;">iedit</span>
   <span style="color: #DCDCCC; font-weight: bold;">:ensure</span> t<span style="color: #DCDCCC;">)</span>
 </pre>
 </div>
 </div></li>
-<li><a id="orgb883139"></a>writeroom-mode<br /><div class="outline-text-7" id="text-1-4-2-2-1-11">
+<li><a id="org787fc4f"></a>writeroom-mode<br /><div class="outline-text-7" id="text-1-4-2-2-1-11">
 <p>
 Distraction free writing.
 <a href="https://github.com/joostkremers/writeroom-mode">https://github.com/joostkremers/writeroom-mode</a>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF; font-weight: bold;">writeroom-mode</span>
+<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF;">writeroom-mode</span>
   <span style="color: #DCDCCC; font-weight: bold;">:ensure</span> t<span style="color: #DCDCCC;">)</span>
 </pre>
 </div>
 </div></li>
 
-<li><a id="org7246689"></a>auto-complete<br /><div class="outline-text-7" id="text-1-4-2-2-1-12">
+<li><a id="orgde5249f"></a>auto-complete<br /><div class="outline-text-7" id="text-1-4-2-2-1-12">
 <p>
 <a href="http://auto-complete.org/">http://auto-complete.org/</a>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF; font-weight: bold;">auto-complete</span>
+<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF;">auto-complete</span>
   <span style="color: #DCDCCC; font-weight: bold;">:ensure</span> t
   <span style="color: #DCDCCC; font-weight: bold;">:config</span>
   <span style="color: #BFEBBF;">(</span>global-auto-complete-mode t<span style="color: #BFEBBF;">)</span> 
@@ -882,20 +882,20 @@ Distraction free writing.
 </div>
 </div></li>
 
-<li><a id="orge246967"></a><span class="todo __TODO">☛ TODO</span> ebib<br /><div class="outline-text-7" id="text-1-4-2-2-1-13">
+<li><a id="org4417763"></a><span class="todo __TODO">☛ TODO</span> ebib<br /><div class="outline-text-7" id="text-1-4-2-2-1-13">
 <p>
 Browse / edit BibTeX bibliographies in emacs.
 <a href="http://ebib.sourceforge.net/">http://ebib.sourceforge.net/</a>
 </p>
 </div></li>
 
-<li><a id="org23b82c5"></a>markdown-mode<br /><div class="outline-text-7" id="text-1-4-2-2-1-14">
+<li><a id="orgf6305f0"></a>markdown-mode<br /><div class="outline-text-7" id="text-1-4-2-2-1-14">
 <p>
 <a href="http://jblevins.org/projects/markdown-mode/">http://jblevins.org/projects/markdown-mode/</a>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF; font-weight: bold;">markdown-mode</span>
+<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF;">markdown-mode</span>
   <span style="color: #DCDCCC; font-weight: bold;">:ensure</span> t
   <span style="color: #DCDCCC; font-weight: bold;">:init</span> <span style="color: #BFEBBF;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq</span> auto-mode-alist
               <span style="color: #D0BF8F;">(</span>cons '<span style="color: #93E0E3;">(</span><span style="color: #CC9393;">"\\.mdml$"</span> . markdown-mode<span style="color: #93E0E3;">)</span> auto-mode-alist<span style="color: #D0BF8F;">)</span><span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
@@ -903,35 +903,35 @@ Browse / edit BibTeX bibliographies in emacs.
 </div>
 </div>
 
-<ol class="org-ol"><li><a id="org1cbd87c"></a>markdown-toc<br /><div class="outline-text-8" id="text-1-4-2-2-1-14-1">
+<ol class="org-ol"><li><a id="org2e282e4"></a>markdown-toc<br /><div class="outline-text-8" id="text-1-4-2-2-1-14-1">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF; font-weight: bold;">markdown-toc</span>
+<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF;">markdown-toc</span>
   <span style="color: #DCDCCC; font-weight: bold;">:ensure</span> t<span style="color: #DCDCCC;">)</span>
 </pre>
 </div>
 </div></li></ol></li>
 
-<li><a id="org81ab41b"></a>jedi<br /><div class="outline-text-7" id="text-1-4-2-2-1-15">
+<li><a id="orgca744e0"></a>jedi<br /><div class="outline-text-7" id="text-1-4-2-2-1-15">
 <p>
 <a href="https://tkf.github.io/emacs-jedi/latest/">https://tkf.github.io/emacs-jedi/latest/</a>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF; font-weight: bold;">jedi</span>
+<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF;">jedi</span>
   <span style="color: #DCDCCC; font-weight: bold;">:ensure</span> t
   <span style="color: #DCDCCC;">)</span>
 </pre>
 </div>
 </div></li>
 
-<li><a id="org7286e94"></a>org-bullets<br /><div class="outline-text-7" id="text-1-4-2-2-1-16">
+<li><a id="orga1373fd"></a>org-bullets<br /><div class="outline-text-7" id="text-1-4-2-2-1-16">
 <p>
 The following gold is from
 <a href="https://thraxys.wordpress.com/2016/01/14/pimp-up-your-org-agenda/">https://thraxys.wordpress.com/2016/01/14/pimp-up-your-org-agenda/</a>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF; font-weight: bold;">org-bullets</span>
+<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF;">org-bullets</span>
   <span style="color: #DCDCCC; font-weight: bold;">:ensure</span> t
   <span style="color: #DCDCCC; font-weight: bold;">:init</span>
   <span style="color: #BFEBBF;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq</span> org-bullets-bullet-list
@@ -946,7 +946,7 @@ The following gold is from
 </div>
 </div></li>
 
-<li><a id="org984d459"></a>pager<br /><div class="outline-text-7" id="text-1-4-2-2-1-17">
+<li><a id="orgd1fb1f2"></a>pager<br /><div class="outline-text-7" id="text-1-4-2-2-1-17">
 <p>
 <a href="https://github.com/emacsorphanage/pager">https://github.com/emacsorphanage/pager</a>
 and for the default keybindings
@@ -955,27 +955,27 @@ and for the default keybindings
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF; font-weight: bold;">pager</span>
+<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF;">pager</span>
   <span style="color: #DCDCCC; font-weight: bold;">:ensure</span> t<span style="color: #DCDCCC;">)</span>
-<span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF; font-weight: bold;">pager-default-keybindings</span>
+<span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF;">pager-default-keybindings</span>
   <span style="color: #DCDCCC; font-weight: bold;">:ensure</span> t<span style="color: #DCDCCC;">)</span>
 </pre>
 </div>
 </div></li>
 
-<li><a id="orge4612df"></a>uptimes<br /><div class="outline-text-7" id="text-1-4-2-2-1-18">
+<li><a id="orge28bd2b"></a>uptimes<br /><div class="outline-text-7" id="text-1-4-2-2-1-18">
 <p>
 <a href="https://github.com/davep/uptimes.el">https://github.com/davep/uptimes.el</a>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF; font-weight: bold;">uptimes</span>
+<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF;">uptimes</span>
   <span style="color: #DCDCCC; font-weight: bold;">:ensure</span> t<span style="color: #DCDCCC;">)</span>
 </pre>
 </div>
 </div></li>
 
-<li><a id="orgc644098"></a>dired-quicksort<br /><div class="outline-text-7" id="text-1-4-2-2-1-19">
+<li><a id="orge0fe5ce"></a>dired-quicksort<br /><div class="outline-text-7" id="text-1-4-2-2-1-19">
 <p>
 Quick and easy sorting in dired - just press "S".
 </p>
@@ -985,7 +985,7 @@ Quick and easy sorting in dired - just press "S".
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF; font-weight: bold;">dired-quick-sort</span>
+<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF;">dired-quick-sort</span>
   <span style="color: #DCDCCC; font-weight: bold;">:ensure</span> t
   <span style="color: #DCDCCC; font-weight: bold;">:init</span>
   <span style="color: #BFEBBF;">(</span>dired-quick-sort-setup<span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
@@ -999,7 +999,7 @@ With this configuration <code>S</code> is bound to invoke the <code>dired-quick-
 
 
 
-<li><a id="org1f31e28"></a>Appearance<br /><ol class="org-ol"><li><a id="org3bbb0e0"></a>zenburn colour theme<br /><div class="outline-text-7" id="text-1-4-2-2-2-1">
+<li><a id="org54d74af"></a>Appearance<br /><ol class="org-ol"><li><a id="orga5a1ef5"></a>zenburn colour theme<br /><div class="outline-text-7" id="text-1-4-2-2-2-1">
 <p>
 <a href="https://github.com/bbatsov/zenburn-emacs">https://github.com/bbatsov/zenburn-emacs</a>
 </p>
@@ -1009,12 +1009,12 @@ Load zenburn colour theme when starting emacs.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">if</span> <span style="color: #BFEBBF;">(</span>string=<span style="color: #D0BF8F;">(</span>system-name<span style="color: #D0BF8F;">)</span> <span style="color: #CC9393;">"knuspertop"</span><span style="color: #BFEBBF;">)</span>
-    <span style="color: #BFEBBF;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF; font-weight: bold;">zenburn-theme</span>
+<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">if</span> <span style="color: #BFEBBF;">(</span>string=<span style="color: #D0BF8F;">(</span>system-name<span style="color: #D0BF8F;">)</span> <span style="color: #CC9393;">"knuspertopg"</span><span style="color: #BFEBBF;">)</span>
+    <span style="color: #BFEBBF;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF;">zenburn-theme</span>
       <span style="color: #DCDCCC; font-weight: bold;">:ensure</span> t
       <span style="color: #DCDCCC; font-weight: bold;">:config</span>
       <span style="color: #D0BF8F;">(</span>load-theme 'zenburn<span style="color: #D0BF8F;">)</span><span style="color: #BFEBBF;">)</span>
-  <span style="color: #BFEBBF;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF; font-weight: bold;">plan9-theme</span>
+  <span style="color: #BFEBBF;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF;">plan9-theme</span>
     <span style="color: #DCDCCC; font-weight: bold;">:ensure</span> t
     <span style="color: #DCDCCC; font-weight: bold;">:config</span>
     <span style="color: #D0BF8F;">(</span>load-theme 'plan9<span style="color: #D0BF8F;">)</span><span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
@@ -1022,13 +1022,13 @@ Load zenburn colour theme when starting emacs.
 </div>
 </div></li>
 
-<li><a id="org8dcf7ec"></a>powerline<br /><div class="outline-text-7" id="text-1-4-2-2-2-2">
+<li><a id="org20dc7b6"></a>powerline<br /><div class="outline-text-7" id="text-1-4-2-2-2-2">
 <p>
 <a href="https://github.com/milkypostman/powerline">https://github.com/milkypostman/powerline</a>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF; font-weight: bold;">powerline</span>
+<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF;">powerline</span>
   <span style="color: #DCDCCC; font-weight: bold;">:ensure</span> t
   <span style="color: #DCDCCC; font-weight: bold;">:config</span>
   <span style="color: #BFEBBF;">(</span>powerline-default-theme<span style="color: #BFEBBF;">)</span>
@@ -1037,15 +1037,20 @@ Load zenburn colour theme when starting emacs.
 </div>
 </div></li>
 
-<li><a id="orgfb20d4f"></a>beacon<br /><div class="outline-text-7" id="text-1-4-2-2-2-3">
+<li><a id="orgcb42709"></a>beacon<br /><div class="outline-text-7" id="text-1-4-2-2-2-3">
+<p>
+<a href="https://github.com/Malabarba/beacon">https://github.com/Malabarba/beacon</a>
+</p>
+
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF; font-weight: bold;">beacon</span>
+<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF;">beacon</span>
   <span style="color: #DCDCCC; font-weight: bold;">:ensure</span> t
   <span style="color: #DCDCCC; font-weight: bold;">:config</span>
   <span style="color: #BFEBBF;">(</span>beacon-mode 1<span style="color: #BFEBBF;">)</span>
   <span style="color: #BFEBBF;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq</span> beacon-dont-blink-commands nil<span style="color: #BFEBBF;">)</span> <span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">always blink</span>
   <span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">(setq beacon-lighter '"&#923;") - </span>
   <span style="color: #BFEBBF;">(</span>add-to-list 'beacon-dont-blink-major-modes 'Man-mode<span style="color: #BFEBBF;">)</span>
+  <span style="color: #BFEBBF;">(</span>add-to-list 'beacon-dont-blink-major-modes 'shell-mode<span style="color: #BFEBBF;">)</span>
   <span style="color: #DCDCCC; font-weight: bold;">:diminish</span> beacon-mode
   <span style="color: #DCDCCC;">)</span>
 </pre>
@@ -1053,13 +1058,13 @@ Load zenburn colour theme when starting emacs.
 </div></li></ol></li>
 
 
-<li><a id="org7ce5364"></a>Email<br /><ol class="org-ol"><li><a id="org227c364"></a>muttrc-mode<br /><div class="outline-text-7" id="text-1-4-2-2-3-1">
+<li><a id="orgac65763"></a>Email<br /><ol class="org-ol"><li><a id="org214fc3d"></a>muttrc-mode<br /><div class="outline-text-7" id="text-1-4-2-2-3-1">
 <p>
 Syntax highlighting in <a href="http://linux.die.net/man/5/muttrc">muttrc file</a>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF; font-weight: bold;">muttrc-mode</span>
+<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF;">muttrc-mode</span>
   <span style="color: #DCDCCC; font-weight: bold;">:ensure</span> t
   <span style="color: #DCDCCC; font-weight: bold;">:config</span>
    <span style="color: #BFEBBF;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq</span> auto-mode-alist
@@ -1069,49 +1074,49 @@ Syntax highlighting in <a href="http://linux.die.net/man/5/muttrc">muttrc file</
 </div>
 </div></li>
 
-<li><a id="orgc4eb568"></a>offlineimap<br /><div class="outline-text-7" id="text-1-4-2-2-3-2">
+<li><a id="orgafbd36e"></a>offlineimap<br /><div class="outline-text-7" id="text-1-4-2-2-3-2">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF; font-weight: bold;">offlineimap</span>
+<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF;">offlineimap</span>
   <span style="color: #DCDCCC; font-weight: bold;">:ensure</span> t
   <span style="color: #DCDCCC;">)</span>
 </pre>
 </div>
 </div></li></ol></li>
 
-<li><a id="org9ccfe55"></a>Fun<br /><ol class="org-ol"><li><a id="orgbbe9f6e"></a>xkcd<br /><div class="outline-text-7" id="text-1-4-2-2-4-1">
+<li><a id="orgf289c37"></a>Fun<br /><ol class="org-ol"><li><a id="orgd706800"></a>xkcd<br /><div class="outline-text-7" id="text-1-4-2-2-4-1">
 <p>
 <a href="https://github.com/vibhavp/emacs-xkcd">https://github.com/vibhavp/emacs-xkcd</a>
 <a href="http://xkcd.com/">xkcd</a> reader for Emacs. Nerd on!
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF; font-weight: bold;">xkcd</span>
+<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF;">xkcd</span>
   <span style="color: #DCDCCC; font-weight: bold;">:ensure</span> t<span style="color: #DCDCCC;">)</span>
 </pre>
 </div>
 </div></li>
 
-<li><a id="org16e0eca"></a>fireplace<br /><div class="outline-text-7" id="text-1-4-2-2-4-2">
+<li><a id="org5dd322f"></a>fireplace<br /><div class="outline-text-7" id="text-1-4-2-2-4-2">
 <p>
 It can get cold in winter. <code>M-x fireplace</code>
 <a href="https://github.com/johanvts/emacs-fireplace">https://github.com/johanvts/emacs-fireplace</a>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF; font-weight: bold;">fireplace</span>
+<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF;">fireplace</span>
   <span style="color: #DCDCCC; font-weight: bold;">:ensure</span> t<span style="color: #DCDCCC;">)</span>
 </pre>
 </div>
 </div></li>
 
-<li><a id="org8d9819a"></a>tea-time<br /><div class="outline-text-7" id="text-1-4-2-2-4-3">
+<li><a id="orge182d24"></a>tea-time<br /><div class="outline-text-7" id="text-1-4-2-2-4-3">
 <p>
 With <code>tea-time</code> I never forget about the tea.  Using  <a href="http://movie-sounds.org/action-movie-sound-clips/the-italian-job-1969/have-a-cup-of-tea-ready">this soundbite</a>
 from my favorite movie "The Italian Job".
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF; font-weight: bold;">tea-time</span>
+<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF;">tea-time</span>
   <span style="color: #DCDCCC; font-weight: bold;">:ensure</span> t
   <span style="color: #DCDCCC; font-weight: bold;">:config</span>
   <span style="color: #BFEBBF;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq</span> tea-time-sound <span style="color: #CC9393;">"~/.sounds/tea.ogg"</span><span style="color: #BFEBBF;">)</span>
@@ -1121,7 +1126,7 @@ from my favorite movie "The Italian Job".
 </div>
 </div></li>
 
-<li><a id="org35d938f"></a>2048<br /><div class="outline-text-7" id="text-1-4-2-2-4-4">
+<li><a id="org4473a48"></a>2048<br /><div class="outline-text-7" id="text-1-4-2-2-4-4">
 <p>
 <a href="https://bitbucket.org/zck/2048.el">https://bitbucket.org/zck/2048.el</a>
 </p>
@@ -1130,17 +1135,17 @@ from my favorite movie "The Italian Job".
 </div>
 
 
-<div id="outline-container-org864c766" class="outline-4">
-<h4 id="org864c766"><span class="section-number-4">1.4.3</span> Packages not in ELPA or MELPA</h4>
+<div id="outline-container-org95c3504" class="outline-4">
+<h4 id="org95c3504"><span class="section-number-4">1.4.3</span> Packages not in ELPA or MELPA</h4>
 <div class="outline-text-4" id="text-1-4-3">
 <p>
 These packages are in <code>~/emacs-scripts/</code> as specfied in the
-load-path in <a href="#orgc2b057d">1.1</a>.
+load-path in <a href="#org0647b5b">1.1</a>.
 </p>
 </div>
 
-<div id="outline-container-orge002a9c" class="outline-5">
-<h5 id="orge002a9c"><span class="section-number-5">1.4.3.1</span> post-mode for mutt</h5>
+<div id="outline-container-org99e792d" class="outline-5">
+<h5 id="org99e792d"><span class="section-number-5">1.4.3.1</span> post-mode for mutt</h5>
 <div class="outline-text-5" id="text-1-4-3-1">
 <p>
 <a href="http://post-mode.sourceforge.net/">http://post-mode.sourceforge.net/</a>
@@ -1152,7 +1157,7 @@ good idea!
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF; font-weight: bold;">post</span>
+<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF;">post</span>
   <span style="color: #DCDCCC; font-weight: bold;">:config</span>
   <span style="color: #BFEBBF;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq</span> post-signature-pattern <span style="color: #CC9393;">"</span><span style="color: #CC9393; font-weight: bold;">\\</span><span style="color: #CC9393; font-weight: bold;">(</span><span style="color: #CC9393;">--</span><span style="color: #CC9393; font-weight: bold;">\\</span><span style="color: #CC9393; font-weight: bold;">|</span><span style="color: #CC9393;">&#12;</span><span style="color: #CC9393; font-weight: bold;">\\</span><span style="color: #CC9393; font-weight: bold;">)</span><span style="color: #CC9393;">"</span><span style="color: #BFEBBF;">)</span>
   <span style="color: #DCDCCC;">)</span>
@@ -1161,22 +1166,22 @@ good idea!
 </div>
 </div>
 
-<div id="outline-container-org67c954b" class="outline-5">
-<h5 id="org67c954b"><span class="section-number-5">1.4.3.2</span> simple-wiki</h5>
+<div id="outline-container-orga8b893c" class="outline-5">
+<h5 id="orga8b893c"><span class="section-number-5">1.4.3.2</span> simple-wiki</h5>
 <div class="outline-text-5" id="text-1-4-3-2">
 <p>
 <a href="http://www.emacswiki.org/emacs/SimpleWikiMode">http://www.emacswiki.org/emacs/SimpleWikiMode</a>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF; font-weight: bold;">simple-wiki</span><span style="color: #DCDCCC;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF;">simple-wiki</span><span style="color: #DCDCCC;">)</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgef0bb68" class="outline-5">
-<h5 id="orgef0bb68"><span class="section-number-5">1.4.3.3</span> wikidot mode</h5>
+<div id="outline-container-orge8e1730" class="outline-5">
+<h5 id="orge8e1730"><span class="section-number-5">1.4.3.3</span> wikidot mode</h5>
 <div class="outline-text-5" id="text-1-4-3-3">
 <p>
 An Emacs mode for editing Wikidot markup 
@@ -1187,24 +1192,24 @@ An Emacs mode for editing Wikidot markup
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF; font-weight: bold;">wikidot-mode</span><span style="color: #DCDCCC;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF;">wikidot-mode</span><span style="color: #DCDCCC;">)</span>
 </pre>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-org194a638" class="outline-4">
-<h4 id="org194a638"><span class="section-number-4">1.4.4</span> Part of emacs</h4>
+<div id="outline-container-org64dec61" class="outline-4">
+<h4 id="org64dec61"><span class="section-number-4">1.4.4</span> Part of emacs</h4>
 <div class="outline-text-4" id="text-1-4-4">
-</div><div id="outline-container-org52557a4" class="outline-5">
-<h5 id="org52557a4"><span class="section-number-5">1.4.4.1</span> printing</h5>
+</div><div id="outline-container-org514ced0" class="outline-5">
+<h5 id="org514ced0"><span class="section-number-5">1.4.4.1</span> printing</h5>
 <div class="outline-text-5" id="text-1-4-4-1">
 <p>
 <a href="http://www.emacswiki.org/emacs/PrintingPackage">http://www.emacswiki.org/emacs/PrintingPackage</a>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF; font-weight: bold;">printing</span>
+<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF;">printing</span>
   <span style="color: #DCDCCC; font-weight: bold;">:config</span>
   <span style="color: #BFEBBF;">(</span>pr-update-menus t<span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
 </pre>
@@ -1212,8 +1217,8 @@ An Emacs mode for editing Wikidot markup
 </div>
 </div>
 
-<div id="outline-container-orgcb5f2a9" class="outline-5">
-<h5 id="orgcb5f2a9"><span class="section-number-5">1.4.4.2</span> uniquify</h5>
+<div id="outline-container-org796e3ef" class="outline-5">
+<h5 id="org796e3ef"><span class="section-number-5">1.4.4.2</span> uniquify</h5>
 <div class="outline-text-5" id="text-1-4-4-2">
 <p>
 Uniquify buffer names. 
@@ -1221,14 +1226,14 @@ See e.g. <a href="http://trey-jackson.blogspot.cl/2008/01/emacs-tip-11-uniquify.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">require</span> '<span style="color: #BFEBBF; font-weight: bold;">uniquify</span><span style="color: #DCDCCC;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">require</span> '<span style="color: #BFEBBF;">uniquify</span><span style="color: #DCDCCC;">)</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org60f2327" class="outline-5">
-<h5 id="org60f2327"><span class="section-number-5">1.4.4.3</span> Midnight Mode (disabled)</h5>
+<div id="outline-container-org787b5c2" class="outline-5">
+<h5 id="org787b5c2"><span class="section-number-5">1.4.4.3</span> Midnight Mode (disabled)</h5>
 <div class="outline-text-5" id="text-1-4-4-3">
 <p>
 <a href="http://www.emacswiki.org/emacs/MidnightMode">http://www.emacswiki.org/emacs/MidnightMode</a>
@@ -1239,7 +1244,7 @@ Bury unused buffers after some time (4:30 in the morning).
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF; font-weight: bold;">midnight</span>
+<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF;">midnight</span>
   <span style="color: #DCDCCC; font-weight: bold;">:config</span>
   <span style="color: #BFEBBF;">(</span>midnight-delay-set 'midnight-delay <span style="color: #CC9393;">"4:30am"</span><span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
 </pre>
@@ -1247,8 +1252,8 @@ Bury unused buffers after some time (4:30 in the morning).
 </div>
 </div>
 
-<div id="outline-container-org7bd8d67" class="outline-5">
-<h5 id="org7bd8d67"><span class="section-number-5">1.4.4.4</span> Abbrev-mode</h5>
+<div id="outline-container-orgbeed63a" class="outline-5">
+<h5 id="orgbeed63a"><span class="section-number-5">1.4.4.4</span> Abbrev-mode</h5>
 <div class="outline-text-5" id="text-1-4-4-4">
 <p>
 <a href="http://www.emacswiki.org/emacs/AbbrevMode">http://www.emacswiki.org/emacs/AbbrevMode</a>
@@ -1263,14 +1268,14 @@ Bury unused buffers after some time (4:30 in the morning).
 <span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq</span> save-abbrevs t<span style="color: #DCDCCC;">)</span>  
 <span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">in org-mode, we want expansions with trailing or leading slashes -</span>
 <span style="color: #5F7F5F;">;; </span><span style="color: #7F9F7F;">this might need some modification</span>
-<span style="color: #DCDCCC;">(</span>abbrev-table-put org-mode-abbrev-table <span style="color: #DCDCCC; font-weight: bold;">:regexp</span> <span style="color: #CC9393;">"</span><span style="color: #CC9393; font-weight: bold;">\\</span><span style="color: #CC9393; font-weight: bold;">(</span><span style="color: #CC9393;">\\\\[</span><span style="color: #CC9393; font-weight: bold;">a-z0-9@</span><span style="color: #CC9393;">]+</span><span style="color: #CC9393; font-weight: bold;">\\</span><span style="color: #CC9393; font-weight: bold;">)</span><span style="color: #CC9393;">"</span><span style="color: #DCDCCC;">)</span>
+<span style="color: #DCDCCC;">(</span>abbrev-table-put org-mode-abbrev-table <span style="color: #DCDCCC; font-weight: bold;">:regexp</span> <span style="color: #CC9393;">"</span><span style="color: #CC9393; font-weight: bold;">\\</span><span style="color: #CC9393; font-weight: bold;">(</span><span style="color: #CC9393;">\\\\[</span><span style="color: #CC9393;">a-z0-9@</span><span style="color: #CC9393;">]+</span><span style="color: #CC9393; font-weight: bold;">\\</span><span style="color: #CC9393; font-weight: bold;">)</span><span style="color: #CC9393;">"</span><span style="color: #DCDCCC;">)</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org12ded96" class="outline-5">
-<h5 id="org12ded96"><span class="section-number-5">1.4.4.5</span> ido-mode</h5>
+<div id="outline-container-orgf83ff91" class="outline-5">
+<h5 id="orgf83ff91"><span class="section-number-5">1.4.4.5</span> ido-mode</h5>
 <div class="outline-text-5" id="text-1-4-4-5">
 <p>
 <a href="http://www.emacswiki.org/emacs/InteractivelyDoThings">http://www.emacswiki.org/emacs/InteractivelyDoThings</a>
@@ -1278,7 +1283,7 @@ Part of Emacs
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF; font-weight: bold;">ido</span>
+<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF;">ido</span>
   <span style="color: #DCDCCC; font-weight: bold;">:config</span>
   <span style="color: #BFEBBF;">(</span>ido-mode t<span style="color: #BFEBBF;">)</span>
   <span style="color: #BFEBBF;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq</span> ido-enable-flex-matching t<span style="color: #BFEBBF;">)</span>
@@ -1294,11 +1299,11 @@ Part of Emacs
 </div>
 
 
-<div id="outline-container-org293e2a6" class="outline-3">
-<h3 id="org293e2a6"><span class="section-number-3">1.5</span> User Interface</h3>
+<div id="outline-container-org96c280c" class="outline-3">
+<h3 id="org96c280c"><span class="section-number-3">1.5</span> User Interface</h3>
 <div class="outline-text-3" id="text-1-5">
-</div><div id="outline-container-org09472c7" class="outline-4">
-<h4 id="org09472c7"><span class="section-number-4">1.5.1</span> Window Configuration</h4>
+</div><div id="outline-container-orgd3bd9a8" class="outline-4">
+<h4 id="orgd3bd9a8"><span class="section-number-4">1.5.1</span> Window Configuration</h4>
 <div class="outline-text-4" id="text-1-5-1">
 <ul class="org-ul">
 <li>no tooltips</li>
@@ -1318,11 +1323,11 @@ Part of Emacs
 </div>
 </div>
 
-<div id="outline-container-orgcd05322" class="outline-4">
-<h4 id="orgcd05322"><span class="section-number-4">1.5.2</span> Various settings</h4>
+<div id="outline-container-orga6b27db" class="outline-4">
+<h4 id="orga6b27db"><span class="section-number-4">1.5.2</span> Various settings</h4>
 <div class="outline-text-4" id="text-1-5-2">
-</div><div id="outline-container-orge6e712a" class="outline-5">
-<h5 id="orge6e712a"><span class="section-number-5">1.5.2.1</span> move around between windows using C-S-Arrow keys (wind-move)</h5>
+</div><div id="outline-container-org6171adf" class="outline-5">
+<h5 id="org6171adf"><span class="section-number-5">1.5.2.1</span> move around between windows using C-S-Arrow keys (wind-move)</h5>
 <div class="outline-text-5" id="text-1-5-2-1">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span>global-set-key <span style="color: #BFEBBF;">(</span>kbd <span style="color: #CC9393;">"&lt;C-S-up&gt;"</span><span style="color: #BFEBBF;">)</span>     'windmove-up<span style="color: #DCDCCC;">)</span>
@@ -1334,8 +1339,8 @@ Part of Emacs
 </div>
 </div>
 </div>
-<div id="outline-container-org1296e48" class="outline-5">
-<h5 id="org1296e48"><span class="section-number-5">1.5.2.2</span> disable &lt;menu&gt;-key</h5>
+<div id="outline-container-orgba4000a" class="outline-5">
+<h5 id="orgba4000a"><span class="section-number-5">1.5.2.2</span> disable &lt;menu&gt;-key</h5>
 <div class="outline-text-5" id="text-1-5-2-2">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span>global-set-key <span style="color: #BFEBBF;">(</span>kbd <span style="color: #CC9393;">"&lt;menu&gt;"</span><span style="color: #BFEBBF;">)</span> 'nil<span style="color: #DCDCCC;">)</span>
@@ -1344,8 +1349,8 @@ Part of Emacs
 </div>
 </div>
 
-<div id="outline-container-orgfef5c8d" class="outline-5">
-<h5 id="orgfef5c8d"><span class="section-number-5">1.5.2.3</span> disable blinking cursor</h5>
+<div id="outline-container-orgbc75635" class="outline-5">
+<h5 id="orgbc75635"><span class="section-number-5">1.5.2.3</span> disable blinking cursor</h5>
 <div class="outline-text-5" id="text-1-5-2-3">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span>blink-cursor-mode 0<span style="color: #DCDCCC;">)</span>
@@ -1354,8 +1359,8 @@ Part of Emacs
 </div>
 </div>
 
-<div id="outline-container-org277c3c3" class="outline-5">
-<h5 id="org277c3c3"><span class="section-number-5">1.5.2.4</span> disable Shift+Arrow to select text</h5>
+<div id="outline-container-org6816ae1" class="outline-5">
+<h5 id="org6816ae1"><span class="section-number-5">1.5.2.4</span> disable Shift+Arrow to select text</h5>
 <div class="outline-text-5" id="text-1-5-2-4">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq</span> shift-select-mode nil<span style="color: #DCDCCC;">)</span>
@@ -1364,8 +1369,8 @@ Part of Emacs
 </div>
 </div>
 
-<div id="outline-container-org6eee2e7" class="outline-5">
-<h5 id="org6eee2e7"><span class="section-number-5">1.5.2.5</span> middle-click pastes at point, not at mouse position</h5>
+<div id="outline-container-orgb5dc879" class="outline-5">
+<h5 id="orgb5dc879"><span class="section-number-5">1.5.2.5</span> middle-click pastes at point, not at mouse position</h5>
 <div class="outline-text-5" id="text-1-5-2-5">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq</span> mouse-yank-at-point t<span style="color: #DCDCCC;">)</span> 
@@ -1374,8 +1379,8 @@ Part of Emacs
 </div>
 </div>
 
-<div id="outline-container-orgf28318e" class="outline-5">
-<h5 id="orgf28318e"><span class="section-number-5">1.5.2.6</span> transient-mark-mode</h5>
+<div id="outline-container-org07bb71b" class="outline-5">
+<h5 id="org07bb71b"><span class="section-number-5">1.5.2.6</span> transient-mark-mode</h5>
 <div class="outline-text-5" id="text-1-5-2-6">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq</span> transient-mark-mode t<span style="color: #DCDCCC;">)</span>
@@ -1384,8 +1389,8 @@ Part of Emacs
 </div>
 </div>
 
-<div id="outline-container-org3535f2f" class="outline-5">
-<h5 id="org3535f2f"><span class="section-number-5">1.5.2.7</span> highlight matching parenthesis based on point</h5>
+<div id="outline-container-orgd9025a3" class="outline-5">
+<h5 id="orgd9025a3"><span class="section-number-5">1.5.2.7</span> highlight matching parenthesis based on point</h5>
 <div class="outline-text-5" id="text-1-5-2-7">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span>show-paren-mode t<span style="color: #DCDCCC;">)</span>
@@ -1394,8 +1399,8 @@ Part of Emacs
 </div>
 </div>
 
-<div id="outline-container-org4d1b457" class="outline-5">
-<h5 id="org4d1b457"><span class="section-number-5">1.5.2.8</span> recent files mode</h5>
+<div id="outline-container-orgc2ef090" class="outline-5">
+<h5 id="orgc2ef090"><span class="section-number-5">1.5.2.8</span> recent files mode</h5>
 <div class="outline-text-5" id="text-1-5-2-8">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span>recentf-mode 1<span style="color: #DCDCCC;">)</span>
@@ -1404,8 +1409,8 @@ Part of Emacs
 </div>
 </div>
 
-<div id="outline-container-org32d94f7" class="outline-5">
-<h5 id="org32d94f7"><span class="section-number-5">1.5.2.9</span> Bind hippie-expand to M-&lt;SPC&gt; - Peace!</h5>
+<div id="outline-container-org724bcfa" class="outline-5">
+<h5 id="org724bcfa"><span class="section-number-5">1.5.2.9</span> Bind hippie-expand to M-&lt;SPC&gt; - Peace!</h5>
 <div class="outline-text-5" id="text-1-5-2-9">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span>global-set-key <span style="color: #CC9393;">"\M- "</span> 'hippie-expand<span style="color: #DCDCCC;">)</span>
@@ -1414,8 +1419,8 @@ Part of Emacs
 </div>
 </div>
 
-<div id="outline-container-org6ee1b5f" class="outline-5">
-<h5 id="org6ee1b5f"><span class="section-number-5">1.5.2.10</span> never truncate the lines in my buffer [DISABLED]</h5>
+<div id="outline-container-org47b1d55" class="outline-5">
+<h5 id="org47b1d55"><span class="section-number-5">1.5.2.10</span> never truncate the lines in my buffer [DISABLED]</h5>
 <div class="outline-text-5" id="text-1-5-2-10">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq</span> truncate-lines t<span style="color: #DCDCCC;">)</span>
@@ -1424,8 +1429,8 @@ Part of Emacs
 </div>
 </div>
 
-<div id="outline-container-org02e163b" class="outline-5">
-<h5 id="org02e163b"><span class="section-number-5">1.5.2.11</span> always truncate lines, but never the mini-buffer</h5>
+<div id="outline-container-org7ff0180" class="outline-5">
+<h5 id="org7ff0180"><span class="section-number-5">1.5.2.11</span> always truncate lines, but never the mini-buffer</h5>
 <div class="outline-text-5" id="text-1-5-2-11">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq</span> truncate-lines t<span style="color: #DCDCCC;">)</span>
@@ -1436,8 +1441,8 @@ Part of Emacs
 </div>
 </div>
 
-<div id="outline-container-org3383d0b" class="outline-5">
-<h5 id="org3383d0b"><span class="section-number-5">1.5.2.12</span> Emacs close confirmation</h5>
+<div id="outline-container-org2ef0789" class="outline-5">
+<h5 id="org2ef0789"><span class="section-number-5">1.5.2.12</span> Emacs close confirmation</h5>
 <div class="outline-text-5" id="text-1-5-2-12">
 <p>
 (do not accidentally close emacs)
@@ -1452,8 +1457,8 @@ Part of Emacs
 </div>
 </div>
 
-<div id="outline-container-org0a7a1fe" class="outline-5">
-<h5 id="org0a7a1fe"><span class="section-number-5">1.5.2.13</span> enable disabled command - upcase region</h5>
+<div id="outline-container-org60df120" class="outline-5">
+<h5 id="org60df120"><span class="section-number-5">1.5.2.13</span> enable disabled command - upcase region</h5>
 <div class="outline-text-5" id="text-1-5-2-13">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span>put 'upcase-region 'disabled nil<span style="color: #DCDCCC;">)</span>
@@ -1462,8 +1467,8 @@ Part of Emacs
 </div>
 </div>
 
-<div id="outline-container-orgec2d3dc" class="outline-5">
-<h5 id="orgec2d3dc"><span class="section-number-5">1.5.2.14</span> desktop-save-mode</h5>
+<div id="outline-container-orgeeac34a" class="outline-5">
+<h5 id="orgeeac34a"><span class="section-number-5">1.5.2.14</span> desktop-save-mode</h5>
 <div class="outline-text-5" id="text-1-5-2-14">
 <p>
 (see Sect. 42 "Saving Emacs Sessions" in Emacs
@@ -1479,16 +1484,16 @@ User Manual)
 </div>
 </div>
 
-<div id="outline-container-orge370772" class="outline-5">
-<h5 id="orge370772"><span class="section-number-5">1.5.2.15</span> user ibuffer insted of list-buffers</h5>
+<div id="outline-container-org61f9313" class="outline-5">
+<h5 id="org61f9313"><span class="section-number-5">1.5.2.15</span> user ibuffer insted of list-buffers</h5>
 <div class="outline-text-5" id="text-1-5-2-15">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">defalias</span> '<span style="color: #93E0E3; font-weight: bold;">list-buffers</span> 'ibuffer<span style="color: #DCDCCC;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">defalias</span> '<span style="color: #93E0E3;">list-buffers</span> 'ibuffer<span style="color: #DCDCCC;">)</span>
 </pre>
 </div>
 </div>
 
-<ol class="org-ol"><li><a id="orgf4bc6bd"></a>adjust ibuffer column widths<br /><div class="outline-text-6" id="text-1-5-2-15-1">
+<ol class="org-ol"><li><a id="org7faa73f"></a>adjust ibuffer column widths<br /><div class="outline-text-6" id="text-1-5-2-15-1">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq</span> ibuffer-formats
       '<span style="color: #BFEBBF;">(</span><span style="color: #D0BF8F;">(</span>mark modified read-only <span style="color: #CC9393;">" "</span>
@@ -1500,15 +1505,15 @@ User Manual)
 </div>
 </div></li></ol>
 </div>
-<div id="outline-container-org7bed602" class="outline-5">
-<h5 id="org7bed602"><span class="section-number-5">1.5.2.16</span> eshell-stuff</h5>
+<div id="outline-container-org14f2007" class="outline-5">
+<h5 id="org14f2007"><span class="section-number-5">1.5.2.16</span> eshell-stuff</h5>
 <div class="outline-text-5" id="text-1-5-2-16">
 <p>
 em-joc - not used anymore
 </p>
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"> <span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">require</span> '<span style="color: #BFEBBF; font-weight: bold;">em-joc</span><span style="color: #DCDCCC;">)</span>
-  <span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">defun</span> <span style="color: #93E0E3; font-weight: bold;">eshell/info</span> <span style="color: #BFEBBF;">(</span>subject<span style="color: #BFEBBF;">)</span>
+<pre class="src src-emacs-lisp"> <span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">require</span> '<span style="color: #BFEBBF;">em-joc</span><span style="color: #DCDCCC;">)</span>
+  <span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">defun</span> <span style="color: #93E0E3;">eshell/info</span> <span style="color: #BFEBBF;">(</span>subject<span style="color: #BFEBBF;">)</span>
     <span style="color: #9FC59F;">"Read the Info manual on SUBJECT."</span>
     <span style="color: #BFEBBF;">(</span><span style="color: #F0DFAF; font-weight: bold;">let</span> <span style="color: #D0BF8F;">(</span><span style="color: #93E0E3;">(</span>buf <span style="color: #9FC59F;">(</span>current-buffer<span style="color: #9FC59F;">)</span><span style="color: #93E0E3;">)</span><span style="color: #D0BF8F;">)</span>
       <span style="color: #D0BF8F;">(</span>Info-directory<span style="color: #D0BF8F;">)</span>
@@ -1526,13 +1531,13 @@ em-joc - not used anymore
 </div>
 </div>
 </div>
-<div id="outline-container-org2a11f8d" class="outline-4">
-<h4 id="org2a11f8d"><span class="section-number-4">1.5.3</span> Electric Pairs</h4>
+<div id="outline-container-orge1c0948" class="outline-4">
+<h4 id="orge1c0948"><span class="section-number-4">1.5.3</span> Electric Pairs</h4>
 <div class="outline-text-4" id="text-1-5-3">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span>electric-pair-mode 1<span style="color: #DCDCCC;">)</span>
 <span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">defvar</span> <span style="color: #DFAF8F;">markdown-electric-pairs</span> '<span style="color: #BFEBBF;">(</span><span style="color: #D0BF8F;">(</span>?* . ?*<span style="color: #D0BF8F;">)</span><span style="color: #BFEBBF;">)</span> <span style="color: #9FC59F;">"Electric pairs for markdown-mode."</span><span style="color: #DCDCCC;">)</span>
-<span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">defun</span> <span style="color: #93E0E3; font-weight: bold;">markdown-add-electric-pairs</span> <span style="color: #BFEBBF;">()</span>
+<span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">defun</span> <span style="color: #93E0E3;">markdown-add-electric-pairs</span> <span style="color: #BFEBBF;">()</span>
   <span style="color: #BFEBBF;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq-local</span> electric-pair-pairs <span style="color: #D0BF8F;">(</span>append electric-pair-pairs markdown-electric-pairs<span style="color: #D0BF8F;">)</span><span style="color: #BFEBBF;">)</span>
   <span style="color: #BFEBBF;">(</span><span style="color: #F0DFAF; font-weight: bold;">setq-local</span> electric-pair-text-pairs electric-pair-pairs<span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
 <span style="color: #DCDCCC;">(</span>add-hook 'markdown-mode-hook 'markdown-add-electric-pairs<span style="color: #DCDCCC;">)</span>
@@ -1541,8 +1546,8 @@ em-joc - not used anymore
 </div>
 </div>
 
-<div id="outline-container-org5a03885" class="outline-4">
-<h4 id="org5a03885"><span class="section-number-4">1.5.4</span> Move around between windows (wind-move)</h4>
+<div id="outline-container-orgb7ded8a" class="outline-4">
+<h4 id="orgb7ded8a"><span class="section-number-4">1.5.4</span> Move around between windows (wind-move)</h4>
 <div class="outline-text-4" id="text-1-5-4">
 <p>
 Move around between windows using C-S-Arrow keys (wind-move). Better
@@ -1561,11 +1566,11 @@ than pressing repeatedly C-x o. (Seems not to work in org-mode?)
 </div>
 
 
-<div id="outline-container-orgd5543a5" class="outline-3">
-<h3 id="orgd5543a5"><span class="section-number-3">1.6</span> Convenience functions not shipped in emacs</h3>
+<div id="outline-container-org3d98c3f" class="outline-3">
+<h3 id="org3d98c3f"><span class="section-number-3">1.6</span> Convenience functions not shipped in emacs</h3>
 <div class="outline-text-3" id="text-1-6">
-</div><div id="outline-container-org12f8ae6" class="outline-4">
-<h4 id="org12f8ae6"><span class="section-number-4">1.6.1</span> Timestamps</h4>
+</div><div id="outline-container-orga0c952f" class="outline-4">
+<h4 id="orga0c952f"><span class="section-number-4">1.6.1</span> Timestamps</h4>
 <div class="outline-text-4" id="text-1-6-1">
 <p>
 Command to insert timestamps into text - e.g.: 27.10.2015, 12:25
@@ -1573,7 +1578,7 @@ Inspired from <a href="http://emacswiki.org/emacs/InsertingTodaysDate">http://em
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">defun</span> <span style="color: #93E0E3; font-weight: bold;">timestamp</span> <span style="color: #BFEBBF;">()</span>
+<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">defun</span> <span style="color: #93E0E3;">timestamp</span> <span style="color: #BFEBBF;">()</span>
   <span style="color: #BFEBBF;">(</span><span style="color: #F0DFAF; font-weight: bold;">interactive</span><span style="color: #BFEBBF;">)</span>
   <span style="color: #BFEBBF;">(</span>insert <span style="color: #D0BF8F;">(</span>format-time-string <span style="color: #CC9393;">"%d.%m.%Y, %H:%M"</span><span style="color: #D0BF8F;">)</span><span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
 </pre>
@@ -1581,15 +1586,15 @@ Inspired from <a href="http://emacswiki.org/emacs/InsertingTodaysDate">http://em
 </div>
 </div>
 
-<div id="outline-container-org7757f9b" class="outline-4">
-<h4 id="org7757f9b"><span class="section-number-4">1.6.2</span> Count Words &amp; Characters</h4>
+<div id="outline-container-org2c28df5" class="outline-4">
+<h4 id="org2c28df5"><span class="section-number-4">1.6.2</span> Count Words &amp; Characters</h4>
 <div class="outline-text-4" id="text-1-6-2">
 <p>
 From <a href="http://ergoemacs.org/emacs/elisp_count-region.html">http://ergoemacs.org/emacs/elisp_count-region.html</a>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">defun</span> <span style="color: #93E0E3; font-weight: bold;">my-count-words-region</span> <span style="color: #BFEBBF;">(</span>posBegin posEnd<span style="color: #BFEBBF;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">defun</span> <span style="color: #93E0E3;">my-count-words-region</span> <span style="color: #BFEBBF;">(</span>posBegin posEnd<span style="color: #BFEBBF;">)</span>
   <span style="color: #9FC59F;">"Print number of words and chars in region."</span>
   <span style="color: #BFEBBF;">(</span><span style="color: #F0DFAF; font-weight: bold;">interactive</span> <span style="color: #CC9393;">"r"</span><span style="color: #BFEBBF;">)</span>
   <span style="color: #BFEBBF;">(</span>message <span style="color: #CC9393;">"Counting &#8230;"</span><span style="color: #BFEBBF;">)</span>
@@ -1609,23 +1614,23 @@ From <a href="http://ergoemacs.org/emacs/elisp_count-region.html">http://ergoema
 </div>
 </div>
 
-<div id="outline-container-org17fe688" class="outline-4">
-<h4 id="org17fe688"><span class="section-number-4">1.6.3</span> Unfill Region / Unfill Paragraph</h4>
+<div id="outline-container-orgf6868aa" class="outline-4">
+<h4 id="orgf6868aa"><span class="section-number-4">1.6.3</span> Unfill Region / Unfill Paragraph</h4>
 <div class="outline-text-4" id="text-1-6-3">
 <p>
 Source: <a href="http://ergoemacs.org/emacs/emacs_unfill-paragraph.html">http://ergoemacs.org/emacs/emacs_unfill-paragraph.html</a>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">defun</span> <span style="color: #93E0E3; font-weight: bold;">unfill-paragraph</span> <span style="color: #BFEBBF;">()</span>
+<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">defun</span> <span style="color: #93E0E3;">unfill-paragraph</span> <span style="color: #BFEBBF;">()</span>
   <span style="color: #9FC59F;">"Replace newline chars in current paragraph by single spaces.</span>
-<span style="color: #9FC59F;">This command does the inverse of `</span><span style="color: #9FC59F; font-weight: bold;">fill-paragraph</span><span style="color: #9FC59F;">'."</span>
+<span style="color: #9FC59F;">This command does the inverse of `</span><span style="color: #9FC59F;">fill-paragraph</span><span style="color: #9FC59F;">'."</span>
   <span style="color: #BFEBBF;">(</span><span style="color: #F0DFAF; font-weight: bold;">interactive</span><span style="color: #BFEBBF;">)</span>
-  <span style="color: #BFEBBF;">(</span><span style="color: #F0DFAF; font-weight: bold;">let</span> <span style="color: #D0BF8F;">(</span><span style="color: #93E0E3;">(</span>fill-column 90002000<span style="color: #93E0E3;">)</span><span style="color: #D0BF8F;">)</span> <span style="color: #5F7F5F;">; </span><span style="color: #7F9F7F;">90002000 is just random. you can use `</span><span style="color: #7F9F7F; font-weight: bold;">most-positive-fixnum</span><span style="color: #7F9F7F;">'</span>
+  <span style="color: #BFEBBF;">(</span><span style="color: #F0DFAF; font-weight: bold;">let</span> <span style="color: #D0BF8F;">(</span><span style="color: #93E0E3;">(</span>fill-column 90002000<span style="color: #93E0E3;">)</span><span style="color: #D0BF8F;">)</span> <span style="color: #5F7F5F;">; </span><span style="color: #7F9F7F;">90002000 is just random. you can use `</span><span style="color: #7F9F7F;">most-positive-fixnum</span><span style="color: #7F9F7F;">'</span>
     <span style="color: #D0BF8F;">(</span>fill-paragraph nil<span style="color: #D0BF8F;">)</span><span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
-<span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">defun</span> <span style="color: #93E0E3; font-weight: bold;">unfill-region</span> <span style="color: #BFEBBF;">(</span>start end<span style="color: #BFEBBF;">)</span>
+<span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">defun</span> <span style="color: #93E0E3;">unfill-region</span> <span style="color: #BFEBBF;">(</span>start end<span style="color: #BFEBBF;">)</span>
   <span style="color: #9FC59F;">"Replace newline chars in region by single spaces.</span>
-<span style="color: #9FC59F;">This command does the inverse of `</span><span style="color: #9FC59F; font-weight: bold;">fill-region</span><span style="color: #9FC59F;">'."</span>
+<span style="color: #9FC59F;">This command does the inverse of `</span><span style="color: #9FC59F;">fill-region</span><span style="color: #9FC59F;">'."</span>
   <span style="color: #BFEBBF;">(</span><span style="color: #F0DFAF; font-weight: bold;">interactive</span> <span style="color: #CC9393;">"r"</span><span style="color: #BFEBBF;">)</span>
   <span style="color: #BFEBBF;">(</span><span style="color: #F0DFAF; font-weight: bold;">let</span> <span style="color: #D0BF8F;">(</span><span style="color: #93E0E3;">(</span>fill-column 90002000<span style="color: #93E0E3;">)</span><span style="color: #D0BF8F;">)</span>
     <span style="color: #D0BF8F;">(</span>fill-region start end<span style="color: #D0BF8F;">)</span><span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
@@ -1638,7 +1643,7 @@ Source: <a href="http://ergoemacs.org/emacs/emacs_unfill-paragraph.html">http://
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Edmund Christian Herenz</p>
-<p class="date">Created: 2017-11-13 Mo 00:46</p>
+<p class="date">Created: 2017-11-17 Fr 19:44</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.3.1 (<a href="http://orgmode.org">Org</a> mode 9.0.7)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>

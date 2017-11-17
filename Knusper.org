@@ -532,6 +532,9 @@
        #+END_SRC
 
 ****** beacon
+
+       https://github.com/Malabarba/beacon
+
        #+BEGIN_SRC emacs-lisp :tangle yes
 	 (use-package beacon
 	   :ensure t
@@ -540,6 +543,7 @@
 	   (setq beacon-dont-blink-commands nil) ;; always blink
 	   ;; (setq beacon-lighter '"Λ") - 
 	   (add-to-list 'beacon-dont-blink-major-modes 'Man-mode)
+	   (add-to-list 'beacon-dont-blink-major-modes 'shell-mode)
 	   :diminish beacon-mode
 	   )
        #+END_SRC
