@@ -508,15 +508,10 @@
        Load zenburn colour theme when starting emacs.
 
        #+BEGIN_SRC emacs-lisp :tangle yes
-	 (if (string=(system-name) "knuspertopg")
-	     (use-package zenburn-theme
-	       :ensure t
-	       :config
-	       (load-theme 'zenburn))
-	   (use-package plan9-theme
-	     :ensure t
-	     :config
-	     (load-theme 'plan9)))
+	 (use-package zenburn-theme
+	   :ensure t
+	   :config
+	   (load-theme 'zenburn))
        #+END_SRC
 
 ****** powerline
@@ -538,14 +533,14 @@
        #+BEGIN_SRC emacs-lisp :tangle yes
 	 (use-package beacon
 	   :ensure t
+	   :diminish beacon-mode
 	   :config
 	   (beacon-mode 1)
 	   (setq beacon-dont-blink-commands nil) ;; always blink
 	   ;; (setq beacon-lighter '"Λ") - 
 	   (add-to-list 'beacon-dont-blink-major-modes 'Man-mode)
-	   (add-to-list 'beacon-dont-blink-major-modes 'shell-mode)
-	   :diminish beacon-mode
-	   )
+	   (add-to-list 'beacon-dont-blink-major-modes 'shell-mode))
+
        #+END_SRC
 
 
