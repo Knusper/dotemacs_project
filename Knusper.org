@@ -496,8 +496,15 @@
        #+END_SRC
 
        With this configuration ~S~ is bound to invoke the ~dired-quick-sort~ [[https://github.com/abo-abo/hydra][hydra]].
-
-
+       
+****** Dictionary
+       
+       http://me.in-berlin.de/~myrkr/dictionary/index.html
+       
+       #+BEGIN_SRC emacs-lisp :tangle yes
+	 (use-package dictionary
+	   :ensure t)
+       #+END_SRC
        
 ***** Appearance
 
@@ -543,7 +550,7 @@
 
        #+END_SRC
 
-
+       
 ***** Email
 
 ****** muttrc-mode
