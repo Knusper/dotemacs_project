@@ -140,6 +140,9 @@
 	  (define-key org-mode-map (kbd "<C-S-down>") nil)
 	  ))
 
+      ;; intedentation needs to be preserved, otherwise tangled python3
+      ;; source blocks from org-mode files will not run
+      (setq org-src-preserve-indentation t)
     #+END_SRC
 
 **** Set with to inline images
