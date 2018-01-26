@@ -140,6 +140,9 @@
 	  (define-key org-mode-map (kbd "<C-S-down>") nil)
 	  ))
 
+      ;; intedentation needs to be preserved, otherwise tangled python3
+      ;; source blocks from org-mode files will not run
+      (setq org-src-preserve-indentation t)
     #+END_SRC
 
 **** Set with to inline images
@@ -496,8 +499,15 @@
        #+END_SRC
 
        With this configuration ~S~ is bound to invoke the ~dired-quick-sort~ [[https://github.com/abo-abo/hydra][hydra]].
-
-
+       
+****** Dictionary
+       
+       http://me.in-berlin.de/~myrkr/dictionary/index.html
+       
+       #+BEGIN_SRC emacs-lisp :tangle yes
+	 (use-package dictionary
+	   :ensure t)
+       #+END_SRC
        
 ***** Appearance
 
@@ -508,6 +518,7 @@
        Load zenburn colour theme when starting emacs.
 
        #+BEGIN_SRC emacs-lisp :tangle yes
+<<<<<<< HEAD
 	 (if (string=(system-name) "knuspertop")
 	     (use-package zenburn-theme
 	       :ensure t
@@ -517,6 +528,12 @@
 	     :ensure t
 	     :config
 	     (load-theme 'plan9)))
+=======
+	 (use-package zenburn-theme
+	   :ensure t
+	   :config
+	   (load-theme 'zenburn))
+>>>>>>> 99ee2f4ac113d0617dc690f5684abd181e67592c
        #+END_SRC
 
 ****** powerline
@@ -538,19 +555,26 @@
        #+BEGIN_SRC emacs-lisp :tangle yes
 	 (use-package beacon
 	   :ensure t
+	   :diminish beacon-mode
 	   :config
 	   (beacon-mode 1)
 	   (setq beacon-dont-blink-commands nil) ;; always blink
 	   ;; (setq beacon-lighter '"Λ") - 
 	   (add-to-list 'beacon-dont-blink-major-modes 'Man-mode)
+<<<<<<< HEAD
 	   (add-to-list 'beacon-dont-blink-major-modes 'shell-mode)
 	   (add-to-list 'beacon-dont-blink-major-modes 'inferior-python-mode)
 	   (add-to-list 'beacon-dont-blink-major-modes 'xkcd-mode)
 	   :diminish beacon-mode
 	   )
        #+END_SRC
+=======
+	   (add-to-list 'beacon-dont-blink-major-modes 'shell-mode))
+>>>>>>> 99ee2f4ac113d0617dc690f5684abd181e67592c
 
+       #+END_SRC
 
+       
 ***** Email
 
 ****** muttrc-mode
