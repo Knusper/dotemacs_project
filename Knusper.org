@@ -508,7 +508,7 @@
        Load zenburn colour theme when starting emacs.
 
        #+BEGIN_SRC emacs-lisp :tangle yes
-	 (if (string=(system-name) "knuspertopg")
+	 (if (string=(system-name) "knuspertop")
 	     (use-package zenburn-theme
 	       :ensure t
 	       :config
@@ -544,6 +544,8 @@
 	   ;; (setq beacon-lighter '"Λ") - 
 	   (add-to-list 'beacon-dont-blink-major-modes 'Man-mode)
 	   (add-to-list 'beacon-dont-blink-major-modes 'shell-mode)
+	   (add-to-list 'beacon-dont-blink-major-modes 'inferior-python-mode)
+	   (add-to-list 'beacon-dont-blink-major-modes 'xkcd-mode)
 	   :diminish beacon-mode
 	   )
        #+END_SRC
