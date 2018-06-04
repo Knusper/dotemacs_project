@@ -4,13 +4,9 @@
 
 * Configuration
 
-- Somewhat inspired by [[http://sach.ac/dotemacs][Sacha Chua's Emacs configuration]]. 
+** Notes
 
-- Github repository for this file: https://github.com/Knusper/dotemacs_project
-
-- HTML: http://fortune-teller-amy-88756.netlify.com/Knusper.html
-
-- Org: http://fortune-teller-amy-88756.netlify.com/Knusper.org
+ - Somewhat inspired by [[http://sach.ac/dotemacs][Sacha Chua's Emacs configuration]]. 
 
 ** Init file
    
@@ -38,12 +34,12 @@
      (add-to-list 'load-path (expand-file-name "~/emacs-scripts/"))
 
      ;; org-mode
-     (add-to-list 'load-path (expand-file-name "~/emacs-scripts/org-9.0.7/lisp/"))
-     (add-to-list 'load-path "~/emacs-scripts/org-9.0.7/contrib/lisp" t)
+     (add-to-list 'load-path (expand-file-name "~/emacs-scripts/org-9.1.13/lisp/"))
+     (add-to-list 'load-path "~/emacs-scripts/org-9.1.13/contrib/lisp" t)
      (eval-after-load "info"
        '(progn
 	  (info-initialize)
-	  (add-to-list 'Info-directory-list "~/emacs-scripts/org-9.0.7/doc/")))
+	  (add-to-list 'Info-directory-list "~/emacs-scripts/org-9.1.13/doc/")))
 
      ;; auctex
      (add-to-list 'load-path (expand-file-name "~/.emacs.d/site-lisp/auctex"))
@@ -62,7 +58,7 @@
 *** Notes on org-mode installation
 
     - Just run ~make~
-    - Version currently installed: 9.0.7
+    - Version currently installed: 9.1.13
 
 *** Notes on AucTeX installation
     
@@ -82,7 +78,7 @@
        (setq custom-file "~/.gnu-emacs-custom")
        (load custom-file)
      #+END_SRC
-^
+
 ** Personal Information
 
    #+BEGIN_SRC emacs-lisp :tangle yes
@@ -92,8 +88,12 @@
 
 ** Mode-specific settings
 
-   AucTeX + org-mode are installed manually.  These are the modes that
-   I depend on most for my work.
+*** Notes
+    I install AucTeX + org-mode manually, as these are the modes that I
+    depend on most for my work.  For this reason I want full control
+    over the installation process.
+
+    See also: [[*Notes on org-mode installation][Notes on org-mode installation]] and [[*Notes on AucTeX installation][Notes on AucTeX installation]]
    
 *** LateX
     #+BEGIN_SRC emacs-lisp :tangle yes
@@ -115,37 +115,54 @@
 
 *** Org-Mode
 
+    Load org-mode:
     #+BEGIN_SRC emacs-lisp :tangle yes
-      (require 'org)
+      (require 'org)  
+    #+END_SRC
+
+    Open org-mode files in org-mode:
+    #+BEGIN_SRC emacs-lisp :tangle yes
       (setq auto-mode-alist
 	    (cons '("\\.org$" . org-mode) auto-mode-alist))
-      (global-set-key "\C-cl" 'org-store-link)
-      (global-set-key "\C-ca" 'org-agenda)
-      (global-set-key "\C-cb" 'org-iswitchb)
-      (setq org-log-done t)
+    #+END_SRC
 
+    Reasonable default key bindings:
+    #+BEGIN_SRC emacs-lisp :tangle yes
+    (global-set-key "\C-cl" 'org-store-link)
+    (global-set-key "\C-ca" 'org-agenda)
+    (global-set-key "\C-cb" 'org-iswitchb)
+    (setq org-log-done t)
+    #+END_SRC
+
+    Open png image files with default image viewer on system:
+    #+BEGIN_SRC emacs-lisp :tangle yes
       (add-hook 'org-mode-hook
       '(lambda ()
 	     (setq org-file-apps
 		   (append '(
 			     ("\\.png\\'" . default)
 			     ) org-file-apps ))))
+    #+END_SRC
+      org-mode defines some key bindings, that override some of my
+      personal global key-bindings - these key bindings are disabled here:
 
-      ;; I need these keys for something else
+      #+BEGIN_SRC emacs-lisp :tangle yes
       (eval-after-load 'org
 	(progn
+	  ;; these are my windmove key-bindings
 	  (define-key org-mode-map (kbd "<C-S-right>") nil)
 	  (define-key org-mode-map (kbd "<C-S-left>") nil)
 	  (define-key org-mode-map (kbd "<C-S-up>") nil)
 	  (define-key org-mode-map (kbd "<C-S-down>") nil)
 	  ))
+      #+END_SRC
+      Intedentation needs to be preserved, otherwise tangled python3
+      source blocks from org-mode files will not run.  
+      #+BEGIN_SRC emacs-lisp :tangle yes
+      (setq org-src-preserve-indentation t)      
+      #+END_SRC
 
-      ;; intedentation needs to be preserved, otherwise tangled python3
-      ;; source blocks from org-mode files will not run
-      (setq org-src-preserve-indentation t)
-    #+END_SRC
-
-**** Set with to inline images
+**** Set width to inline images
 
     The following setting enables inline images to be scaled when
     displayed inline (~org-toggle-inline-images~):
@@ -188,9 +205,10 @@
      #+END_SRC
 
 **** Org-bullets
+
      Also using [[org-bullets][org-bullets package, described in the pacakge section below.]]
 
-**** org-drill
+**** COMMENT org-drill
 
      http://orgmode.org/worg/org-contrib/org-drill.html
 
