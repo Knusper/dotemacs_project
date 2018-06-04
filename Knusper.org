@@ -536,7 +536,6 @@
        Load zenburn colour theme when starting emacs.
 
        #+BEGIN_SRC emacs-lisp :tangle yes
-<<<<<<< HEAD
 	 (if (string=(system-name) "knuspertop")
 	     (use-package zenburn-theme
 	       :ensure t
@@ -546,12 +545,10 @@
 	     :ensure t
 	     :config
 	     (load-theme 'plan9)))
-=======
 	 (use-package zenburn-theme
 	   :ensure t
 	   :config
 	   (load-theme 'zenburn))
->>>>>>> 99ee2f4ac113d0617dc690f5684abd181e67592c
        #+END_SRC
 
 ****** powerline
@@ -579,20 +576,13 @@
 	   (setq beacon-dont-blink-commands nil) ;; always blink
 	   ;; (setq beacon-lighter '"Λ") - 
 	   (add-to-list 'beacon-dont-blink-major-modes 'Man-mode)
-<<<<<<< HEAD
 	   (add-to-list 'beacon-dont-blink-major-modes 'shell-mode)
 	   (add-to-list 'beacon-dont-blink-major-modes 'inferior-python-mode)
 	   (add-to-list 'beacon-dont-blink-major-modes 'xkcd-mode)
 	   :diminish beacon-mode
 	   )
        #+END_SRC
-=======
-	   (add-to-list 'beacon-dont-blink-major-modes 'shell-mode))
->>>>>>> 99ee2f4ac113d0617dc690f5684abd181e67592c
-
-       #+END_SRC
-
-       
+     
 ***** Email
 
 ****** muttrc-mode
