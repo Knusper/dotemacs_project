@@ -38,12 +38,12 @@
      (add-to-list 'load-path (expand-file-name "~/emacs-scripts/"))
 
      ;; org-mode
-     (add-to-list 'load-path (expand-file-name "~/emacs-scripts/org-9.0.7/lisp/"))
-     (add-to-list 'load-path "~/emacs-scripts/org-9.0.7/contrib/lisp" t)
+     (add-to-list 'load-path (expand-file-name "~/emacs-scripts/org-9.1.13/lisp/"))
+     (add-to-list 'load-path "~/emacs-scripts/org-9.1.13/contrib/lisp" t)
      (eval-after-load "info"
        '(progn
 	  (info-initialize)
-	  (add-to-list 'Info-directory-list "~/emacs-scripts/org-9.0.7/doc/")))
+	  (add-to-list 'Info-directory-list "~/emacs-scripts/org-9.1.13/doc/")))
 
      ;; auctex
      (add-to-list 'load-path (expand-file-name "~/.emacs.d/site-lisp/auctex"))
@@ -62,7 +62,7 @@
 *** Notes on org-mode installation
 
     - Just run ~make~
-    - Version currently installed: 9.0.7
+    - Version currently installed: 9.1.13
 
 *** Notes on AucTeX installation
     
@@ -82,7 +82,7 @@
        (setq custom-file "~/.gnu-emacs-custom")
        (load custom-file)
      #+END_SRC
-^
+
 ** Personal Information
 
    #+BEGIN_SRC emacs-lisp :tangle yes
@@ -92,8 +92,12 @@
 
 ** Mode-specific settings
 
-   AucTeX + org-mode are installed manually.  These are the modes that
-   I depend on most for my work.
+*** Notes
+    I install AucTeX + org-mode manually, as these are the modes that I
+    depend on most for my work.  For this reason I want full control
+    over the installation process.
+
+    See also: [[*Notes on org-mode installation][Notes on org-mode installation]] and [[*Notes on AucTeX installation][Notes on AucTeX installation]]
    
 *** LateX
     #+BEGIN_SRC emacs-lisp :tangle yes
@@ -124,16 +128,22 @@
       (global-set-key "\C-cb" 'org-iswitchb)
       (setq org-log-done t)
 
+    Open png image files with default image viewer on system:
+    #+BEGIN_SRC emacs-lisp :tangle yes
       (add-hook 'org-mode-hook
       '(lambda ()
 	     (setq org-file-apps
 		   (append '(
 			     ("\\.png\\'" . default)
 			     ) org-file-apps ))))
+    #+END_SRC
+      org-mode defines some key bindings, that override some of my
+      personal global key-bindings - these key bindings are disabled here:
 
-      ;; I need these keys for something else
+      #+BEGIN_SRC emacs-lisp :tangle yes
       (eval-after-load 'org
 	(progn
+	  ;; these are my windmove key-bindings
 	  (define-key org-mode-map (kbd "<C-S-right>") nil)
 	  (define-key org-mode-map (kbd "<C-S-left>") nil)
 	  (define-key org-mode-map (kbd "<C-S-up>") nil)
@@ -259,7 +269,7 @@
     [[https://melpa.org][MELPA]] is the king of emacs package archives.  Follow [[https://twitter.com/melpa_emacs][MELPA on Twitter]].
     
     #+BEGIN_SRC emacs-lisp :tangle yes
-      (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
+      (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
     #+END_SRC
 
 *** Packages I use
@@ -284,6 +294,48 @@
 **** Package List 
 
 ***** Essential
+
+****** which-key 
+       
+       https://github.com/justbur/emacs-which-keynn
+
+       #+BEGIN_SRC emacs-lisp
+	 (use-package which-key
+	   :ensure t)
+       #+END_SRC
+
+****** ebib
+
+       Ebib: http://joostkremers.github.io/ebib/ (in MELPA)
+
+       Copy of settings copied from ~.gnu_emacs_custom~
+       
+       #+BEGIN_SRC emacs-lisp :tangle yes
+	 (use-package ebib
+	   :ensure t
+	   :config
+	   (setq ebib-index-columns
+		 (quote
+		  (("timestamp" 12 t)
+		   ("Entry Key" 20 t)
+		   ("Author/Editor" 40 nil)
+		   ("Year" 6 t)
+		   ("Title" 50 t))))
+	   (setq ebib-index-default-sort (quote ("timestamp" . descend)))
+	   (setq ebib-index-default-sort (quote ("timestamp" . descend)))
+	   (setq ebib-preload-bib-files (quote ("~/science_works/bibliography.bib")))
+	   (setq ebib-timestamp-format "%Y.%m.%d")
+	   (setq ebib-use-timestamp t))
+       #+END_SRC
+
+****** bibslurp-ads
+
+       Bibslurp: http://mkmcc.github.io/software/bibslurp.html (in MELPA)
+
+       #+BEGIN_SRC emacs-lisp :tangle yes
+	 (use-package bibslurp
+	   :ensure t)
+       #+END_SRC
 
 ****** yascroll-mode
 
@@ -376,7 +428,7 @@
 ****** htmlize
        http://www.emacswiki.org/emacs/Htmlize
 
-****** ☛ TODO iedit
+****** iedit
        Simultaneously edit multiple regions in buffer.
        http://www.emacswiki.org/emacs/Iedit
        #+BEGIN_SRC emacs-lisp :tangle yes
@@ -408,11 +460,6 @@
 
        #+END_SRC
 
-****** ☛ TODO ebib
-     
-       Browse / edit BibTeX bibliographies in emacs.
-       http://ebib.sourceforge.net/
-     
 ****** markdown-mode
 
        http://jblevins.org/projects/markdown-mode/
@@ -546,8 +593,11 @@
 	   (setq beacon-dont-blink-commands nil) ;; always blink
 	   ;; (setq beacon-lighter '"Λ") - 
 	   (add-to-list 'beacon-dont-blink-major-modes 'Man-mode)
-	   (add-to-list 'beacon-dont-blink-major-modes 'shell-mode))
-
+	   (add-to-list 'beacon-dont-blink-major-modes 'shell-mode)
+	   (add-to-list 'beacon-dont-blink-major-modes 'inferior-python-mode)
+	   (add-to-list 'beacon-dont-blink-major-modes 'xkcd-mode)
+	   :diminish beacon-mode
+	   )
        #+END_SRC
 
        
