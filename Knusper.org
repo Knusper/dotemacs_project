@@ -574,15 +574,6 @@
        Load zenburn colour theme when starting emacs.
 
        #+BEGIN_SRC emacs-lisp :tangle yes
-	 (if (string=(system-name) "as-4028")
-	     (use-package zenburn-theme
-	       :ensure t
-	       :config
-	       (load-theme 'zenburn))
-	   (use-package plan9-theme
-	     :ensure t
-	     :config
-	     (load-theme 'plan9)))
 	 (use-package zenburn-theme
 	   :ensure t
 	   :config
