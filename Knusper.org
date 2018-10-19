@@ -574,7 +574,7 @@
        Load zenburn colour theme when starting emacs.
 
        #+BEGIN_SRC emacs-lisp :tangle yes
-	 (if (string=(system-name) "knuspertop")
+	 (if (string=(system-name) "as-4028")
 	     (use-package zenburn-theme
 	       :ensure t
 	       :config
@@ -628,7 +628,21 @@
 
        Syntax highlighting in [[http://linux.die.net/man/5/muttrc][muttrc file]].
 
+       Was removed from melpa, so currently not available...  There
+       appears to be a replacement  https://github.com/neomutt/muttrc-mode-el.
+       However, its not in melpa yet ... For now I download it manually and place it in
+       [[~/emacs-scripts/]]
+       
        #+BEGIN_SRC emacs-lisp :tangle yes
+	 (autoload 'muttrc-mode "muttrc-mode.el"
+	   "Major mode to edit muttrc files" t)
+	 (setq auto-mode-alist
+	       (append '(("muttrc\\'" . muttrc-mode))
+		       auto-mode-alist))
+       #+END_SRC
+
+       Old - if it is in melpa at some point we use this again
+       #+BEGIN_SRC emacs-lisp :tangle no
 	 (use-package muttrc-mode
            :ensure t
            :config
@@ -998,5 +1012,6 @@
         (let ((fill-column 90002000))
           (fill-region start end)))
     #+END_SRC
+    
     
     
