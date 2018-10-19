@@ -143,25 +143,25 @@
 			     ("\\.png\\'" . default)
 			     ) org-file-apps ))))
     #+END_SRC
-      org-mode defines some key bindings, that override some of my
-      personal global key-bindings - these key bindings are disabled here:
 
-      #+BEGIN_SRC emacs-lisp :tangle yes
+    org-mode defines some key bindings, that override some of my
+    personal global key-bindings - these key bindings are disabled here:
+    #+BEGIN_SRC emacs-lisp :tangle yes
       (eval-after-load 'org
-	(progn
-	  ;; these are my windmove key-bindings
-	  (define-key org-mode-map (kbd "<C-S-right>") nil)
-	  (define-key org-mode-map (kbd "<C-S-left>") nil)
-	  (define-key org-mode-map (kbd "<C-S-up>") nil)
-	  (define-key org-mode-map (kbd "<C-S-down>") nil)
-	  ))
-      #+END_SRC
-      Intedentation needs to be preserved, otherwise tangled python3
-      source blocks from org-mode files will not run.  
-      #+BEGIN_SRC emacs-lisp :tangle yes
-      (setq org-src-preserve-indentation t)      
-      #+END_SRC
+      (progn
+	   ;; these are my windmove key-bindings
+	   (define-key org-mode-map (kbd "<C-S-right>") nil)
+	   (define-key org-mode-map (kbd "<C-S-left>") nil)
+	   (define-key org-mode-map (kbd "<C-S-up>") nil)
+	   (define-key org-mode-map (kbd "<C-S-down>") nil)
+	   ))
+     #+END_SRC
 
+     Latex font-highlight in org-mode
+     #+BEGIN_SRC emacs-lisp :tangle yes
+       (eval-after-load 'org '(setf org-highlight-latex-and-related
+	 '(latex)))
+     #+END_SRC
 **** Set width to inline images
 
     The following setting enables inline images to be scaled when
@@ -564,6 +564,7 @@
 	   :ensure t)
        #+END_SRC
        
+
 ***** Appearance
 
 ****** zenburn colour theme
@@ -620,6 +621,7 @@
 	   )
        #+END_SRC
      
+
 ***** Email
 
 ****** muttrc-mode
@@ -641,6 +643,7 @@
            :ensure t
 	   )
        #+END_SRC
+
 
 ***** Fun
 
