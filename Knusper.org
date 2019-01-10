@@ -518,6 +518,20 @@
 	 (sequence "|" "✘ CANCELED(c)")))
        #+END_SRC
 
+****** orgtbl-aggregate
+
+       *Aggregating a table is creating a new table by computing sums,
+       averages, and so on, out of material from the first table.*
+
+       https://github.com/tbanel/orgaggregate
+
+       This really should become part of org-mode at some point.
+
+       #+BEGIN_SRC emacs-lisp :tangle yes
+	 (use-package orgtbl-aggregate
+	   :ensure t)
+       #+END_SRC
+
 ****** pager
        https://github.com/emacsorphanage/pager
        and for the default keybindings
