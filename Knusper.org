@@ -40,6 +40,7 @@
        '(progn
 	  (info-initialize)
 	  (add-to-list 'Info-directory-list "~/emacs-scripts/org-9.2/doc/")))
+     (require 'org-tempo) ;; old-school structure templates
 
      ;; auctex
      (add-to-list 'load-path (expand-file-name "~/.emacs.d/site-lisp/auctex"))
@@ -306,6 +307,32 @@
 
 ***** Essential
 
+****** anaconda-mode
+       
+       /Code navigation, documentation lookup and completion for Python./
+       https://github.com/proofit404/anaconda-mode
+
+       #+begin_src emacs-lisp :tangle yes
+	 (use-package anaconda-mode
+	   :ensure t
+	   :config
+	   (add-hook 'python-mode-hook 'anaconda-mode)
+	   (add-hook 'python-mode-hook 'anaconda-eldoc-mode))
+       #+end_src
+
+******* auto-compete for anaconda with company-mode
+
+	#+begin_src emacs-lisp :tangle yes
+	  (use-package company
+	    :ensure t)
+	  (use-package company-anaconda
+	    :ensure t
+	    :after company
+	    :config
+	    (add-to-list 'company-backends 'company-anaconda)
+	  )
+	#+end_src
+
 ****** which-key 
        
        https://github.com/justbur/emacs-which-keynn
@@ -380,24 +407,6 @@
            :ensure t)
        #+END_SRC
 
-****** tea-time
-
-       With =tea-time= I never forget about the tea.  Using  [[http://movie-sounds.org/action-movie-sound-clips/the-italian-job-1969/have-a-cup-of-tea-ready][this soundbite]]
-       from my favorite movie "The Italian Job".
-
-       #+BEGIN_SRC emacs-lisp :tangle yes
-	 (use-package tea-time
-           :ensure t
-           :config
-           (setq tea-time-sound "~/.sounds/tea.ogg")
-           (setq tea-time-sound-command "ogg123 -q %s")
-           )
-       #+END_SRC
-
-****** 2048
-       
-       https://bitbucket.org/zck/2048.el
-
 ****** buffer-move
      
        https://github.com/lukhas/buffer-move
@@ -456,21 +465,6 @@
            :ensure t)
        #+END_SRC
 
-****** auto-complete
-
-       http://auto-complete.org/
-
-       #+BEGIN_SRC emacs-lisp 
-	 (use-package auto-complete
-           :ensure t
-           :config
-           (global-auto-complete-mode t) 
-           (add-hook 'python-mode-hook 'jedi:setup)
-           (setq jedi:setup-keys t)
-	  )
-
-       #+END_SRC
-
 ****** markdown-mode
 
        http://jblevins.org/projects/markdown-mode/
@@ -488,16 +482,6 @@
           (use-package markdown-toc
             :ensure t)
 	#+END_SRC
-
-****** jedi 
-
-       https://tkf.github.io/emacs-jedi/latest/
-     
-       #+BEGIN_SRC emacs-lisp :tangle yes
-	 (use-package jedi
-           :ensure t
-           )
-       #+END_SRC
 
 ****** org-bullets
 
@@ -569,7 +553,7 @@
 
        With this configuration ~S~ is bound to invoke the ~dired-quick-sort~ [[https://github.com/abo-abo/hydra][hydra]].
        
-****** Dictionary
+****** dictionary
        
        http://me.in-berlin.de/~myrkr/dictionary/index.html
        
@@ -578,6 +562,38 @@
 	   :ensure t)
        #+END_SRC
        
+
+****** Probably not so essential anymore - consider to remove
+       
+       Reasons: (1) company-mode is a better replacement for
+       auto-complete.  (2) anaconda is better than jedi.  Both set to
+       ~:tangle no~ for now, remove later from config.
+
+******* auto-complete
+
+	http://auto-complete.org/
+
+	#+BEGIN_SRC emacs-lisp :tangle no
+	  (use-package auto-complete
+            :ensure t
+            :config
+            (global-auto-complete-mode t) 
+            (add-hook 'python-mode-hook 'jedi:setup)
+            (setq jedi:setup-keys t)
+	   )
+
+	#+END_SRC
+
+
+******* jedi 
+
+	https://tkf.github.io/emacs-jedi/latest/
+     
+	#+BEGIN_SRC emacs-lisp :tangle no
+	  (use-package jedi
+            :ensure t
+            )
+	#+END_SRC
 
 ***** Appearance
 
