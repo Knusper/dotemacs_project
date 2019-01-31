@@ -163,6 +163,13 @@
        (eval-after-load 'org '(setf org-highlight-latex-and-related
 	 '(latex)))
      #+END_SRC
+
+    Since 9.2 we also need to load org-tempo to have quick acces to
+    [[https://orgmode.org/manual/Structure-Templates.html]["structure templates"]]:
+    #+begin_src emacs-lisp :tangle yes
+      (require 'org-tempo)
+    #+end_src
+    
 **** Set width to inline images
 
     The following setting enables inline images to be scaled when
@@ -208,6 +215,27 @@
 **** Org-bullets
 
      Also using [[org-bullets][org-bullets package, described in the pacakge section below.]]
+
+**** org-agenda-category-icon-alist
+     
+     Icons in this list visually "pimp-up" the org-mode agenda.  We
+     use the symbols provided by the [[*all the icons][all-the-icons package]], which is
+     installed further below.
+
+     #+BEGIN_SRC emacs-lisp :tangle yes
+       (setq org-agenda-category-icon-alist 
+	     `(
+	       ("talk"
+		,(list
+		  (all-the-icons-faicon "graduation-cap"  :face 'all-the-icons-red))
+		nil nil :ascent center)
+	       ("flight"
+		,(list
+		  (all-the-icons-alltheicon "swift"  :face 'all-the-icons-blue))
+		nil nil :ascent center)
+	      )
+	    )
+     #+end_src
 
 **** COMMENT org-drill
 
@@ -629,7 +657,6 @@
        #+BEGIN_SRC emacs-lisp :tangle yes
 	 (use-package beacon
 	   :ensure t
-	   :diminish beacon-mode
 	   :config
 	   (beacon-mode 1)
 	   (setq beacon-dont-blink-commands nil) ;; always blink
@@ -642,6 +669,17 @@
 	   )
        #+END_SRC
      
+****** all the icons
+
+       https://github.com/domtronn/all-the-icons.el
+
+       #+begin_src emacs-lisp :tangle yes
+	 (use-package all-the-icons
+	   :ensure t)
+       #+end_src
+
+       Make sure to not forget to run ~M-x
+       all-the-icons-install-fonts~ on a fresh installation.
 
 ***** Email
 
