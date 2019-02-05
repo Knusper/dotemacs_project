@@ -233,6 +233,10 @@
 		,(list
 		  (all-the-icons-alltheicon "swift"  :face 'all-the-icons-blue))
 		nil nil :ascent center)
+	       ("mail"
+		,(list
+		  (all-the-icons-octicon "mail"  :face 'all-the-icons-yellow))
+		nil nil :ascent center)
 	      )
 	    )
      #+end_src
@@ -303,6 +307,7 @@
            "    |----------------+---------------+--------------+-------------|\n"
            "    |    "_"            |               |              |             |\n")
        #+END_SRC
+
 ** Packages
 *** Package Archives
 
@@ -388,7 +393,7 @@
 		   ("Year" 6 t)
 		   ("Title" 50 t))))
 	   (setq ebib-index-default-sort (quote ("timestamp" . descend)))
-	   (setq ebib-index-default-sort (quote ("timestamp" . descend)))
+	   (setq ebib-index-window-size 28)
 	   (setq ebib-preload-bib-files (quote ("~/science_works/bibliography.bib")))
 	   (setq ebib-timestamp-format "%Y.%m.%d")
 	   (setq ebib-use-timestamp t))
