@@ -1,8 +1,6 @@
-#+TITLE: Knusper's Emacs configuration
+#+TITLE: ECH's Emacs configuration
 #+OPTIONS: toc:4 h:4 creator:t 
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="zenburn-code.css" />
-
-
 
 * Notes
 
@@ -314,441 +312,416 @@
    #+BEGIN_SRC emacs-lisp :tangle yes
      (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
    #+END_SRC
+** use-package - automatically download and install packages
 
-** Packages I use
-*** use-package - automatically download and install packages
+   We use [[https://github.com/jwiegley/use-package][=use-package=]] to automatically download and install packages,
+   if they are not present on the system.  Of course, when firing up
+   EMACS for the first time on a fresh system, =use-package= needs to be
+   automagically installed first.
 
-    We use [[https://github.com/jwiegley/use-package][=use-package=]] to automatically download and install packages,
-    if they are not present on the system.  Of course, when firing up
-    EMACS for the first time on a fresh system, =use-package= needs to be
-    automagically installed first.
+   #+BEGIN_SRC emacs-lisp :tangle yes
+     (if (not (package-installed-p 'use-package))
+         (progn
+           (package-refresh-contents)
+           (package-install 'use-package)))
 
-    #+BEGIN_SRC emacs-lisp :tangle yes
-      (if (not (package-installed-p 'use-package))
-          (progn
-            (package-refresh-contents)
-            (package-install 'use-package)))
+     (require 'use-package)
+   #+END_SRC
 
-      (require 'use-package)
-    #+END_SRC
 
-*** Package List 
-**** Essential
+** List of used packages
+*** Essential
+**** try
+     
+     /Try is a package that allows you to try out Emacs packages without installing them./
+     https://github.com/larstvei/Try
 
-***** anaconda-mode
-       
-      /Code navigation, documentation lookup and completion for Python./
-      https://github.com/proofit404/anaconda-mode
-
-      #+begin_src emacs-lisp :tangle yes
-	(use-package anaconda-mode
-	  :ensure t
-	  :config
-	  (add-hook 'python-mode-hook 'anaconda-mode)
-	  (add-hook 'python-mode-hook 'anaconda-eldoc-mode))
-      #+end_src
-
-****** auto-compete for anaconda with company-mode
-
-       #+begin_src emacs-lisp :tangle yes
-	 (use-package company
-	   :ensure t)
-	 (use-package company-anaconda
-	   :ensure t
-	   :after company
-	   :config
-	   (add-to-list 'company-backends 'company-anaconda)
+     #+begin_src emacs-lisp :tangle yes
+       (use-package try
+	 :ensure t
 	 )
-       #+end_src
+     #+end_src
 
-***** which-key 
+**** anaconda-mode
        
-      https://github.com/justbur/emacs-which-keynn
+     /Code navigation, documentation lookup and completion for Python./
+     https://github.com/proofit404/anaconda-mode
 
-      #+BEGIN_SRC emacs-lisp
-	(use-package which-key
-	  :ensure t)
-      #+END_SRC
+     #+begin_src emacs-lisp :tangle yes
+       (use-package anaconda-mode
+	 :ensure t
+	 :config
+	 (add-hook 'python-mode-hook 'anaconda-mode)
+	 (add-hook 'python-mode-hook 'anaconda-eldoc-mode))
+     #+end_src
 
-***** ebib
-
-      Ebib: http://joostkremers.github.io/ebib/ (in MELPA)
-
-      Copy of settings copied from ~.gnu_emacs_custom~
-       
-      #+BEGIN_SRC emacs-lisp :tangle yes
-	(use-package ebib
-	  :ensure t
-	  :config
-	  (setq ebib-index-columns
-		(quote
-		 (("timestamp" 12 t)
-		  ("Entry Key" 20 t)
-		  ("Author/Editor" 40 nil)
-		  ("Year" 6 t)
-		  ("Title" 50 t))))
-	  (setq ebib-index-default-sort (quote ("timestamp" . descend)))
-	  (setq ebib-index-window-size 28)
-	  (setq ebib-preload-bib-files (quote ("~/science_works/bibliography.bib")))
-	  (setq ebib-timestamp-format "%Y.%m.%d")
-	  (setq ebib-use-timestamp t))
-      #+END_SRC
-
-***** bibslurp-ads
-
-      Bibslurp: http://mkmcc.github.io/software/bibslurp.html (in MELPA)
-
-      #+BEGIN_SRC emacs-lisp :tangle yes
-	(use-package bibslurp
-	  :ensure t)
-      #+END_SRC
-
-***** yascroll-mode
-
-      yascroll.el is Yet Another Scroll Bar Mode for GNU Emacs.
-      https://github.com/m2ym/yascroll-el
-       
-      #+BEGIN_SRC emacs-lisp :tangle yes
-	(use-package yascroll
-	  :ensure t
-	  :config
-	  (global-yascroll-bar-mode 1)
-	  (setq yascroll:delay-to-hide 0.8)
-	  )
-      #+END_SRC
-
-***** magit
-       
-      [[https://magit.vc]]
-
-      #+BEGIN_SRC emacs-lisp :tangle yes
-	(use-package magit 
-	  :ensure t
-	  :bind ("C-x g" . magit-status)
-	  )
-      #+END_SRC
-
-***** diminish
-
-      #+BEGIN_SRC emacs-lisp :tangle yes
-        (use-package diminish
-          :ensure t)
-      #+END_SRC
-
-***** buffer-move
-     
-      https://github.com/lukhas/buffer-move
-
-      #+BEGIN_SRC emacs-lisp :tangle yes
-	(use-package buffer-move
-          :ensure t
-          :config
-          (global-set-key (kbd "<S-s-up>")     'buf-move-up)
-          (global-set-key (kbd "<S-s-down>")   'buf-move-down)
-          (global-set-key (kbd "<S-s-left>")   'buf-move-left)
-          (global-set-key (kbd "<S-s-right>")  'buf-move-right)
-          )
-      #+END_SRC
-
-***** smex
-
-      #+BEGIN_SRC emacs-lisp :tangle yes
-	(use-package smex
-          :ensure t
-          :config
-          (smex-initialize)
-          (global-set-key (kbd "M-x") 'smex)
-          )
-      #+END_SRC
-
-***** rainbow-delimiters
-     
-      https://www.emacswiki.org/emacs/RainbowDelimiters
-
-      #+BEGIN_SRC emacs-lisp :tangle yes
-	(use-package rainbow-delimiters
-          :ensure t
-          :config
-          (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
-          )
-      #+END_SRC
-
-***** htmlize
-      http://www.emacswiki.org/emacs/Htmlize
-
-***** iedit
-      Simultaneously edit multiple regions in buffer.
-      http://www.emacswiki.org/emacs/Iedit
-      #+BEGIN_SRC emacs-lisp :tangle yes
-	(use-package iedit
-	  :ensure t)
-      #+END_SRC
-***** writeroom-mode
-     
-      Distraction free writing.
-      https://github.com/joostkremers/writeroom-mode
-
-      #+BEGIN_SRC emacs-lisp :tangle yes
-        (use-package writeroom-mode
-          :ensure t)
-      #+END_SRC
-
-***** markdown-mode
-
-      http://jblevins.org/projects/markdown-mode/
-
-      #+BEGIN_SRC emacs-lisp :tangle yes
-	(use-package markdown-mode
-          :ensure t
-          :init (setq auto-mode-alist
-                      (cons '("\\.mdml$" . markdown-mode) auto-mode-alist)))
-      #+END_SRC
-
-****** markdown-toc
-
-       #+BEGIN_SRC emacs-lisp :tangle yes
-         (use-package markdown-toc
-           :ensure t)
-       #+END_SRC
-
-***** org-bullets
-
-      The following gold is from
-      https://thraxys.wordpress.com/2016/01/14/pimp-up-your-org-agenda/
-
-      #+BEGIN_SRC emacs-lisp :tangle yes
-	(use-package org-bullets
-          :ensure t
-          :init
-          (setq org-bullets-bullet-list
-		'("◉" "◎" "⚫" "○" "►" "◇"))
-          :config
-          (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
-          )
-	(setq org-todo-keywords '((sequence "☛ TODO(t)" "|" "✔ DONE(d)")
-	(sequence "⚑ WAITING(w)" "|")
-	(sequence "|" "✘ CANCELED(c)")))
-      #+END_SRC
-
-***** orgtbl-aggregate
-
-      *Aggregating a table is creating a new table by computing sums,
-      averages, and so on, out of material from the first table.*
-
-      https://github.com/tbanel/orgaggregate
-
-      This really should become part of org-mode at some point.
-
-      #+BEGIN_SRC emacs-lisp :tangle yes
-	(use-package orgtbl-aggregate
-	  :ensure t)
-      #+END_SRC
-
-***** pager
-      https://github.com/emacsorphanage/pager
-      and for the default keybindings
-      https://github.com/nflath/pager-default-keybindings
-      (the latter depends on the former).
-
-      #+BEGIN_SRC emacs-lisp :tangle yes
-        (use-package pager
-          :ensure t)
-        (use-package pager-default-keybindings
-          :ensure t)
-      #+END_SRC
-
-***** uptimes
-       
-      https://github.com/davep/uptimes.el
-
-      #+BEGIN_SRC emacs-lisp :tangle yes
-        (use-package uptimes
-          :ensure t)
-      #+END_SRC
-
-***** dired-quicksort
-       
-      Quick and easy sorting in dired - just press "S".
-       
-      https://www.topbug.net/blog/2016/08/17/dired-quick-sort-sort-dired-buffers-quickly-in-emacs/
-
-      #+BEGIN_SRC emacs-lisp :tangle yes
-        (use-package dired-quick-sort
-          :ensure t
-          :init
-          (dired-quick-sort-setup))
-      #+END_SRC
-
-      With this configuration ~S~ is bound to invoke the ~dired-quick-sort~ [[https://github.com/abo-abo/hydra][hydra]].
-       
-***** dictionary
-       
-      http://me.in-berlin.de/~myrkr/dictionary/index.html
-       
-      #+BEGIN_SRC emacs-lisp :tangle yes
-	(use-package dictionary
-	  :ensure t)
-      #+END_SRC
-       
-
-***** Probably not so essential anymore - consider to remove
-       
-      Reasons: (1) company-mode is a better replacement for
-      auto-complete.  (2) anaconda is better than jedi.  Both set to
-      ~:tangle no~ for now, remove later from config.
-
-****** auto-complete
-
-       http://auto-complete.org/
-
-       #+BEGIN_SRC emacs-lisp :tangle no
-	 (use-package auto-complete
-           :ensure t
-           :config
-           (global-auto-complete-mode t) 
-           (add-hook 'python-mode-hook 'jedi:setup)
-           (setq jedi:setup-keys t)
-	  )
-
-       #+END_SRC
-
-
-****** jedi 
-
-       https://tkf.github.io/emacs-jedi/latest/
-     
-       #+BEGIN_SRC emacs-lisp :tangle no
-	 (use-package jedi
-           :ensure t
-           )
-       #+END_SRC
-
-**** Appearance
-***** zenburn colour theme
-
-      https://github.com/bbatsov/zenburn-emacs
-
-      Load zenburn colour theme when starting emacs.
-
-      #+BEGIN_SRC emacs-lisp :tangle yes
-	(use-package zenburn-theme
-	  :ensure t
-	  :config
-	  (load-theme 'zenburn))
-      #+END_SRC
-
-***** powerline
-
-      https://github.com/milkypostman/powerline
-
-      #+BEGIN_SRC emacs-lisp :tangle yes
-	(use-package powerline
-          :ensure t
-          :config
-          (powerline-default-theme)
-          )
-      #+END_SRC
-
-***** beacon
-
-      https://github.com/Malabarba/beacon
-
-      #+BEGIN_SRC emacs-lisp :tangle yes
-	(use-package beacon
-	  :ensure t
-	  :config
-	  (beacon-mode 1)
-	  (setq beacon-dont-blink-commands nil) ;; always blink
-	  ;; (setq beacon-lighter '"Λ") - 
-	  (add-to-list 'beacon-dont-blink-major-modes 'Man-mode)
-	  (add-to-list 'beacon-dont-blink-major-modes 'shell-mode)
-	  (add-to-list 'beacon-dont-blink-major-modes 'inferior-python-mode)
-	  (add-to-list 'beacon-dont-blink-major-modes 'xkcd-mode)
-	  :diminish beacon-mode
-	  )
-      #+END_SRC
-     
-***** all the icons
-
-      https://github.com/domtronn/all-the-icons.el
+***** auto-compete for anaconda with company-mode
 
       #+begin_src emacs-lisp :tangle yes
-	(use-package all-the-icons
+	(use-package company
 	  :ensure t)
+	(use-package company-anaconda
+	  :ensure t
+	  :after company
+	  :config
+	  (add-to-list 'company-backends 'company-anaconda)
+	)
       #+end_src
 
-      Make sure to not forget to run ~M-x
-      all-the-icons-install-fonts~ on a fresh installation.
-
-**** Email
-
-***** muttrc-mode
-
-      Syntax highlighting in [[http://linux.die.net/man/5/muttrc][muttrc file]].
-
-      Was removed from melpa, so currently not available...  There
-      appears to be a replacement  https://github.com/neomutt/muttrc-mode-el.
-      However, its not in melpa yet ... For now I download it manually and place it in
-      [[~/emacs-scripts/]]
+**** which-key 
        
+     https://github.com/justbur/emacs-which-keynn
+
+     #+BEGIN_SRC emacs-lisp
+       (use-package which-key
+	 :ensure t)
+     #+END_SRC
+
+**** ebib
+
+     Ebib: http://joostkremers.github.io/ebib/ (in MELPA)
+
+     Copy of settings copied from ~.gnu_emacs_custom~
+       
+     #+BEGIN_SRC emacs-lisp :tangle yes
+       (use-package ebib
+	 :ensure t
+	 :config
+	 (setq ebib-index-columns
+	       (quote
+		(("timestamp" 12 t)
+		 ("Entry Key" 20 t)
+		 ("Author/Editor" 40 nil)
+		 ("Year" 6 t)
+		 ("Title" 50 t))))
+	 (setq ebib-index-default-sort (quote ("timestamp" . descend)))
+	 (setq ebib-index-window-size 28)
+	 (setq ebib-preload-bib-files (quote ("~/science_works/bibliography.bib")))
+	 (setq ebib-timestamp-format "%Y.%m.%d")
+	 (setq ebib-use-timestamp t))
+     #+END_SRC
+
+**** bibslurp-ads
+
+     Bibslurp: http://mkmcc.github.io/software/bibslurp.html (in MELPA)
+
+     #+BEGIN_SRC emacs-lisp :tangle yes
+       (use-package bibslurp
+	 :ensure t)
+     #+END_SRC
+
+**** yascroll-mode
+
+     yascroll.el is Yet Another Scroll Bar Mode for GNU Emacs.
+     https://github.com/m2ym/yascroll-el
+       
+     #+BEGIN_SRC emacs-lisp :tangle yes
+       (use-package yascroll
+	 :ensure t
+	 :config
+	 (global-yascroll-bar-mode 1)
+	 (setq yascroll:delay-to-hide 0.8)
+	 )
+     #+END_SRC
+
+**** magit
+       
+     [[https://magit.vc]]
+
+     #+BEGIN_SRC emacs-lisp :tangle yes
+       (use-package magit 
+	 :ensure t
+	 :bind ("C-x g" . magit-status)
+	 )
+     #+END_SRC
+
+**** diminish
+
+     #+BEGIN_SRC emacs-lisp :tangle yes
+       (use-package diminish
+         :ensure t)
+     #+END_SRC
+
+**** buffer-move
+     
+     https://github.com/lukhas/buffer-move
+
+     #+BEGIN_SRC emacs-lisp :tangle yes
+       (use-package buffer-move
+         :ensure t
+         :config
+         (global-set-key (kbd "<S-s-up>")     'buf-move-up)
+         (global-set-key (kbd "<S-s-down>")   'buf-move-down)
+         (global-set-key (kbd "<S-s-left>")   'buf-move-left)
+         (global-set-key (kbd "<S-s-right>")  'buf-move-right)
+         )
+     #+END_SRC
+
+**** smex
+
+     #+BEGIN_SRC emacs-lisp :tangle yes
+       (use-package smex
+         :ensure t
+         :config
+         (smex-initialize)
+         (global-set-key (kbd "M-x") 'smex)
+         )
+     #+END_SRC
+
+**** rainbow-delimiters
+     
+     https://www.emacswiki.org/emacs/RainbowDelimiters
+
+     #+BEGIN_SRC emacs-lisp :tangle yes
+       (use-package rainbow-delimiters
+         :ensure t
+         :config
+         (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+         )
+     #+END_SRC
+
+**** htmlize
+     http://www.emacswiki.org/emacs/Htmlize
+
+**** iedit
+     Simultaneously edit multiple regions in buffer.
+     http://www.emacswiki.org/emacs/Iedit
+     #+BEGIN_SRC emacs-lisp :tangle yes
+       (use-package iedit
+	 :ensure t)
+     #+END_SRC
+**** writeroom-mode
+     
+     Distraction free writing.
+     https://github.com/joostkremers/writeroom-mode
+
+     #+BEGIN_SRC emacs-lisp :tangle yes
+       (use-package writeroom-mode
+         :ensure t)
+     #+END_SRC
+
+**** markdown-mode
+
+     http://jblevins.org/projects/markdown-mode/
+
+     #+BEGIN_SRC emacs-lisp :tangle yes
+       (use-package markdown-mode
+         :ensure t
+         :init (setq auto-mode-alist
+                     (cons '("\\.mdml$" . markdown-mode) auto-mode-alist)))
+     #+END_SRC
+
+***** markdown-toc
+
       #+BEGIN_SRC emacs-lisp :tangle yes
-	(autoload 'muttrc-mode "muttrc-mode.el"
-	  "Major mode to edit muttrc files" t)
-	(setq auto-mode-alist
-	      (append '(("muttrc\\'" . muttrc-mode))
-		      auto-mode-alist))
-      #+END_SRC
-
-      Old - if it is in melpa at some point we use this again
-      #+BEGIN_SRC emacs-lisp :tangle no
-	(use-package muttrc-mode
-          :ensure t
-          :config
-           (setq auto-mode-alist
-                    (append '((".muttrc\\'" . muttrc-mode))
-                            auto-mode-alist)))
-      #+END_SRC
-
-***** offlineimap
-      #+BEGIN_SRC emacs-lisp :tangle yes
-        (use-package offlineimap
-          :ensure t
-	  )
-      #+END_SRC
-
-**** Fun
-***** xkcd
-      https://github.com/vibhavp/emacs-xkcd
-      [[http://xkcd.com/][xkcd]] reader for Emacs. Nerd on!
-
-      #+BEGIN_SRC emacs-lisp :tangle yes
-        (use-package xkcd
+        (use-package markdown-toc
           :ensure t)
       #+END_SRC
 
-***** fireplace
+**** org-bullets
+
+     The following gold is from
+     https://thraxys.wordpress.com/2016/01/14/pimp-up-your-org-agenda/
+
+     #+BEGIN_SRC emacs-lisp :tangle yes
+       (use-package org-bullets
+         :ensure t
+         :init
+         (setq org-bullets-bullet-list
+	       '("◉" "◎" "⚫" "○" "►" "◇"))
+         :config
+         (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+         )
+       (setq org-todo-keywords '((sequence "☛ TODO(t)" "|" "✔ DONE(d)")
+       (sequence "⚑ WAITING(w)" "|")
+       (sequence "|" "✘ CANCELED(c)")))
+     #+END_SRC
+
+**** orgtbl-aggregate
+
+     *Aggregating a table is creating a new table by computing sums,
+     averages, and so on, out of material from the first table.*
+
+     https://github.com/tbanel/orgaggregate
+
+     This really should become part of org-mode at some point.
+
+     #+BEGIN_SRC emacs-lisp :tangle yes
+       (use-package orgtbl-aggregate
+	 :ensure t)
+     #+END_SRC
+
+**** pager
+     https://github.com/emacsorphanage/pager
+     and for the default keybindings
+     https://github.com/nflath/pager-default-keybindings
+     (the latter depends on the former).
+
+     #+BEGIN_SRC emacs-lisp :tangle yes
+       (use-package pager
+         :ensure t)
+       (use-package pager-default-keybindings
+         :ensure t)
+     #+END_SRC
+
+**** uptimes
        
-      It can get cold in winter. =M-x fireplace=
-      https://github.com/johanvts/emacs-fireplace
+     https://github.com/davep/uptimes.el
 
-      #+BEGIN_SRC emacs-lisp :tangle yes
-        (use-package fireplace
-          :ensure t)
-      #+END_SRC
+     #+BEGIN_SRC emacs-lisp :tangle yes
+       (use-package uptimes
+         :ensure t)
+     #+END_SRC
 
-***** tea-time
+**** dired-quicksort
+       
+     Quick and easy sorting in dired - just press "S".
+       
+     https://www.topbug.net/blog/2016/08/17/dired-quick-sort-sort-dired-buffers-quickly-in-emacs/
 
-      With =tea-time= I never forget about the tea.  Using  [[http://movie-sounds.org/action-movie-sound-clips/the-italian-job-1969/have-a-cup-of-tea-ready][this soundbite]]
-      from my favorite movie "The Italian Job".
+     #+BEGIN_SRC emacs-lisp :tangle yes
+       (use-package dired-quick-sort
+         :ensure t
+         :init
+         (dired-quick-sort-setup))
+     #+END_SRC
 
-      #+BEGIN_SRC emacs-lisp :tangle yes
-	(use-package tea-time
-          :ensure t
-          :config
-          (setq tea-time-sound "~/.sounds/tea.ogg")
-          (setq tea-time-sound-command "ogg123 -q %s")
-          )
-      #+END_SRC
+     With this configuration ~S~ is bound to invoke the ~dired-quick-sort~ [[https://github.com/abo-abo/hydra][hydra]].
+       
+**** dictionary
+       
+     http://me.in-berlin.de/~myrkr/dictionary/index.html
+       
+     #+BEGIN_SRC emacs-lisp :tangle yes
+       (use-package dictionary
+	 :ensure t)
+     #+END_SRC
+       
+*** Appearance
+**** zenburn colour theme
+
+     https://github.com/bbatsov/zenburn-emacs
+
+     Load zenburn colour theme when starting emacs.
+
+     #+BEGIN_SRC emacs-lisp :tangle yes
+       (use-package zenburn-theme
+	 :ensure t
+	 :config
+	 (load-theme 'zenburn))
+     #+END_SRC
+
+**** powerline
+
+     https://github.com/milkypostman/powerline
+
+     #+BEGIN_SRC emacs-lisp :tangle yes
+       (use-package powerline
+         :ensure t
+         :config
+         (powerline-default-theme)
+         )
+     #+END_SRC
+
+**** beacon
+
+     https://github.com/Malabarba/beacon
+
+     #+BEGIN_SRC emacs-lisp :tangle yes
+       (use-package beacon
+	 :ensure t
+	 :config
+	 (beacon-mode 1)
+	 (setq beacon-dont-blink-commands nil) ;; always blink
+	 ;; (setq beacon-lighter '"Λ") - 
+	 (add-to-list 'beacon-dont-blink-major-modes 'Man-mode)
+	 (add-to-list 'beacon-dont-blink-major-modes 'shell-mode)
+	 (add-to-list 'beacon-dont-blink-major-modes 'inferior-python-mode)
+	 (add-to-list 'beacon-dont-blink-major-modes 'xkcd-mode)
+	 :diminish beacon-mode
+	 )
+     #+END_SRC
+     
+**** all the icons
+
+     https://github.com/domtronn/all-the-icons.el
+
+     #+begin_src emacs-lisp :tangle yes
+       (use-package all-the-icons
+	 :ensure t)
+     #+end_src
+
+     Make sure to not forget to run ~M-x
+     all-the-icons-install-fonts~ on a fresh installation.
+
+*** Email
+**** muttrc-mode
+
+     Syntax highlighting in [[http://linux.die.net/man/5/muttrc][muttrc file]].
+
+     Was removed from melpa, so currently not available...  There
+     appears to be a replacement  https://github.com/neomutt/muttrc-mode-el.
+     However, its not in melpa yet ... For now I download it manually and place it in
+     [[~/emacs-scripts/]]
+       
+     #+BEGIN_SRC emacs-lisp :tangle yes
+       (autoload 'muttrc-mode "muttrc-mode.el"
+	 "Major mode to edit muttrc files" t)
+       (setq auto-mode-alist
+	     (append '(("muttrc\\'" . muttrc-mode))
+		     auto-mode-alist))
+     #+END_SRC
+
+     Old - if it is in melpa at some point we use this again
+     #+BEGIN_SRC emacs-lisp :tangle no
+       (use-package muttrc-mode
+         :ensure t
+         :config
+          (setq auto-mode-alist
+                   (append '((".muttrc\\'" . muttrc-mode))
+                           auto-mode-alist)))
+     #+END_SRC
+
+**** offlineimap
+     #+BEGIN_SRC emacs-lisp :tangle yes
+       (use-package offlineimap
+         :ensure t
+	 )
+     #+END_SRC
+
+*** Fun
+**** xkcd
+     https://github.com/vibhavp/emacs-xkcd
+     [[http://xkcd.com/][xkcd]] reader for Emacs. Nerd on!
+
+     #+BEGIN_SRC emacs-lisp :tangle yes
+       (use-package xkcd
+         :ensure t)
+     #+END_SRC
+
+**** fireplace
+       
+     It can get cold in winter. =M-x fireplace=
+     https://github.com/johanvts/emacs-fireplace
+
+     #+BEGIN_SRC emacs-lisp :tangle yes
+       (use-package fireplace
+         :ensure t)
+     #+END_SRC
+
+**** tea-time
+
+     With =tea-time= I never forget about the tea.  Using  [[http://movie-sounds.org/action-movie-sound-clips/the-italian-job-1969/have-a-cup-of-tea-ready][this soundbite]]
+     from my favorite movie "The Italian Job".
+
+     #+BEGIN_SRC emacs-lisp :tangle yes
+       (use-package tea-time
+         :ensure t
+         :config
+         (setq tea-time-sound "~/.sounds/tea.ogg")
+         (setq tea-time-sound-command "ogg123 -q %s")
+         )
+     #+END_SRC
 
 ** Packages not in ELPA or MELPA
     
@@ -847,7 +820,6 @@
         (setq ido-max-window-height 0.25)
         )
     #+END_SRC
-
 
 * User Interface
 ** Window Configuration
@@ -1009,7 +981,6 @@
      (global-set-key (kbd "<C-S-left>")   'windmove-left)
      (global-set-key (kbd "<C-S-right>")  'windmove-right)
    #+END_SRC
-
 
 * Convenience functions not shipped in emacs
 ** Timestamps
