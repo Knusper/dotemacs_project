@@ -112,7 +112,7 @@
 
 ** Org-Mode
 
-   Load org-mode:
+   org-mode is installed manually ([[*Init file - code and notes][see above]]).  Load org-mode:
    #+BEGIN_SRC emacs-lisp :tangle yes
      (require 'org)  
    #+END_SRC
@@ -232,6 +232,10 @@
 	      ("mail"
 	       ,(list
 		 (all-the-icons-octicon "mail"  :face 'all-the-icons-yellow))
+	       nil nil :ascent center)
+	      ("observe"
+	       ,(list
+		 (all-the-icons-octicon "telescope"  :face 'all-the-icons-lyellow))
 	       nil nil :ascent center)
 	     )
 	   )
