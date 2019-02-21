@@ -122,23 +122,31 @@
      (setq auto-mode-alist
 	   (cons '("\\.org$" . org-mode) auto-mode-alist))
    #+END_SRC
+   Store time when a task is done
+   #+begin_src emacs-lisp :tangle yes
+     (setq org-log-done t)
+   #+end_src
 
-   Reasonable default key bindings:
-   #+BEGIN_SRC emacs-lisp :tangle yes
-   (global-set-key "\C-cl" 'org-store-link)
-   (global-set-key "\C-ca" 'org-agenda)
-   (global-set-key "\C-cb" 'org-iswitchb)
-   (setq org-log-done t)
-   #+END_SRC
+    Latex font-highlight in org-mode
+    #+BEGIN_SRC emacs-lisp :tangle yes
+      (eval-after-load 'org '(setf org-highlight-latex-and-related
+	'(latex)))
+    #+END_SRC
 
-   Open png image files with default image viewer on system:
+   Since 9.2 we also need to load org-tempo to have quick acces to
+   [[https://orgmode.org/manual/Structure-Templates.html]["structure templates"]]:
+   #+begin_src emacs-lisp :tangle yes
+     (require 'org-tempo)
+   #+end_src
+
+*** Key bindings 
+
+   Reasonable "default" key bindings:
    #+BEGIN_SRC emacs-lisp :tangle yes
-     (add-hook 'org-mode-hook
-     '(lambda ()
-	    (setq org-file-apps
-		  (append '(
-			    ("\\.png\\'" . default)
-			    ) org-file-apps ))))
+     (global-set-key "\C-cl" 'org-store-link)
+     (global-set-key "\C-ca" 'org-agenda)
+     ;; (global-set-key "\C-cb" 'org-iswitchb)
+     (global-set-key (kbd "C-c c") 'org-capture)
    #+END_SRC
 
    org-mode defines some key bindings, that override some of my
@@ -154,18 +162,29 @@
 	  ))
     #+END_SRC
 
-    Latex font-highlight in org-mode
-    #+BEGIN_SRC emacs-lisp :tangle yes
-      (eval-after-load 'org '(setf org-highlight-latex-and-related
-	'(latex)))
-    #+END_SRC
-
-   Since 9.2 we also need to load org-tempo to have quick acces to
-   [[https://orgmode.org/manual/Structure-Templates.html]["structure templates"]]:
-   #+begin_src emacs-lisp :tangle yes
-     (require 'org-tempo)
-   #+end_src
+*** Capture Templates
     
+    The capture template for bookmarks requires org-cliplink to be installed
+
+    #+BEGIN_SRC emacs-lisp :tangle yes
+      (setq org-capture-templates
+	    '(
+	      ("b" "Bookmark" entry (file+headline "~/Org/bookmarks.org" "Bookmarks")
+	       "* %(org-cliplink-capture) %?\n:PROPERTIES:\n:CREATED: %U\n:END:\n\n" :empty-lines 1)
+	      )
+	    )
+    #+end_src
+
+*** Open png image files with default image viewer on system
+
+    #+BEGIN_SRC emacs-lisp :tangle yes
+      (add-hook 'org-mode-hook
+      '(lambda ()
+	     (setq org-file-apps
+		   (append '(
+			     ("\\.png\\'" . default)
+			     ) org-file-apps ))))
+    #+END_SRC
 *** Set width to inline images
 
    The following setting enables inline images to be scaled when
@@ -208,10 +227,6 @@
        (ensc/mailcap-mime-data-filter 'ensc/no-pdf-doc-view-filter))))
     #+END_SRC
 
-*** Org-bullets
-
-    Also using [[org-bullets][org-bullets package, described in the pacakge section below.]]
-
 *** org-agenda-category-icon-alist
      
     Icons in this list visually "pimp-up" the org-mode agenda.  We
@@ -219,7 +234,8 @@
     installed further below.
 
     #+BEGIN_SRC emacs-lisp :tangle yes
-      (setq org-agenda-category-icon-alist 
+      (eval-after-load 'all-the-icons
+      '(setq org-agenda-category-icon-alist 
 	    `(
 	      ("talk"
 	       ,(list
@@ -238,7 +254,8 @@
 		 (all-the-icons-octicon "telescope"  :face 'all-the-icons-lyellow))
 	       nil nil :ascent center)
 	     )
-	   )
+	    )
+      )
     #+end_src
 
 *** COMMENT org-drill
@@ -334,6 +351,47 @@
 
 
 ** List of used packages
+*** org-mode related
+**** org-bullets
+
+     The following gold is from
+     https://thraxys.wordpress.com/2016/01/14/pimp-up-your-org-agenda/
+
+     #+BEGIN_SRC emacs-lisp :tangle yes
+       (use-package org-bullets
+         :ensure t
+         :init
+         (setq org-bullets-bullet-list
+	       '("◉" "◎" "⚫" "○" "►" "◇"))
+         :config
+         (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+         )
+       (setq org-todo-keywords '((sequence "☛ TODO(t)" "|" "✔ DONE(d)")
+       (sequence "⚑ WAITING(w)" "|")
+       (sequence "|" "✘ CANCELED(c)")))
+     #+END_SRC
+
+**** orgtbl-aggregate
+
+     *Aggregating a table is creating a new table by computing sums,
+     averages, and so on, out of material from the first table.*
+
+     https://github.com/tbanel/orgaggregate
+
+     This really should be part of org-mode at some point.
+
+     #+BEGIN_SRC emacs-lisp :tangle yes
+       (use-package orgtbl-aggregate
+	 :ensure t)
+     #+END_SRC
+
+**** org-cliplink
+     
+     #+BEGIN_SRC emacs-lisp :tangle yes
+       (use-package org-cliplink
+	 :ensure t)
+     #+end_src
+
 *** Essential
 **** try
      
@@ -359,7 +417,7 @@
 	 (add-hook 'python-mode-hook 'anaconda-eldoc-mode))
      #+end_src
 
-***** auto-compete for anaconda with company-mode
+***** auto-complete for anaconda with company-mode
 
       #+begin_src emacs-lisp :tangle yes
 	(use-package company
@@ -521,39 +579,6 @@
         (use-package markdown-toc
           :ensure t)
       #+END_SRC
-
-**** org-bullets
-
-     The following gold is from
-     https://thraxys.wordpress.com/2016/01/14/pimp-up-your-org-agenda/
-
-     #+BEGIN_SRC emacs-lisp :tangle yes
-       (use-package org-bullets
-         :ensure t
-         :init
-         (setq org-bullets-bullet-list
-	       '("◉" "◎" "⚫" "○" "►" "◇"))
-         :config
-         (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
-         )
-       (setq org-todo-keywords '((sequence "☛ TODO(t)" "|" "✔ DONE(d)")
-       (sequence "⚑ WAITING(w)" "|")
-       (sequence "|" "✘ CANCELED(c)")))
-     #+END_SRC
-
-**** orgtbl-aggregate
-
-     *Aggregating a table is creating a new table by computing sums,
-     averages, and so on, out of material from the first table.*
-
-     https://github.com/tbanel/orgaggregate
-
-     This really should become part of org-mode at some point.
-
-     #+BEGIN_SRC emacs-lisp :tangle yes
-       (use-package orgtbl-aggregate
-	 :ensure t)
-     #+END_SRC
 
 **** pager
      https://github.com/emacsorphanage/pager
