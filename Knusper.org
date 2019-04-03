@@ -164,7 +164,7 @@
 
 *** Capture Templates
     
-    The capture template for bookmarks requires org-cliplink to be installed
+    The capture template for bookmarks requires [[org-cliplink][org-cliplink]] to be installed
 
     #+BEGIN_SRC emacs-lisp :tangle yes
       (setq org-capture-templates
