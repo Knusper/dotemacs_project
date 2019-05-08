@@ -561,6 +561,17 @@
        (use-package writeroom-mode
          :ensure t)
      #+END_SRC
+**** olivetti 
+
+     Less hardcore than writeroom mode, since only "buffer local".
+     
+     https://github.com/rnkn/olivetti
+
+     #+begin_src emacs-lisp :tangle yes
+       (use-package olivetti
+	 :ensure t
+	 :config (setq olivetti-body-width 90))
+     #+end_src
 
 **** markdown-mode
 
