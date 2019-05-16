@@ -460,7 +460,9 @@
 	 (setq ebib-index-window-size 28)
 	 (setq ebib-preload-bib-files (quote ("~/science_works/bibliography.bib")))
 	 (setq ebib-timestamp-format "%Y.%m.%d")
-	 (setq ebib-use-timestamp t))
+	 (setq ebib-use-timestamp t)
+	 (setq ebib-uniquify-keys t)
+	 )
      #+END_SRC
 
 **** bibslurp-ads
