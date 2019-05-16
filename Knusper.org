@@ -765,12 +765,12 @@
          :ensure t)
      #+END_SRC
 
-**** tea-time
+**** COMMENT tea-time
 
      With =tea-time= I never forget about the tea.  Using  [[http://movie-sounds.org/action-movie-sound-clips/the-italian-job-1969/have-a-cup-of-tea-ready][this soundbite]]
      from my favorite movie "The Italian Job".
 
-     #+BEGIN_SRC emacs-lisp :tangle yes
+     #+BEGIN_SRC emacs-lisp :tangle no
        (use-package tea-time
          :ensure t
          :config
