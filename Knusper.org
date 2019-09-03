@@ -411,6 +411,17 @@
 	 (global-set-key (kbd "C-s") 'swiper) )
      #+end_src
 
+**** smex
+
+     counsel-M-x can re-use functions provided by smex - then
+     counsel-M-x behaves like smex on steroids.
+
+     #+BEGIN_SRC emacs-lisp :tangle yes
+       (use-package smex
+         :ensure t
+         )
+     #+END_SRC
+
 **** try
      
      /Try is a package that allows you to try out Emacs packages without installing them./
@@ -536,17 +547,6 @@
          (global-set-key (kbd "<S-s-down>")   'buf-move-down)
          (global-set-key (kbd "<S-s-left>")   'buf-move-left)
          (global-set-key (kbd "<S-s-right>")  'buf-move-right)
-         )
-     #+END_SRC
-
-**** COMMENT smex
-
-     #+BEGIN_SRC emacs-lisp :tangle no
-       (use-package smex
-         :ensure t
-         :config
-         (smex-initialize)
-         (global-set-key (kbd "M-x") 'smex)
          )
      #+END_SRC
 
