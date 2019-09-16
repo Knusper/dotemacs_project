@@ -328,6 +328,14 @@
    #+BEGIN_SRC emacs-lisp :tangle yes
      (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
    #+END_SRC
+   
+   Package signature verification for ELPA
+
+   #+begin_src emacs-lisp :tangle yes
+     (use-package gnu-elpa-keyring-update
+       :ensure t)
+   #+end_src
+
 ** use-package - automatically download and install packages
 
    We use [[https://github.com/jwiegley/use-package][=use-package=]] to automatically download and install packages,
