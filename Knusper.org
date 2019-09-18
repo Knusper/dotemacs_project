@@ -329,7 +329,7 @@
      (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
    #+END_SRC
    
-   Package signature verification for ELPA
+   Package signature verification for ELPA: http://elpa.gnu.org/packages/gnu-elpa-keyring-update.html
 
    #+begin_src emacs-lisp :tangle yes
      (use-package gnu-elpa-keyring-update
@@ -351,6 +351,16 @@
      (require 'use-package)
    #+END_SRC
 
+** Paradox - a better package manager for emacs
+   
+   https://github.com/Malabarba/paradox
+   
+   #+begin_src emacs-lisp :tangle yes
+     (use-package paradox
+       :ensure t
+       :init
+       (paradox-enable))
+   #+end_src
 
 ** List of used packages
 *** org-mode related
@@ -667,8 +677,23 @@
        
 **** dictcc
      
+     Lookup and insert translations from [[https://dict.cc][dict.cc]] without leaving emacs
+
+     https://github.com/cqql/dictcc.el
+
      #+BEGIN_SRC emacs-lisp :tangle yes
        (use-package dictcc
+	 :ensure t)
+     #+end_src
+
+**** restart-emacs
+
+     Restart emacs from within emacs
+
+     https://github.com/iqbalansari/restart-emacs
+
+     #+begin_src emacs-lisp :tangle yes
+       (use-package restart-emacs
 	 :ensure t)
      #+end_src
 
