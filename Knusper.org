@@ -1,6 +1,5 @@
 #+TITLE: ECH's Emacs configuration
 #+OPTIONS: toc:4 h:4 creator:t 
-#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="zenburn-code.css" />
 
 * Notes
 
